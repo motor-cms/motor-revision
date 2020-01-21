@@ -1,0 +1,35 @@
+{
+  "name": "motor-cms/motor-revision",
+  "description": "Motor Revision module",
+  "license": "MIT",
+  "keywords": [
+    "motor"
+  ],
+  "authors": [
+    {
+      "name": "Reza Esmaili",
+      "email": "me@dfox.info"
+    }
+  ],
+  "require": {
+    "motor-cms/motor-backend": "0.9.*"
+  },
+  "autoload": {
+    "classmap": [
+      "database"
+    ],
+    "psr-4": {
+      "Motor\\Revision\\": "src",
+      "Tests\\Motor\\Revision\\": "tests"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Motor\\Revision\\Providers\\MotorServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
