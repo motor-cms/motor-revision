@@ -9,4 +9,11 @@ Route::group([
         'navigation'
     ]
 ], static function () {
+    Route::resource('tickets', 'TicketsController');
+    Route::resource('airports', 'AirportsController');
+    Route::resource('travelers', 'TravelersController');
+    Route::resource('shuttles', 'ShuttlesController');
+    Route::resource('rides', 'RidesController');
+    Route::resource('sponsors', 'SponsorsController');
+    Route::resource('hotels', 'HotelsController');
 });
