@@ -34,7 +34,7 @@ class HotelsController extends Controller
         $grid->setFilter($service->getFilter());
         $paginator = $service->getPaginator();
 
-        return view('motor\revision::backend.hotels.index', compact('paginator', 'grid'));
+        return view('motor-revision::backend.hotels.index', compact('paginator', 'grid'));
     }
 
 
@@ -51,7 +51,7 @@ class HotelsController extends Controller
             'enctype' => 'multipart/form-data'
         ]);
 
-        return view('motor\revision::backend.hotels.create', compact('form'));
+        return view('motor-revision::backend.hotels.create', compact('form'));
     }
 
 
@@ -72,7 +72,7 @@ class HotelsController extends Controller
 
         HotelService::createWithForm($request, $form);
 
-        flash()->success(trans('motor\revision::backend/hotels.created'));
+        flash()->success(trans('motor-revision::backend/hotels.created'));
 
         return redirect('backend/hotels');
     }
@@ -104,7 +104,7 @@ class HotelsController extends Controller
             'model'   => $record
         ]);
 
-        return view('motor\revision::backend.hotels.edit', compact('form'));
+        return view('motor-revision::backend.hotels.edit', compact('form'));
     }
 
 
@@ -126,7 +126,7 @@ class HotelsController extends Controller
 
         HotelService::updateWithForm($record, $request, $form);
 
-        flash()->success(trans('motor\revision::backend/hotels.updated'));
+        flash()->success(trans('motor-revision::backend/hotels.updated'));
 
         return redirect('backend/hotels');
     }
@@ -142,7 +142,7 @@ class HotelsController extends Controller
     {
         HotelService::delete($record);
 
-        flash()->success(trans('motor\revision::backend/hotels.deleted'));
+        flash()->success(trans('motor-revision::backend/hotels.deleted'));
 
         return redirect('backend/hotels');
     }

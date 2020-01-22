@@ -40,7 +40,7 @@ return [
         ]
     ],
     'rides'     => [
-        'name'   => 'motor\revision::backend/rides.rides',
+        'name'   => 'motor-revision::backend/rides.rides',
         'values' => [
             'read',
             'write',
@@ -48,7 +48,7 @@ return [
         ]
     ],
     'sponsors'  => [
-        'name'   => 'motor\revision::backend/sponsors.sponsors',
+        'name'   => 'motor-revision::backend/sponsors.sponsors',
         'values' => [
             'read',
             'write',
@@ -56,7 +56,7 @@ return [
         ]
     ],
     'hotels'    => [
-        'name'   => 'motor\revision::backend/hotels.hotels',
+        'name'   => 'motor-revision::backend/hotels.hotels',
         'values' => [
             'read',
             'write',

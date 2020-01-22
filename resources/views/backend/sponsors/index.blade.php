@@ -5,9 +5,9 @@
 @endsection
 
 @section('contentheader_title')
-    {{ trans('motor\revision::backend/sponsors.sponsors') }}
+    {{ trans('motor-revision::backend/sponsors.sponsors') }}
     @if (has_permission('sponsors.write'))
-	    {!! link_to_route('backend.sponsors.create', trans('motor\revision::backend/sponsors.new'), [], ['class' => 'pull-right float-right btn btn-sm btn-success']) !!}
+	    {!! link_to_route('backend.sponsors.create', trans('motor-revision::backend/sponsors.new'), [], ['class' => 'pull-right float-right btn btn-sm btn-success']) !!}
     @endif
 @endsection
 

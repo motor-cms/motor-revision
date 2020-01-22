@@ -5,11 +5,11 @@
 @endsection
 
 @section('contentheader_title')
-    {{ trans('motor\revision::backend/sponsors.new') }}
+    {{ trans('motor-revision::backend/sponsors.new') }}
     {!! link_to_route('backend.sponsors.index', trans('motor-backend::backend/global.back'), [], ['class' => 'pull-right float-right btn btn-sm btn-danger']) !!}
 @endsection
 
 @section('main-content')
 	@include('motor-backend::errors.list')
-	@include('motor\revision::backend.sponsors.form')
+	@include('motor-revision::backend.sponsors.form')
 @endsection

@@ -5,9 +5,9 @@
 @endsection
 
 @section('contentheader_title')
-    {{ trans('motor\revision::backend/rides.rides') }}
+    {{ trans('motor-revision::backend/rides.rides') }}
     @if (has_permission('rides.write'))
-	    {!! link_to_route('backend.rides.create', trans('motor\revision::backend/rides.new'), [], ['class' => 'pull-right float-right btn btn-sm btn-success']) !!}
+	    {!! link_to_route('backend.rides.create', trans('motor-revision::backend/rides.new'), [], ['class' => 'pull-right float-right btn btn-sm btn-success']) !!}
     @endif
 @endsection
 

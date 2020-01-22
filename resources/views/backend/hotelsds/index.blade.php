@@ -5,9 +5,9 @@
 @endsection
 
 @section('contentheader_title')
-    {{ trans('motor\revision::backend/hotelsds.hotelsds') }}
+    {{ trans('motor-revision::backend/hotelsds.hotelsds') }}
     @if (has_permission('hotelsds.write'))
-	    {!! link_to_route('backend.hotelsds.create', trans('motor\revision::backend/hotelsds.new'), [], ['class' => 'pull-right float-right btn btn-sm btn-success']) !!}
+	    {!! link_to_route('backend.hotelsds.create', trans('motor-revision::backend/hotelsds.new'), [], ['class' => 'pull-right float-right btn btn-sm btn-success']) !!}
     @endif
 @endsection
 

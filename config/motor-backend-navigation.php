@@ -44,7 +44,7 @@ return [
                 ],
                 500 => [ // <-- !!! replace 187 with your own sort position !!!
                          'slug'        => 'rides',
-                         'name'        => 'motor\revision::backend/rides.rides',
+                         'name'        => 'motor-revision::backend/rides.rides',
                          'icon'        => 'fa fa-plus',
                          'route'       => 'backend.rides.index',
                          'roles'       => [ 'SuperAdmin' ],
@@ -52,7 +52,7 @@ return [
                 ],
                 600 => [ // <-- !!! replace 371 with your own sort position !!!
                          'slug'        => 'sponsors',
-                         'name'        => 'motor\revision::backend/sponsors.sponsors',
+                         'name'        => 'motor-revision::backend/sponsors.sponsors',
                          'icon'        => 'fa fa-plus',
                          'route'       => 'backend.sponsors.index',
                          'roles'       => [ 'SuperAdmin' ],
@@ -60,7 +60,7 @@ return [
                 ],
                 700 => [ // <-- !!! replace 290 with your own sort position !!!
                          'slug'        => 'hotels',
-                         'name'        => 'motor\revision::backend/hotels.hotels',
+                         'name'        => 'motor-revision::backend/hotels.hotels',
                          'icon'        => 'fa fa-plus',
                          'route'       => 'backend.hotels.index',
                          'roles'       => [ 'SuperAdmin' ],

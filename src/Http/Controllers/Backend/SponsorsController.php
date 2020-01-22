@@ -34,7 +34,7 @@ class SponsorsController extends Controller
         $grid->setFilter($service->getFilter());
         $paginator = $service->getPaginator();
 
-        return view('motor\revision::backend.sponsors.index', compact('paginator', 'grid'));
+        return view('motor-revision::backend.sponsors.index', compact('paginator', 'grid'));
     }
 
 
@@ -51,7 +51,7 @@ class SponsorsController extends Controller
             'enctype' => 'multipart/form-data'
         ]);
 
-        return view('motor\revision::backend.sponsors.create', compact('form'));
+        return view('motor-revision::backend.sponsors.create', compact('form'));
     }
 
 
@@ -72,7 +72,7 @@ class SponsorsController extends Controller
 
         SponsorService::createWithForm($request, $form);
 
-        flash()->success(trans('motor\revision::backend/sponsors.created'));
+        flash()->success(trans('motor-revision::backend/sponsors.created'));
 
         return redirect('backend/sponsors');
     }
@@ -104,7 +104,7 @@ class SponsorsController extends Controller
             'model'   => $record
         ]);
 
-        return view('motor\revision::backend.sponsors.edit', compact('form'));
+        return view('motor-revision::backend.sponsors.edit', compact('form'));
     }
 
 
@@ -126,7 +126,7 @@ class SponsorsController extends Controller
 
         SponsorService::updateWithForm($record, $request, $form);
 
-        flash()->success(trans('motor\revision::backend/sponsors.updated'));
+        flash()->success(trans('motor-revision::backend/sponsors.updated'));
 
         return redirect('backend/sponsors');
     }
@@ -142,7 +142,7 @@ class SponsorsController extends Controller
     {
         SponsorService::delete($record);
 
-        flash()->success(trans('motor\revision::backend/sponsors.deleted'));
+        flash()->success(trans('motor-revision::backend/sponsors.deleted'));
 
         return redirect('backend/sponsors');
     }

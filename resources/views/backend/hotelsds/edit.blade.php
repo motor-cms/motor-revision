@@ -5,11 +5,11 @@
 @endsection
 
 @section('contentheader_title')
-    {{ trans('motor\revision::backend/hotelsds.edit') }}
+    {{ trans('motor-revision::backend/hotelsds.edit') }}
     {!! link_to_route('backend.hotelsds.index', trans('motor-backend::backend/global.back'), [], ['class' => 'pull-right float-right btn btn-sm btn-danger']) !!}
 @endsection
 
 @section('main-content')
 	@include('motor-backend::errors.list')
-	@include('motor\revision::backend.hotelsds.form')
+	@include('motor-revision::backend.hotelsds.form')
 @endsection

@@ -34,7 +34,7 @@ class RidesController extends Controller
         $grid->setFilter($service->getFilter());
         $paginator = $service->getPaginator();
 
-        return view('motor\revision::backend.rides.index', compact('paginator', 'grid'));
+        return view('motor-revision::backend.rides.index', compact('paginator', 'grid'));
     }
 
 
@@ -51,7 +51,7 @@ class RidesController extends Controller
             'enctype' => 'multipart/form-data'
         ]);
 
-        return view('motor\revision::backend.rides.create', compact('form'));
+        return view('motor-revision::backend.rides.create', compact('form'));
     }
 
 
@@ -72,7 +72,7 @@ class RidesController extends Controller
 
         RideService::createWithForm($request, $form);
 
-        flash()->success(trans('motor\revision::backend/rides.created'));
+        flash()->success(trans('motor-revision::backend/rides.created'));
 
         return redirect('backend/rides');
     }
@@ -104,7 +104,7 @@ class RidesController extends Controller
             'model'   => $record
         ]);
 
-        return view('motor\revision::backend.rides.edit', compact('form'));
+        return view('motor-revision::backend.rides.edit', compact('form'));
     }
 
 
@@ -126,7 +126,7 @@ class RidesController extends Controller
 
         RideService::updateWithForm($record, $request, $form);
 
-        flash()->success(trans('motor\revision::backend/rides.updated'));
+        flash()->success(trans('motor-revision::backend/rides.updated'));
 
         return redirect('backend/rides');
     }
@@ -142,7 +142,7 @@ class RidesController extends Controller
     {
         RideService::delete($record);
 
-        flash()->success(trans('motor\revision::backend/rides.deleted'));
+        flash()->success(trans('motor-revision::backend/rides.deleted'));
 
         return redirect('backend/rides');
     }

@@ -58,7 +58,7 @@ class MotorRevisionBackendRideTest extends TestCase
     public function can_see_grid_without_ride()
     {
         $this->visit('/backend/rides')
-            ->see(trans('motor\revision::backend/rides.rides'))
+            ->see(trans('motor-revision::backend/rides.rides'))
             ->see(trans('motor-backend::backend/global.no_records'));
     }
 
@@ -67,7 +67,7 @@ class MotorRevisionBackendRideTest extends TestCase
     {
         $record = create_test_ride();
         $this->visit('/backend/rides')
-            ->see(trans('motor\revision::backend/rides.rides'))
+            ->see(trans('motor-revision::backend/rides.rides'))
             ->see($record->name);
     }
 
@@ -93,9 +93,9 @@ class MotorRevisionBackendRideTest extends TestCase
             ->see($record->name)
             ->type('Updated Ride', 'name')
             ->within('.box-footer', function(){
-                $this->press(trans('motor\revision::backend/rides.save'));
+                $this->press(trans('motor-revision::backend/rides.save'));
             })
-            ->see(trans('motor\revision::backend/rides.updated'))
+            ->see(trans('motor-revision::backend/rides.updated'))
             ->see('Updated Ride')
             ->seePageIs('/backend/rides');
 
@@ -107,7 +107,7 @@ class MotorRevisionBackendRideTest extends TestCase
     public function can_click_the_ride_create_button()
     {
         $this->visit('/backend/rides')
-            ->click(trans('motor\revision::backend/rides.new'))
+            ->click(trans('motor-revision::backend/rides.new'))
             ->seePageIs('/backend/rides/create');
     }
 
@@ -115,12 +115,12 @@ class MotorRevisionBackendRideTest extends TestCase
     public function can_create_a_new_ride()
     {
         $this->visit('/backend/rides/create')
-            ->see(trans('motor\revision::backend/rides.new'))
+            ->see(trans('motor-revision::backend/rides.new'))
             ->type('Create Ride Name', 'name')
             ->within('.box-footer', function(){
-                $this->press(trans('motor\revision::backend/rides.save'));
+                $this->press(trans('motor-revision::backend/rides.save'));
             })
-            ->see(trans('motor\revision::backend/rides.created'))
+            ->see(trans('motor-revision::backend/rides.created'))
             ->see('Create Ride Name')
             ->seePageIs('/backend/rides');
     }
@@ -129,9 +129,9 @@ class MotorRevisionBackendRideTest extends TestCase
     public function cannot_create_a_new_ride_with_empty_fields()
     {
         $this->visit('/backend/rides/create')
-            ->see(trans('motor\revision::backend/rides.new'))
+            ->see(trans('motor-revision::backend/rides.new'))
             ->within('.box-footer', function(){
-                $this->press(trans('motor\revision::backend/rides.save'));
+                $this->press(trans('motor-revision::backend/rides.save'));
             })
             ->see('Data missing!')
             ->seePageIs('/backend/rides/create');
@@ -142,12 +142,12 @@ class MotorRevisionBackendRideTest extends TestCase
     {
         $record = create_test_ride();
         $this->visit('/backend/rides/'.$record->id.'/edit')
-            ->see(trans('motor\revision::backend/rides.edit'))
+            ->see(trans('motor-revision::backend/rides.edit'))
             ->type('Modified Ride Name', 'name')
             ->within('.box-footer', function(){
-                $this->press(trans('motor\revision::backend/rides.save'));
+                $this->press(trans('motor-revision::backend/rides.save'));
             })
-            ->see(trans('motor\revision::backend/rides.updated'))
+            ->see(trans('motor-revision::backend/rides.updated'))
             ->see('Modified Ride Name')
             ->seePageIs('/backend/rides');
     }
@@ -164,7 +164,7 @@ class MotorRevisionBackendRideTest extends TestCase
                 $this->press(trans('motor-backend::backend/global.delete'));
             })
             ->seePageIs('/backend/rides')
-            ->see(trans('motor\revision::backend/rides.deleted'));
+            ->see(trans('motor-revision::backend/rides.deleted'));
 
         $this->assertCount(0, Ride::all());
     }

@@ -58,7 +58,7 @@ class MotorRevisionBackendHotelTest extends TestCase
     public function can_see_grid_without_hotel()
     {
         $this->visit('/backend/hotels')
-            ->see(trans('motor\revision::backend/hotels.hotels'))
+            ->see(trans('motor-revision::backend/hotels.hotels'))
             ->see(trans('motor-backend::backend/global.no_records'));
     }
 
@@ -67,7 +67,7 @@ class MotorRevisionBackendHotelTest extends TestCase
     {
         $record = create_test_hotel();
         $this->visit('/backend/hotels')
-            ->see(trans('motor\revision::backend/hotels.hotels'))
+            ->see(trans('motor-revision::backend/hotels.hotels'))
             ->see($record->name);
     }
 
@@ -93,9 +93,9 @@ class MotorRevisionBackendHotelTest extends TestCase
             ->see($record->name)
             ->type('Updated Hotel', 'name')
             ->within('.box-footer', function(){
-                $this->press(trans('motor\revision::backend/hotels.save'));
+                $this->press(trans('motor-revision::backend/hotels.save'));
             })
-            ->see(trans('motor\revision::backend/hotels.updated'))
+            ->see(trans('motor-revision::backend/hotels.updated'))
             ->see('Updated Hotel')
             ->seePageIs('/backend/hotels');
 
@@ -107,7 +107,7 @@ class MotorRevisionBackendHotelTest extends TestCase
     public function can_click_the_hotel_create_button()
     {
         $this->visit('/backend/hotels')
-            ->click(trans('motor\revision::backend/hotels.new'))
+            ->click(trans('motor-revision::backend/hotels.new'))
             ->seePageIs('/backend/hotels/create');
     }
 
@@ -115,12 +115,12 @@ class MotorRevisionBackendHotelTest extends TestCase
     public function can_create_a_new_hotel()
     {
         $this->visit('/backend/hotels/create')
-            ->see(trans('motor\revision::backend/hotels.new'))
+            ->see(trans('motor-revision::backend/hotels.new'))
             ->type('Create Hotel Name', 'name')
             ->within('.box-footer', function(){
-                $this->press(trans('motor\revision::backend/hotels.save'));
+                $this->press(trans('motor-revision::backend/hotels.save'));
             })
-            ->see(trans('motor\revision::backend/hotels.created'))
+            ->see(trans('motor-revision::backend/hotels.created'))
             ->see('Create Hotel Name')
             ->seePageIs('/backend/hotels');
     }
@@ -129,9 +129,9 @@ class MotorRevisionBackendHotelTest extends TestCase
     public function cannot_create_a_new_hotel_with_empty_fields()
     {
         $this->visit('/backend/hotels/create')
-            ->see(trans('motor\revision::backend/hotels.new'))
+            ->see(trans('motor-revision::backend/hotels.new'))
             ->within('.box-footer', function(){
-                $this->press(trans('motor\revision::backend/hotels.save'));
+                $this->press(trans('motor-revision::backend/hotels.save'));
             })
             ->see('Data missing!')
             ->seePageIs('/backend/hotels/create');
@@ -142,12 +142,12 @@ class MotorRevisionBackendHotelTest extends TestCase
     {
         $record = create_test_hotel();
         $this->visit('/backend/hotels/'.$record->id.'/edit')
-            ->see(trans('motor\revision::backend/hotels.edit'))
+            ->see(trans('motor-revision::backend/hotels.edit'))
             ->type('Modified Hotel Name', 'name')
             ->within('.box-footer', function(){
-                $this->press(trans('motor\revision::backend/hotels.save'));
+                $this->press(trans('motor-revision::backend/hotels.save'));
             })
-            ->see(trans('motor\revision::backend/hotels.updated'))
+            ->see(trans('motor-revision::backend/hotels.updated'))
             ->see('Modified Hotel Name')
             ->seePageIs('/backend/hotels');
     }
@@ -164,7 +164,7 @@ class MotorRevisionBackendHotelTest extends TestCase
                 $this->press(trans('motor-backend::backend/global.delete'));
             })
             ->seePageIs('/backend/hotels')
-            ->see(trans('motor\revision::backend/hotels.deleted'));
+            ->see(trans('motor-revision::backend/hotels.deleted'));
 
         $this->assertCount(0, Hotel::all());
     }

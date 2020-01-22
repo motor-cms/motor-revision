@@ -58,7 +58,7 @@ class MotorRevisionBackendSponsorTest extends TestCase
     public function can_see_grid_without_sponsor()
     {
         $this->visit('/backend/sponsors')
-            ->see(trans('motor\revision::backend/sponsors.sponsors'))
+            ->see(trans('motor-revision::backend/sponsors.sponsors'))
             ->see(trans('motor-backend::backend/global.no_records'));
     }
 
@@ -67,7 +67,7 @@ class MotorRevisionBackendSponsorTest extends TestCase
     {
         $record = create_test_sponsor();
         $this->visit('/backend/sponsors')
-            ->see(trans('motor\revision::backend/sponsors.sponsors'))
+            ->see(trans('motor-revision::backend/sponsors.sponsors'))
             ->see($record->name);
     }
 
@@ -93,9 +93,9 @@ class MotorRevisionBackendSponsorTest extends TestCase
             ->see($record->name)
             ->type('Updated Sponsor', 'name')
             ->within('.box-footer', function(){
-                $this->press(trans('motor\revision::backend/sponsors.save'));
+                $this->press(trans('motor-revision::backend/sponsors.save'));
             })
-            ->see(trans('motor\revision::backend/sponsors.updated'))
+            ->see(trans('motor-revision::backend/sponsors.updated'))
             ->see('Updated Sponsor')
             ->seePageIs('/backend/sponsors');
 
@@ -107,7 +107,7 @@ class MotorRevisionBackendSponsorTest extends TestCase
     public function can_click_the_sponsor_create_button()
     {
         $this->visit('/backend/sponsors')
-            ->click(trans('motor\revision::backend/sponsors.new'))
+            ->click(trans('motor-revision::backend/sponsors.new'))
             ->seePageIs('/backend/sponsors/create');
     }
 
@@ -115,12 +115,12 @@ class MotorRevisionBackendSponsorTest extends TestCase
     public function can_create_a_new_sponsor()
     {
         $this->visit('/backend/sponsors/create')
-            ->see(trans('motor\revision::backend/sponsors.new'))
+            ->see(trans('motor-revision::backend/sponsors.new'))
             ->type('Create Sponsor Name', 'name')
             ->within('.box-footer', function(){
-                $this->press(trans('motor\revision::backend/sponsors.save'));
+                $this->press(trans('motor-revision::backend/sponsors.save'));
             })
-            ->see(trans('motor\revision::backend/sponsors.created'))
+            ->see(trans('motor-revision::backend/sponsors.created'))
             ->see('Create Sponsor Name')
             ->seePageIs('/backend/sponsors');
     }
@@ -129,9 +129,9 @@ class MotorRevisionBackendSponsorTest extends TestCase
     public function cannot_create_a_new_sponsor_with_empty_fields()
     {
         $this->visit('/backend/sponsors/create')
-            ->see(trans('motor\revision::backend/sponsors.new'))
+            ->see(trans('motor-revision::backend/sponsors.new'))
             ->within('.box-footer', function(){
-                $this->press(trans('motor\revision::backend/sponsors.save'));
+                $this->press(trans('motor-revision::backend/sponsors.save'));
             })
             ->see('Data missing!')
             ->seePageIs('/backend/sponsors/create');
@@ -142,12 +142,12 @@ class MotorRevisionBackendSponsorTest extends TestCase
     {
         $record = create_test_sponsor();
         $this->visit('/backend/sponsors/'.$record->id.'/edit')
-            ->see(trans('motor\revision::backend/sponsors.edit'))
+            ->see(trans('motor-revision::backend/sponsors.edit'))
             ->type('Modified Sponsor Name', 'name')
             ->within('.box-footer', function(){
-                $this->press(trans('motor\revision::backend/sponsors.save'));
+                $this->press(trans('motor-revision::backend/sponsors.save'));
             })
-            ->see(trans('motor\revision::backend/sponsors.updated'))
+            ->see(trans('motor-revision::backend/sponsors.updated'))
             ->see('Modified Sponsor Name')
             ->seePageIs('/backend/sponsors');
     }
@@ -164,7 +164,7 @@ class MotorRevisionBackendSponsorTest extends TestCase
                 $this->press(trans('motor-backend::backend/global.delete'));
             })
             ->seePageIs('/backend/sponsors')
-            ->see(trans('motor\revision::backend/sponsors.deleted'));
+            ->see(trans('motor-revision::backend/sponsors.deleted'));
 
         $this->assertCount(0, Sponsor::all());
     }
