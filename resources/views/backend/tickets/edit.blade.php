@@ -5,11 +5,11 @@
 @endsection
 
 @section('contentheader_title')
-    {{ trans('\motor\revision::backend/tickets.edit') }}
+    {{ trans('motor-revision::backend/tickets.edit') }}
     {!! link_to_route('backend.tickets.index', trans('motor-backend::backend/global.back'), [], ['class' => 'pull-right float-right btn btn-sm btn-danger']) !!}
 @endsection
 
 @section('main-content')
 	@include('motor-backend::errors.list')
-	@include('\motor\revision::backend.tickets.form')
+	@include('motor-revision::backend.tickets.form')
 @endsection

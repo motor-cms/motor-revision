@@ -28,6 +28,7 @@ class MotorServiceProvider extends ServiceProvider
         $this->permissions();
         $this->migrations();
         $this->publishResourceAssets();
+        $this->components();
         merge_local_config_with_db_configuration_variables('motor-media');
     }
 
@@ -153,6 +154,9 @@ class MotorServiceProvider extends ServiceProvider
         Route::bind('hotel', function ($id) {
             return \Motor\Revision\Models\Hotel::findOrFail($id);
         });
+        Route::bind('component_ticket', function ($id) {
+            return \Motor\Revision\Models\Component\ComponentTicket::findOrFail($id);
+        });
     }
 
 
@@ -165,6 +169,15 @@ class MotorServiceProvider extends ServiceProvider
         $this->app[ 'config' ]->set(
             'motor-backend-navigation',
             array_replace_recursive(require __DIR__.'/../../config/motor-backend-navigation.php', $config)
+        );
+    }
+
+    public function components()
+    {
+        $config = $this->app['config']->get('motor-cms-page-components', []);
+        $this->app['config']->set(
+            'motor-cms-page-components',
+            array_replace_recursive(require __DIR__ . '/../../config/motor-cms-page-components.php', $config)
         );
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class MotorRevisionApiTicketTest extends TestCase
+class Motor\RevisionApiTicketTest extends TestCase
 {
 
     use DatabaseTransactions;

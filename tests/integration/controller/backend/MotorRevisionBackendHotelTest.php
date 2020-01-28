@@ -5,7 +5,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Motor\Revision\Models\Hotel;
 
-class MotorRevisionBackendHotelTest extends TestCase
+class Motor\RevisionBackendHotelTest extends TestCase
 {
 
     use DatabaseTransactions;

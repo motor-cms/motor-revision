@@ -4,7 +4,7 @@ use Culpa\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Culpa\Facades\Schema;
 
-class CreateSponsorsTable extends Migration
+class CreateComponentTicketsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateSponsorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sponsors', function (Blueprint $table) {
+        Schema::create('component_tickets', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('type');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateSponsorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sponsors');
+        Schema::dropIfExists('component_tickets');
     }
 }

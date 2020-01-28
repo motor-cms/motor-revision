@@ -5,7 +5,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Motor\Revision\Models\Ride;
 
-class MotorRevisionBackendRideTest extends TestCase
+class Motor\RevisionBackendRideTest extends TestCase
 {
 
     use DatabaseTransactions;

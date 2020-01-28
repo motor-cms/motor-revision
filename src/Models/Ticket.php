@@ -5,6 +5,7 @@ namespace Motor\Revision\Models;
 use Illuminate\Database\Eloquent\Model;
 use Motor\Core\Traits\Filterable;
 use Motor\Core\Traits\Searchable;
+
 //use Culpa\Traits\Blameable;
 //use Culpa\Traits\CreatedBy;
 //use Culpa\Traits\DeletedBy;
@@ -13,7 +14,8 @@ use Motor\Core\Traits\Searchable;
 class Ticket extends Model
 {
     use Searchable;
-	use Filterable;
+    use Filterable;
+
 //    use Blameable, CreatedBy, UpdatedBy, DeletedBy;
 
     /**
@@ -37,5 +39,25 @@ class Ticket extends Model
      * @var array
      */
     protected $fillable = [
+        'type',
+        'handle',
+        'name',
+        'address',
+        'zip',
+        'city',
+        'country',
+        'company',
+        'vat_id',
+        'email',
+        'comment',
+        'internal_comment',
+        'access_key',
+        'transportation',
+        'is_anonymous',
+        'amount',
+        'shirt_size',
+        'status',
+        'ip_address',
+        'user_agent',
     ];
 }

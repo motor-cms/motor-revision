@@ -34,7 +34,7 @@ class TicketsController extends Controller
         $grid->setFilter($service->getFilter());
         $paginator = $service->getPaginator();
 
-        return view('\motor\revision::backend.tickets.index', compact('paginator', 'grid'));
+        return view('motor-revision::backend.tickets.index', compact('paginator', 'grid'));
     }
 
 
@@ -51,7 +51,7 @@ class TicketsController extends Controller
             'enctype' => 'multipart/form-data'
         ]);
 
-        return view('\motor\revision::backend.tickets.create', compact('form'));
+        return view('motor-revision::backend.tickets.create', compact('form'));
     }
 
 
@@ -66,13 +66,16 @@ class TicketsController extends Controller
         $form = $this->form(TicketForm::class);
 
         // It will automatically use current request, get the rules, and do the validation
-        if ( ! $form->isValid()) {
+        if ((int) $request->get('reload_on_change') == 1) {
+            return redirect()->back()->withInput();
+        }
+        if (! $form->isValid()) {
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
 
         TicketService::createWithForm($request, $form);
 
-        flash()->success(trans('\motor\revision::backend/tickets.created'));
+        flash()->success(trans('motor-revision::backend/tickets.created'));
 
         return redirect('backend/tickets');
     }
@@ -104,7 +107,7 @@ class TicketsController extends Controller
             'model'   => $record
         ]);
 
-        return view('\motor\revision::backend.tickets.edit', compact('form'));
+        return view('motor-revision::backend.tickets.edit', compact('form'));
     }
 
 
@@ -126,7 +129,7 @@ class TicketsController extends Controller
 
         TicketService::updateWithForm($record, $request, $form);
 
-        flash()->success(trans('\motor\revision::backend/tickets.updated'));
+        flash()->success(trans('motor-revision::backend/tickets.updated'));
 
         return redirect('backend/tickets');
     }
@@ -142,7 +145,7 @@ class TicketsController extends Controller
     {
         TicketService::delete($record);
 
-        flash()->success(trans('\motor\revision::backend/tickets.deleted'));
+        flash()->success(trans('motor-revision::backend/tickets.deleted'));
 
         return redirect('backend/tickets');
     }

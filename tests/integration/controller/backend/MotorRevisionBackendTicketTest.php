@@ -5,7 +5,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use \Motor\Revision\Models\Ticket;
 
-class MotorRevisionBackendTicketTest extends TestCase
+class Motor\RevisionBackendTicketTest extends TestCase
 {
 
     use DatabaseTransactions;
@@ -58,7 +58,7 @@ class MotorRevisionBackendTicketTest extends TestCase
     public function can_see_grid_without_ticket()
     {
         $this->visit('/backend/tickets')
-            ->see(trans('\motor\revision::backend/tickets.tickets'))
+            ->see(trans('motor-revision::backend/tickets.tickets'))
             ->see(trans('motor-backend::backend/global.no_records'));
     }
 
@@ -67,7 +67,7 @@ class MotorRevisionBackendTicketTest extends TestCase
     {
         $record = create_test_ticket();
         $this->visit('/backend/tickets')
-            ->see(trans('\motor\revision::backend/tickets.tickets'))
+            ->see(trans('motor-revision::backend/tickets.tickets'))
             ->see($record->name);
     }
 
@@ -93,9 +93,9 @@ class MotorRevisionBackendTicketTest extends TestCase
             ->see($record->name)
             ->type('Updated Ticket', 'name')
             ->within('.box-footer', function(){
-                $this->press(trans('\motor\revision::backend/tickets.save'));
+                $this->press(trans('motor-revision::backend/tickets.save'));
             })
-            ->see(trans('\motor\revision::backend/tickets.updated'))
+            ->see(trans('motor-revision::backend/tickets.updated'))
             ->see('Updated Ticket')
             ->seePageIs('/backend/tickets');
 
@@ -107,7 +107,7 @@ class MotorRevisionBackendTicketTest extends TestCase
     public function can_click_the_ticket_create_button()
     {
         $this->visit('/backend/tickets')
-            ->click(trans('\motor\revision::backend/tickets.new'))
+            ->click(trans('motor-revision::backend/tickets.new'))
             ->seePageIs('/backend/tickets/create');
     }
 
@@ -115,12 +115,12 @@ class MotorRevisionBackendTicketTest extends TestCase
     public function can_create_a_new_ticket()
     {
         $this->visit('/backend/tickets/create')
-            ->see(trans('\motor\revision::backend/tickets.new'))
+            ->see(trans('motor-revision::backend/tickets.new'))
             ->type('Create Ticket Name', 'name')
             ->within('.box-footer', function(){
-                $this->press(trans('\motor\revision::backend/tickets.save'));
+                $this->press(trans('motor-revision::backend/tickets.save'));
             })
-            ->see(trans('\motor\revision::backend/tickets.created'))
+            ->see(trans('motor-revision::backend/tickets.created'))
             ->see('Create Ticket Name')
             ->seePageIs('/backend/tickets');
     }
@@ -129,9 +129,9 @@ class MotorRevisionBackendTicketTest extends TestCase
     public function cannot_create_a_new_ticket_with_empty_fields()
     {
         $this->visit('/backend/tickets/create')
-            ->see(trans('\motor\revision::backend/tickets.new'))
+            ->see(trans('motor-revision::backend/tickets.new'))
             ->within('.box-footer', function(){
-                $this->press(trans('\motor\revision::backend/tickets.save'));
+                $this->press(trans('motor-revision::backend/tickets.save'));
             })
             ->see('Data missing!')
             ->seePageIs('/backend/tickets/create');
@@ -142,12 +142,12 @@ class MotorRevisionBackendTicketTest extends TestCase
     {
         $record = create_test_ticket();
         $this->visit('/backend/tickets/'.$record->id.'/edit')
-            ->see(trans('\motor\revision::backend/tickets.edit'))
+            ->see(trans('motor-revision::backend/tickets.edit'))
             ->type('Modified Ticket Name', 'name')
             ->within('.box-footer', function(){
-                $this->press(trans('\motor\revision::backend/tickets.save'));
+                $this->press(trans('motor-revision::backend/tickets.save'));
             })
-            ->see(trans('\motor\revision::backend/tickets.updated'))
+            ->see(trans('motor-revision::backend/tickets.updated'))
             ->see('Modified Ticket Name')
             ->seePageIs('/backend/tickets');
     }
@@ -164,7 +164,7 @@ class MotorRevisionBackendTicketTest extends TestCase
                 $this->press(trans('motor-backend::backend/global.delete'));
             })
             ->seePageIs('/backend/tickets')
-            ->see(trans('\motor\revision::backend/tickets.deleted'));
+            ->see(trans('motor-revision::backend/tickets.deleted'));
 
         $this->assertCount(0, Ticket::all());
     }
