@@ -49,7 +49,7 @@
     {!! form_end($ticketForm, false) !!}
 
 @else
-    <div class="alert alert-info">
+    <div class="callout success">
         @foreach (session('flash_notification', collect())->toArray() as $message)
             {!! $message['message'] !!}
         @endforeach
