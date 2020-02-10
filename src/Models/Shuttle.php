@@ -5,6 +5,7 @@ namespace Motor\Revision\Models;
 use Illuminate\Database\Eloquent\Model;
 use Motor\Core\Traits\Filterable;
 use Motor\Core\Traits\Searchable;
+
 //use Culpa\Traits\Blameable;
 //use Culpa\Traits\CreatedBy;
 //use Culpa\Traits\DeletedBy;
@@ -13,7 +14,8 @@ use Motor\Core\Traits\Searchable;
 class Shuttle extends Model
 {
     use Searchable;
-	use Filterable;
+    use Filterable;
+
 //    use Blameable, CreatedBy, UpdatedBy, DeletedBy;
 
     /**
@@ -37,5 +39,29 @@ class Shuttle extends Model
      * @var array
      */
     protected $fillable = [
+        'airport_id',
+        'name',
+        'direction',
+        'departs_at',
+        'arrives_at',
+        'seats',
+        'travel_time',
+        'price',
+        'is_active'
     ];
+
+    public function airport()
+    {
+        return $this->belongsTo(Airport::class);
+    }
+
+    public function travelers()
+    {
+        return $this->hasMany(Traveler::class);
+    }
+
+    public function getSeatsTakenAttribute()
+    {
+        return $this->travelers()->sum('number_of_people');
+    }
 }

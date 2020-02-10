@@ -37,5 +37,9 @@ class Airport extends Model
      * @var array
      */
     protected $fillable = [
+        'name',
+        'code',
+        'sort_position',
+        'is_active'
     ];
 }

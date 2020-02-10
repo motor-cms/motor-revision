@@ -5,6 +5,9 @@
     </div>
     <div class="@boxBody">
         {!! form_row($form->name) !!}
+        {!! form_row($form->code) !!}
+        {!! form_row($form->sort_position) !!}
+        {!! form_row($form->is_active) !!}
     </div>
     <!-- /.box-body -->
 

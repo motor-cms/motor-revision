@@ -4,7 +4,15 @@
         <h3 class="box-title">{{ trans('motor-backend::backend/global.base_info') }}</h3>
     </div>
     <div class="@boxBody">
+        {!! form_row($form->airport_id) !!}
+        {!! form_row($form->shuttle_id) !!}
+        {!! form_row($form->direction) !!}
         {!! form_row($form->name) !!}
+        {!! form_row($form->email) !!}
+        {!! form_row($form->mobile_phone) !!}
+        {!! form_row($form->flight_time) !!}
+        {!! form_row($form->flight_number) !!}
+        {!! form_row($form->number_of_people) !!}
     </div>
     <!-- /.box-body -->
 
