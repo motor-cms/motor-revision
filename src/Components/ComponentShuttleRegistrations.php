@@ -99,7 +99,7 @@ class ComponentShuttleRegistrations
         }
 
         // Send emails
-        EmailHelper::sendEmail('shuttle_registration', [], [ 'name' => $this->request->get('name'), 'arrival' => $arrivalTraveler, 'departure' => $departureTraveler ]);
+        EmailHelper::sendEmail('shuttle_registration', ['to_email' => $this->request->get('email'), 'to_name' => $this->request->get('name')], [ 'name' => $this->request->get('name'), 'arrival' => $arrivalTraveler, 'departure' => $departureTraveler ]);
 
         // Create flash alert and hide form
         flash()->success(trans('motor-revision::component/shuttle-registrations.registration_successful'));
