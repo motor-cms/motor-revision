@@ -50,6 +50,16 @@ class Shuttle extends Model
         'is_active'
     ];
 
+    public function scopeConfirmedToParty($query)
+    {
+        return $query->where('direction', 'party')->where('is_active', true)->orderBy('departs_at', 'ASC');
+    }
+
+    public function scopeConfirmedToAirport($query)
+    {
+        return $query->where('direction', 'airport')->where('is_active', true)->orderBy('departs_at', 'ASC');
+    }
+
     public function airport()
     {
         return $this->belongsTo(Airport::class);

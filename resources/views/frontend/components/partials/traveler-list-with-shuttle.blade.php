@@ -1,0 +1,32 @@
+<table class="unstriped">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Persons</th>
+        <th>Airport</th>
+        <th>Bus</th>
+        <th>Departure</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach ($travelers as $traveler)
+        <tr>
+            <td>
+                {{$traveler->name}}
+            </td>
+            <td>
+                {{$traveler->number_of_people}}
+            </td>
+            <td>
+                {{$traveler->airport->code}}
+            </td>
+            <td>
+                {{$traveler->shuttle->name}}
+            </td>
+            <td>
+                {{$traveler->shuttle->departs_at}}
+            </td>
+        </tr>
+    @endforeach
+    </tbody>
+</table>

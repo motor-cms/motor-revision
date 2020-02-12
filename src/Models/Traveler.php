@@ -54,6 +54,26 @@ class Traveler extends Model
         'confirmation_sent_at',
     ];
 
+    public function scopeToPartyWithoutShuttle($query)
+    {
+        return $query->where('direction', 'party')->whereNull('shuttle_id')->orderBy('flight_time', 'ASC');
+    }
+
+    public function scopeToAirportWithoutShuttle($query)
+    {
+        return $query->where('direction', 'airport')->whereNull('shuttle_id')->orderBy('flight_time', 'ASC');
+    }
+
+    public function scopeToPartyWithShuttle($query)
+    {
+        return $query->where('direction', 'party')->whereNotNull('shuttle_id')->orderBy('shuttle_id', 'ASC');
+    }
+
+    public function scopeToAirportWithShuttle($query)
+    {
+        return $query->where('direction', 'airport')->whereNotNull('shuttle_id')->orderBy('shuttle_id', 'ASC');
+    }
+
     public function airport()
     {
         return $this->belongsTo(Airport::class);
