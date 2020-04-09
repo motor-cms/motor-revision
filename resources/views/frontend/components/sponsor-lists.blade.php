@@ -1,5 +1,3 @@
-LALALA
-
 @foreach ($sponsors as $sponsor)
     <div class="media-object">
         <div class="media-object-section">
