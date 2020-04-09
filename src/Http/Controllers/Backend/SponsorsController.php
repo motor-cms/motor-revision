@@ -51,7 +51,9 @@ class SponsorsController extends Controller
             'enctype' => 'multipart/form-data'
         ]);
 
-        return view('motor-revision::backend.sponsors.create', compact('form'));
+        $motorShowRightSidebar = true;
+
+        return view('motor-revision::backend.sponsors.create', compact('form', 'motorShowRightSidebar'));
     }
 
 
@@ -104,7 +106,9 @@ class SponsorsController extends Controller
             'model'   => $record
         ]);
 
-        return view('motor-revision::backend.sponsors.edit', compact('form'));
+        $motorShowRightSidebar = true;
+
+        return view('motor-revision::backend.sponsors.edit', compact('form', 'motorShowRightSidebar'));
     }
 
 

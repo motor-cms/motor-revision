@@ -3,8 +3,11 @@
 namespace Motor\Revision\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Motor\Core\Traits\Filterable;
 use Motor\Core\Traits\Searchable;
+use Motor\Media\Models\FileAssociation;
+
 //use Culpa\Traits\Blameable;
 //use Culpa\Traits\CreatedBy;
 //use Culpa\Traits\DeletedBy;
@@ -13,7 +16,8 @@ use Motor\Core\Traits\Searchable;
 class Sponsor extends Model
 {
     use Searchable;
-	use Filterable;
+    use Filterable;
+
 //    use Blameable, CreatedBy, UpdatedBy, DeletedBy;
 
     /**
@@ -29,6 +33,7 @@ class Sponsor extends Model
      * @var array
      */
     protected $searchableColumns = [
+        'name',
     ];
 
     /**
@@ -37,5 +42,19 @@ class Sponsor extends Model
      * @var array
      */
     protected $fillable = [
+        'name',
+        'url',
+        'level',
+        'sort_position',
+        'is_active',
+        'text'
     ];
+
+    /**
+     * @return MorphMany
+     */
+    public function file_associations()
+    {
+        return $this->morphMany(FileAssociation::class, 'model');
+    }
 }

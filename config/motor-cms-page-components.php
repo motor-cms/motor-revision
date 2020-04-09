@@ -3,7 +3,8 @@
 return [
     'groups'     => [
         'revision' => [
-            'name' => 'Revision', // default groups are: basic, forms, media, navigation
+            'name' => 'Revision',
+            // default groups are: basic, forms, media, navigation
         ],
     ],
     'components' => [
@@ -46,6 +47,32 @@ return [
 
             ],
             'group'           => 'revision'
+        ],
+        'sponsor-lists'         => [
+            'name'            => 'SponsorList',
+            'description'     => 'Show SponsorList component',
+            'view'            => 'motor-revision::frontend.components.sponsor-lists',
+            'component_class' => 'Motor\Revision\Components\ComponentSponsorLists',
+            'compatibility'   => [
+
+            ],
+            'permissions'     => [
+
+            ],
+            'group'           => 'basic'
+        ],
+        'sponsor-footers'       => [
+            'name'            => 'SponsorFooter',
+            'description'     => 'Show SponsorFooter component',
+            'view'            => 'motor-revision::frontend.components.sponsor-footers',
+            'component_class' => 'Motor\Revision\Components\ComponentSponsorFooters',
+            'compatibility'   => [
+
+            ],
+            'permissions'     => [
+
+            ],
+            'group'           => 'basic'
         ],
     ],
 ];
