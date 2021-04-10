@@ -1,8 +1,10 @@
 @foreach ($sponsors as $sponsor)
     <div class="media-object">
         <div class="media-object-section">
-            <div class="thumbnail" style="width: 200px;">
+            <div class="thumbnail" style="width: 200px; border: none !important;">
+                <a href="{{$sponsor->url}}">
                 <img src="{{$sponsor->file_associations()->where('identifier', 'logo_big')->first()->file->getFirstMedia('file')->getUrl('thumb')}}" style="width: 100%;">
+                </a>
             </div>
         </div>
         <div class="media-object-section">
