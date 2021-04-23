@@ -49,14 +49,14 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *     description="Options are 'party' and 'airport'"
  *   ),
  *   @OA\Property(
- *     property="shuttle_id",
- *     type="integer",
- *     example="2"
+ *     property="shuttle",
+ *     type="object",
+ *     ref="#/components/schemas/ShuttleResource"
  *   ),
  *   @OA\Property(
- *     property="airport_id",
- *     type="integer",
- *     example="1"
+ *     property="airport",
+ *     type="object",
+ *     ref="#/components/schemas/AirportResource"
  *   ),
  * )
  */
