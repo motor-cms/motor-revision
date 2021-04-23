@@ -5,6 +5,7 @@ namespace Motor\Revision\Models;
 use Illuminate\Database\Eloquent\Model;
 use Motor\Core\Traits\Filterable;
 use Motor\Core\Traits\Searchable;
+
 //use Culpa\Traits\Blameable;
 //use Culpa\Traits\CreatedBy;
 //use Culpa\Traits\DeletedBy;
@@ -13,7 +14,8 @@ use Motor\Core\Traits\Searchable;
 class Ride extends Model
 {
     use Searchable;
-	use Filterable;
+    use Filterable;
+
 //    use Blameable, CreatedBy, UpdatedBy, DeletedBy;
 
     /**
@@ -28,8 +30,7 @@ class Ride extends Model
      *
      * @var array
      */
-    protected $searchableColumns = [
-    ];
+    protected $searchableColumns = [];
 
     /**
      * The attributes that are mass assignable.
@@ -40,12 +41,11 @@ class Ride extends Model
         'direction',
         'type',
         'means_of_transportation',
-        'handle',
+        'name',
         'email',
         'country',
         'route',
-        'ip',
+        'ip_address',
         'user_agent',
-        'replies'
     ];
 }

@@ -63,7 +63,7 @@ class HotelRequest extends Request
      *     property="is_active",
      *     type="boolean",
      *     example="true"
-     *   )
+     *   ),
      *   required={"name", "short"},
      * )
      */
@@ -96,7 +96,6 @@ class HotelRequest extends Request
             'longitude'   => 'nullable',
             'rating'      => 'nullable|integer',
             'is_active'   => 'nullable|boolean',
-
         ];
     }
 }

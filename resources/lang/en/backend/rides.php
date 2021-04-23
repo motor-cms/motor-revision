@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'rides' => 'Rides',
-    'ride' => 'Ride',
+    'rides'   => 'Rides',
+    'ride'    => 'Ride',
     'new'     => 'Create ride',
     'edit'    => 'Edit ride',
     'save'    => 'Save ride',
@@ -10,5 +10,13 @@ return [
     'updated' => 'Ride updated',
     'deleted' => 'Ride deleted',
 
-    'name' => 'Name',
+    'name'       => 'Name',
+    'directions' => [
+        'to'   => 'TO Revision',
+        'from' => 'FROM Revision',
+    ],
+    'types'      => [
+        'offer' => 'Offer a ride',
+        'seek'  => 'Seek a ride',
+    ],
 ];

@@ -18,13 +18,12 @@ class CreateRidesTable extends Migration
             $table->string('direction');
             $table->string('type');
             $table->string('means_of_transportation');
-            $table->string('handle');
+            $table->string('name');
             $table->string('email');
             $table->string('country');
             $table->string('route');
-            $table->string('ip');
+            $table->string('ip_address');
             $table->string('user_agent');
-            $table->integer('replies');
             $table->timestamps();
         });
     }
