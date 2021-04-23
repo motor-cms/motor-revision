@@ -5,19 +5,11 @@ Route::group([
     'prefix'     => 'api',
     'as'         => 'api.',
 ], static function () {
-    Route::resource('tickets', 'TicketsController');
-    Route::resource('airports', 'AirportsController');
-    Route::resource('travelers', 'TravelersController');
-    Route::resource('shuttles', 'ShuttlesController');
-    Route::resource('rides', 'RidesController');
-    Route::resource('sponsors', 'SponsorsController');
-    Route::resource('hotels', 'HotelsController');
-});
-
-Route::group([
-    'middleware' => [ 'web', 'web_auth', 'bindings', 'permission' ],
-    'namespace'  => 'Motor\Revision\Http\Controllers\Api',
-    'prefix'     => 'ajax',
-    'as'         => 'ajax.',
-], static function () {
+    Route::apiResource('tickets', 'TicketsController');
+    Route::apiResource('airports', 'AirportsController');
+    Route::apiResource('travelers', 'TravelersController');
+    Route::apiResource('shuttles', 'ShuttlesController');
+    Route::apiResource('rides', 'RidesController');
+    Route::apiResource('sponsors', 'SponsorsController');
+    Route::apiResource('hotels', 'HotelsController');
 });

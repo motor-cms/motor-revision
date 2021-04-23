@@ -37,5 +37,15 @@ class Ride extends Model
      * @var array
      */
     protected $fillable = [
+        'direction',
+        'type',
+        'means_of_transportation',
+        'handle',
+        'email',
+        'country',
+        'route',
+        'ip',
+        'user_agent',
+        'replies'
     ];
 }

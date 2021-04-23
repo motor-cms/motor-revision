@@ -14,14 +14,14 @@ class Hotel extends Model
 {
     use Searchable;
 	use Filterable;
-//    use Blameable, CreatedBy, UpdatedBy, DeletedBy;
+    //use Blameable, CreatedBy, UpdatedBy, DeletedBy;
 
     /**
      * Columns for the Blameable trait
      *
      * @var array
      */
-//    protected $blameable = array('created', 'updated', 'deleted');
+    protected $blameable = array('created', 'updated', 'deleted');
 
     /**
      * Searchable columns for the searchable trait
@@ -37,5 +37,15 @@ class Hotel extends Model
      * @var array
      */
     protected $fillable = [
+        'short',
+        'name',
+        'description',
+        'address',
+        'email',
+        'website',
+        'latitude',
+        'longitude',
+        'rating',
+        'is_active'
     ];
 }

@@ -12,6 +12,18 @@ class TravelerRequest extends Request
 {
 
     /**
+     * @OA\Schema(
+     *   schema="TravelerRequest",
+     *   @OA\Property(
+     *     property="name",
+     *     type="string",
+     *     example="Example data"
+     *   ),
+     *   required={"name"},
+     * )
+     */
+
+    /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
