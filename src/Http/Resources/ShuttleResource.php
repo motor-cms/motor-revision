@@ -81,6 +81,7 @@ class ShuttleResource extends JsonResource
             'seats'       => $this->seats,
             'price'       => $this->price,
             'is_active'   => (boolean) $this->is_active,
+            'travelers'   => TravelerResource::collection($this->whenLoaded('travelers')),
         ];
     }
 }

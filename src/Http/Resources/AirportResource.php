@@ -50,6 +50,7 @@ class AirportResource extends JsonResource
             'code'          => $this->code,
             'sort_position' => (int) $this->sort_position,
             'is_active'     => (boolean) $this->is_active,
+            'shuttles'      => ShuttleResource::collection($this->whenLoaded('shuttles')),
         ];
     }
 }
