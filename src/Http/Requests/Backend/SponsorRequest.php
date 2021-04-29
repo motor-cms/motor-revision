@@ -37,12 +37,12 @@ class SponsorRequest extends Request
      *   ),
      *   @OA\Property(
      *     property="is_active",
-     *     type="booleanr",
+     *     type="boolean",
      *     example="true"
      *   ),
      *   @OA\Property(
      *     property="text",
-     *     type="text",
+     *     type="string",
      *     example="Description of the awesomeness of the sponsor"
      *   ),
      *   required={"name", "level"},
@@ -69,7 +69,7 @@ class SponsorRequest extends Request
         return [
             'name'          => 'required',
             'url'           => 'nullable',
-            'level'         => 'required|in:'.implode(',', trans('motor-revision::backend/shuttles.directions')),
+            'level'         => 'required|in:'.implode(',', array_flip(trans('motor-revision::backend/shuttles.directions'))),
             'sort_position' => 'nullable|integer',
             'is_active'     => 'nullable|boolean',
             'text'          => 'nullable',

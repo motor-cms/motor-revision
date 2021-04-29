@@ -2,7 +2,7 @@
 
 namespace Motor\Revision\Http\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use Motor\Backend\Http\Resources\BaseResource;
 
 /**
  * @OA\Schema(
@@ -24,7 +24,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *   ),
  *   @OA\Property(
  *     property="description",
- *     type="text",
+ *     type="string",
  *     example="Description of the hotel in great detail"
  *   ),
  *   @OA\Property(
@@ -64,7 +64,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *   ),
  * )
  */
-class HotelResource extends JsonResource
+class HotelResource extends BaseResource
 {
     /**
      * Transform the resource into an array.

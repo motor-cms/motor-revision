@@ -73,8 +73,8 @@ class RideRequest extends Request
     public function rules()
     {
         return [
-            'direction'               => 'required|in:'.implode(',', trans('motor-revision::backend/rides.directions')),
-            'type'                    => 'required|in:'.implode(',', trans('motor-revision::backend/rides.types')),
+            'direction'               => 'required|in:'.implode(',', array_flip(trans('motor-revision::backend/rides.directions'))),
+            'type'                    => 'required|in:'.implode(',', array_flip(trans('motor-revision::backend/rides.types'))),
             'means_of_transportation' => 'required',
             'name'                    => 'required',
             'email'                   => 'required|email',

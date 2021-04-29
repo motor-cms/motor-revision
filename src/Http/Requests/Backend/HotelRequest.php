@@ -26,7 +26,7 @@ class HotelRequest extends Request
      *   ),
      *   @OA\Property(
      *     property="description",
-     *     type="text",
+     *     type="string",
      *     example="Description of the hotel in great detail"
      *   ),
      *   @OA\Property(

@@ -66,12 +66,12 @@ class TicketRequest extends Request
      *   ),
      *   @OA\Property(
      *     property="comment",
-     *     type="text",
+     *     type="string",
      *     example="This is why I want this ticket",
      *   ),
      *   @OA\Property(
      *     property="internal_comment",
-     *     type="text",
+     *     type="string",
      *     example="This is why he person will get the ticket",
      *   ),
      *   @OA\Property(
@@ -81,7 +81,7 @@ class TicketRequest extends Request
      *   ),
      *   @OA\Property(
      *     property="transportation",
-     *     type="text",
+     *     type="string",
      *     example="Description of the means of transportation",
      *   ),
      *   @OA\Property(
@@ -91,12 +91,12 @@ class TicketRequest extends Request
      *   ),
      *   @OA\Property(
      *     property="amount",
-     *     type="text",
+     *     type="string",
      *     example="750 EUR",
      *   ),
      *   @OA\Property(
      *     property="shirt_size",
-     *     type="text",
+     *     type="string",
      *     example="Girly M",
      *   ),
      *   @OA\Property(
@@ -126,7 +126,7 @@ class TicketRequest extends Request
     public function rules()
     {
         return [
-            'type'             => 'required|in:'.implode(',', trans('motor-revision::backend/tickets.types')),
+            'type'             => 'required|in:'.implode(',', array_flip(trans('motor-revision::backend/tickets.types'))),
             'handle'           => 'nullable',
             'name'             => 'required',
             'address'          => 'required',
@@ -141,9 +141,9 @@ class TicketRequest extends Request
             'access_key'       => 'nullable',
             'transportation'   => 'nullable',
             'is_anonymous'     => 'nullable|boolean',
-            'amount'           => 'nullable|in:'.implode(',', trans('motor-revision::backend/tickets.amounts')),
-            'shirt_size'       => 'nullable|in:'.implode(',', trans('motor-revision::backend/tickets.shirt_sizes')),
-            'status'           => 'nullable|in:'.implode(',', trans('motor-revision::backend/tickets.at_home_stati')),
+            'amount'           => 'nullable|in:'.implode(',', array_flip(trans('motor-revision::backend/tickets.amounts'))),
+            'shirt_size'       => 'nullable|in:'.implode(',', array_flip(trans('motor-revision::backend/tickets.shirt_sizes'))),
+            'status'           => 'nullable|in:'.implode(',', array_flip(trans('motor-revision::backend/tickets.at_home_stati'))),
         ];
     }
 }

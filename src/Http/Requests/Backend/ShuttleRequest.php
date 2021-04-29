@@ -84,7 +84,7 @@ class ShuttleRequest extends Request
         return [
             'airport_id'  => 'required',
             'name'        => 'required',
-            'direction'   => 'required|in:'.implode(',', trans('motor-revision::backend/shuttles.directions')),
+            'direction'   => 'required|in:'.implode(',', array_flip(trans('motor-revision::backend/shuttles.directions'))),
             'departs_at'  => 'required',
             'arrives_at'  => 'required',
             'travel_time' => 'required',

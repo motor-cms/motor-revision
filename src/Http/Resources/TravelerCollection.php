@@ -2,9 +2,9 @@
 
 namespace Motor\Revision\Http\Resources;
 
-use Illuminate\Http\Resources\Json\ResourceCollection;
+use Motor\Backend\Http\Resources\BaseCollection;
 
-class TravelerCollection extends ResourceCollection
+class TravelerCollection extends BaseCollection
 {
     /**
      * Transform the resource collection into an array.

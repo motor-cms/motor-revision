@@ -2,7 +2,7 @@
 
 namespace Motor\Revision\Http\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use Motor\Backend\Http\Resources\BaseResource;
 
 /**
  * @OA\Schema(
@@ -35,17 +35,17 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *   ),
  *   @OA\Property(
  *     property="is_active",
- *     type="booleanr",
+ *     type="boolean",
  *     example="true"
  *   ),
  *   @OA\Property(
  *     property="text",
- *     type="text",
+ *     type="string",
  *     example="Description of the awesomeness of the sponsor"
  *   ),
  * )
  */
-class SponsorResource extends JsonResource
+class SponsorResource extends BaseResource
 {
     /**
      * Transform the resource into an array.

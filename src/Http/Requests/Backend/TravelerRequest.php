@@ -88,7 +88,7 @@ class TravelerRequest extends Request
             'number_of_people' => 'required|integer',
             'flight_number'    => 'required',
             'flight_time'      => 'required|datetime',
-            'direction'        => 'required|in:'.implode(',', trans('motor-revision::backend/shuttles.directions')),
+            'direction'        => 'required|in:'.implode(',', array_flip(trans('motor-revision::backend/shuttles.directions'))),
             'shuttle_id'       => 'nullable|integer',
             'airport_id'       => 'required|integer',
         ];

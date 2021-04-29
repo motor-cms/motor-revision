@@ -2,9 +2,9 @@
 
 namespace Motor\Revision\Http\Resources;
 
-use Illuminate\Http\Resources\Json\ResourceCollection;
+use Motor\Backend\Http\Resources\BaseCollection;
 
-class HotelCollection extends ResourceCollection
+class HotelCollection extends BaseCollection
 {
     /**
      * Transform the resource collection into an array.

@@ -2,7 +2,7 @@
 
 namespace Motor\Revision\Http\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use Motor\Backend\Http\Resources\BaseResource;
 
 /**
  * @OA\Schema(
@@ -34,7 +34,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *   ),
  * )
  */
-class AirportResource extends JsonResource
+class AirportResource extends BaseResource
 {
     /**
      * Transform the resource into an array.

@@ -2,7 +2,7 @@
 
 namespace Motor\Revision\Http\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use Motor\Backend\Http\Resources\BaseResource;
 
 /**
  * @OA\Schema(
@@ -64,12 +64,12 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *   ),
  *   @OA\Property(
  *     property="comment",
- *     type="text",
+ *     type="string",
  *     example="This is why I want this ticket",
  *   ),
  *   @OA\Property(
  *     property="internal_comment",
- *     type="text",
+ *     type="string",
  *     example="This is why he person will get the ticket",
  *   ),
  *   @OA\Property(
@@ -79,7 +79,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *   ),
  *   @OA\Property(
  *     property="transportation",
- *     type="text",
+ *     type="string",
  *     example="Description of the means of transportation",
  *   ),
  *   @OA\Property(
@@ -89,12 +89,12 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *   ),
  *   @OA\Property(
  *     property="amount",
- *     type="text",
+ *     type="string",
  *     example="750 EUR",
  *   ),
  *   @OA\Property(
  *     property="shirt_size",
- *     type="text",
+ *     type="string",
  *     example="Girly M",
  *   ),
  *   @OA\Property(
@@ -104,7 +104,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *   ),
  * )
  */
-class TicketResource extends JsonResource
+class TicketResource extends BaseResource
 {
     /**
      * Transform the resource into an array.
