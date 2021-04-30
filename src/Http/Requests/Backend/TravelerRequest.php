@@ -89,8 +89,8 @@ class TravelerRequest extends Request
             'flight_number'    => 'required',
             'flight_time'      => 'required|date_format:Y-m-d H:i:s',
             'direction'        => 'required|in:'.implode(',', array_flip(trans('motor-revision::backend/shuttles.directions'))),
-            'shuttle_id'       => 'nullable|integer',
-            'airport_id'       => 'required|integer',
+            'shuttle_id'       => 'nullable|integer|exists:shuttles,id',
+            'airport_id'       => 'required|integer|exists:airports,id',
         ];
     }
 }

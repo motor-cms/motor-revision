@@ -82,7 +82,7 @@ class ShuttleRequest extends Request
     public function rules()
     {
         return [
-            'airport_id'  => 'required',
+            'airport_id'  => 'required|exists:airports,id',
             'name'        => 'required',
             'direction'   => 'required|in:'.implode(',', array_flip(trans('motor-revision::backend/shuttles.directions'))),
             'departs_at'  => 'required',
