@@ -5,8 +5,8 @@ namespace Motor\Revision\Components;
 use Illuminate\Http\Request;
 use Motor\CMS\Models\PageVersionComponent;
 
-class ComponentSponsorFooters {
-
+class ComponentSponsorFooters
+{
     protected $pageVersionComponent;
 
     public function __construct(PageVersionComponent $pageVersionComponent)
@@ -23,5 +23,4 @@ class ComponentSponsorFooters {
     {
         return view(config('motor-cms-page-components.components.'.$this->pageVersionComponent->component_name.'.view'), []);
     }
-
 }

@@ -7,10 +7,10 @@ use Motor\Revision\Models\Traveler;
 
 /**
  * Class TravelerService
+ *
  * @package Motor\Revision\Services
  */
 class TravelerService extends BaseService
 {
-
     protected $model = Traveler::class;
 }

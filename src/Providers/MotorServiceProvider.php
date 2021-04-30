@@ -7,11 +7,11 @@ use Illuminate\Support\Facades\Route;
 
 /**
  * Class MotorServiceProvider
+ *
  * @package Motor\Revision\Providers
  */
 class MotorServiceProvider extends ServiceProvider
 {
-
     /**
      * Bootstrap the application services.
      *
@@ -32,7 +32,6 @@ class MotorServiceProvider extends ServiceProvider
         merge_local_config_with_db_configuration_variables('motor-media');
     }
 
-
     /**
      * Register the application services.
      *
@@ -42,7 +41,6 @@ class MotorServiceProvider extends ServiceProvider
     {
 //        $this->mergeConfigFrom(__DIR__ . '/../../config/motor-media.php', 'motor-media');
     }
-
 
     /**
      * Set assets to be published
@@ -56,7 +54,6 @@ class MotorServiceProvider extends ServiceProvider
 //        $this->publishes($assets, 'motor-media-install');
     }
 
-
     /**
      * Set migration path
      */
@@ -65,19 +62,14 @@ class MotorServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
     }
 
-
     /**
      * Merge permission config file
      */
     public function permissions()
     {
-        $config = $this->app[ 'config' ]->get('motor-backend-permissions', []);
-        $this->app[ 'config' ]->set(
-            'motor-backend-permissions',
-            array_replace_recursive(require __DIR__.'/../../config/motor-backend-permissions.php', $config)
-        );
+        $config = $this->app['config']->get('motor-backend-permissions', []);
+        $this->app['config']->set('motor-backend-permissions', array_replace_recursive(require __DIR__.'/../../config/motor-backend-permissions.php', $config));
     }
-
 
     /**
      * Set routes
@@ -90,7 +82,6 @@ class MotorServiceProvider extends ServiceProvider
         }
     }
 
-
     /**
      * Set configuration files for publishing
      */
@@ -100,7 +91,6 @@ class MotorServiceProvider extends ServiceProvider
         //    __DIR__ . '/../../config/motor-backend-project.php'          => config_path('motor-backend-project.php'),
         //], 'motor-backend-install');
     }
-
 
     /**
      * Set translation path
@@ -114,7 +104,6 @@ class MotorServiceProvider extends ServiceProvider
         ], 'motor-revision-translations');
     }
 
-
     /**
      * Set view path
      */
@@ -126,7 +115,6 @@ class MotorServiceProvider extends ServiceProvider
             __DIR__.'/../../resources/views' => resource_path('views/vendor/motor-revision'),
         ], 'motor-revision-views');
     }
-
 
     /**
      * Add route model bindings
@@ -159,25 +147,18 @@ class MotorServiceProvider extends ServiceProvider
         });
     }
 
-
     /**
      * Merge backend navigation items from configuration file
      */
     public function navigationItems()
     {
-        $config = $this->app[ 'config' ]->get('motor-backend-navigation', []);
-        $this->app[ 'config' ]->set(
-            'motor-backend-navigation',
-            array_replace_recursive(require __DIR__.'/../../config/motor-backend-navigation.php', $config)
-        );
+        $config = $this->app['config']->get('motor-backend-navigation', []);
+        $this->app['config']->set('motor-backend-navigation', array_replace_recursive(require __DIR__.'/../../config/motor-backend-navigation.php', $config));
     }
 
     public function components()
     {
         $config = $this->app['config']->get('motor-cms-page-components', []);
-        $this->app['config']->set(
-            'motor-cms-page-components',
-            array_replace_recursive(require __DIR__ . '/../../config/motor-cms-page-components.php', $config)
-        );
+        $this->app['config']->set('motor-cms-page-components', array_replace_recursive(require __DIR__.'/../../config/motor-cms-page-components.php', $config));
     }
 }

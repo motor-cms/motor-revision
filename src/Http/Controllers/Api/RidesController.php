@@ -12,10 +12,12 @@ use Motor\Revision\Http\Resources\RideCollection;
 
 /**
  * Class RidesController
+ *
  * @package Motor\Revision\Http\Controllers\Api
  */
 class RidesController extends ApiController
 {
+    protected string $model = 'Motor\Revision\Models\Ride';
 
     protected string $modelResource = 'ride';
 
@@ -69,7 +71,9 @@ class RidesController extends ApiController
      */
     public function index()
     {
-        $paginator = RideService::collection()->getPaginator();
+        $paginator = RideService::collection()
+                                ->getPaginator();
+
         return (new RideCollection($paginator))->additional(['message' => 'Ride collection read']);
     }
 
@@ -124,10 +128,13 @@ class RidesController extends ApiController
      */
     public function store(RideRequest $request)
     {
-        $result = RideService::create($request)->getResult();
-        return (new RideResource($result))->additional(['message' => 'Ride created'])->response()->setStatusCode(201);
-    }
+        $result = RideService::create($request)
+                             ->getResult();
 
+        return (new RideResource($result))->additional(['message' => 'Ride created'])
+                                          ->response()
+                                          ->setStatusCode(201);
+    }
 
     /**
      * @OA\Get (
@@ -184,10 +191,11 @@ class RidesController extends ApiController
      */
     public function show(Ride $record)
     {
-        $result = RideService::show($record)->getResult();
+        $result = RideService::show($record)
+                             ->getResult();
+
         return (new RideResource($result))->additional(['message' => 'Ride read']);
     }
-
 
     /**
      * @OA\Put (
@@ -243,15 +251,16 @@ class RidesController extends ApiController
      * Update the specified resource in storage.
      *
      * @param RideRequest $request
-     * @param Ride        $record
+     * @param Ride $record
      * @return RideResource
      */
     public function update(RideRequest $request, Ride $record)
     {
-        $result = RideService::update($record, $request)->getResult();
+        $result = RideService::update($record, $request)
+                             ->getResult();
+
         return (new RideResource($result))->additional(['message' => 'Ride updated']);
     }
-
 
     /**
      * @OA\Delete (
@@ -314,11 +323,13 @@ class RidesController extends ApiController
      */
     public function destroy(Ride $record)
     {
-        $result = RideService::delete($record)->getResult();
+        $result = RideService::delete($record)
+                             ->getResult();
 
         if ($result) {
             return response()->json(['message' => 'Ride deleted']);
         }
+
         return response()->json(['message' => 'Problem deleting Ride'], 404);
     }
 }

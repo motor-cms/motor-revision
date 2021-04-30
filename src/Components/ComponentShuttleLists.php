@@ -9,7 +9,6 @@ use Motor\Revision\Models\Traveler;
 
 class ComponentShuttleLists
 {
-
     protected $pageVersionComponent;
 
     public function __construct(PageVersionComponent $pageVersionComponent)
@@ -25,16 +24,20 @@ class ComponentShuttleLists
     public function render()
     {
         $data = [
-            'toPartyWithoutShuttle'   => Traveler::toPartyWithoutShuttle()->get(),
-            'toAirportWithoutShuttle' => Traveler::toAirportWithoutShuttle()->get(),
-            'toPartyWithShuttle'      => Traveler::toPartyWithShuttle()->get(),
-            'toAirportWithShuttle'    => Traveler::toAirportWithShuttle()->get(),
-            'confirmedShuttlesToParty' => Shuttle::confirmedToParty()->get(),
-            'confirmedShuttlesToAirport' => Shuttle::confirmedToAirport()->get(),
+            'toPartyWithoutShuttle'      => Traveler::toPartyWithoutShuttle()
+                                                    ->get(),
+            'toAirportWithoutShuttle'    => Traveler::toAirportWithoutShuttle()
+                                                    ->get(),
+            'toPartyWithShuttle'         => Traveler::toPartyWithShuttle()
+                                                    ->get(),
+            'toAirportWithShuttle'       => Traveler::toAirportWithShuttle()
+                                                    ->get(),
+            'confirmedShuttlesToParty'   => Shuttle::confirmedToParty()
+                                                   ->get(),
+            'confirmedShuttlesToAirport' => Shuttle::confirmedToAirport()
+                                                   ->get(),
         ];
 
-        return view(config('motor-cms-page-components.components.'.$this->pageVersionComponent->component_name.'.view'),
-            $data);
+        return view(config('motor-cms-page-components.components.'.$this->pageVersionComponent->component_name.'.view'), $data);
     }
-
 }

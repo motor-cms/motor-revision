@@ -12,7 +12,7 @@ class ComponentTicket extends ComponentBaseModel
      * @var array
      */
     protected $fillable = [
-        'type'
+        'type',
     ];
 
     /**
@@ -24,7 +24,7 @@ class ComponentTicket extends ComponentBaseModel
     {
         return [
             'name'    => trans('motor-revision::component/tickets.component'),
-            'preview' => trans('motor-revision::backend/tickets.types.'.$this->type)
+            'preview' => trans('motor-revision::backend/tickets.types.'.$this->type),
         ];
     }
 }

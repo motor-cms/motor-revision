@@ -1,6 +1,6 @@
 <?php
 Route::group([
-    'middleware' => [ 'auth:api', 'bindings', 'permission' ],
+    'middleware' => ['auth:api', 'bindings', 'permission'],
     'namespace'  => 'Motor\Revision\Http\Controllers\Api',
     'prefix'     => 'api',
     'as'         => 'api.',

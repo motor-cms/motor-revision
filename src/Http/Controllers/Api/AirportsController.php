@@ -12,10 +12,12 @@ use Motor\Revision\Http\Resources\AirportCollection;
 
 /**
  * Class AirportsController
+ *
  * @package Motor\Revision\Http\Controllers\Api
  */
 class AirportsController extends ApiController
 {
+    protected string $model = 'Motor\Revision\Models\Airport';
 
     protected string $modelResource = 'airport';
 
@@ -69,7 +71,9 @@ class AirportsController extends ApiController
      */
     public function index()
     {
-        $paginator = AirportService::collection()->getPaginator();
+        $paginator = AirportService::collection()
+                                   ->getPaginator();
+
         return (new AirportCollection($paginator))->additional(['message' => 'Airport collection read']);
     }
 
@@ -124,10 +128,13 @@ class AirportsController extends ApiController
      */
     public function store(AirportRequest $request)
     {
-        $result = AirportService::create($request)->getResult();
-        return (new AirportResource($result))->additional(['message' => 'Airport created'])->response()->setStatusCode(201);
-    }
+        $result = AirportService::create($request)
+                                ->getResult();
 
+        return (new AirportResource($result))->additional(['message' => 'Airport created'])
+                                             ->response()
+                                             ->setStatusCode(201);
+    }
 
     /**
      * @OA\Get (
@@ -184,10 +191,11 @@ class AirportsController extends ApiController
      */
     public function show(Airport $record)
     {
-        $result = AirportService::show($record)->getResult();
+        $result = AirportService::show($record)
+                                ->getResult();
+
         return (new AirportResource($result))->additional(['message' => 'Airport read']);
     }
-
 
     /**
      * @OA\Put (
@@ -243,15 +251,16 @@ class AirportsController extends ApiController
      * Update the specified resource in storage.
      *
      * @param AirportRequest $request
-     * @param Airport        $record
+     * @param Airport $record
      * @return AirportResource
      */
     public function update(AirportRequest $request, Airport $record)
     {
-        $result = AirportService::update($record, $request)->getResult();
+        $result = AirportService::update($record, $request)
+                                ->getResult();
+
         return (new AirportResource($result))->additional(['message' => 'Airport updated']);
     }
-
 
     /**
      * @OA\Delete (
@@ -314,11 +323,13 @@ class AirportsController extends ApiController
      */
     public function destroy(Airport $record)
     {
-        $result = AirportService::delete($record)->getResult();
+        $result = AirportService::delete($record)
+                                ->getResult();
 
         if ($result) {
             return response()->json(['message' => 'Airport deleted']);
         }
+
         return response()->json(['message' => 'Problem deleting Airport'], 404);
     }
 }

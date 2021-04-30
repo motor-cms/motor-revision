@@ -10,19 +10,19 @@ use Partymeister\Competitions\Models\Competition;
 
 /**
  * Class TicketService
+ *
  * @package \Motor\Revision\Services
  */
 class TicketService extends BaseService
 {
-
     protected $model = Ticket::class;
 
     public function filters()
     {
         $this->filter->add(new SelectRenderer('type'))
-            ->setOptionPrefix(trans('motor-revision::backend/tickets.type'))
-            ->setEmptyOption('-- ' . trans('motor-revision::backend/tickets.type') . ' --')
-            ->setOptions(trans('motor-revision::backend/tickets.types'));
+                     ->setOptionPrefix(trans('motor-revision::backend/tickets.type'))
+                     ->setEmptyOption('-- '.trans('motor-revision::backend/tickets.type').' --')
+                     ->setOptions(trans('motor-revision::backend/tickets.types'));
     }
 
     public function beforeCreate()

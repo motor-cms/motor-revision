@@ -12,10 +12,12 @@ use Motor\Revision\Http\Resources\TicketCollection;
 
 /**
  * Class TicketsController
+ *
  * @package Motor\Revision\Http\Controllers\Api
  */
 class TicketsController extends ApiController
 {
+    protected string $model = 'Motor\Revision\Models\Ticket';
 
     protected string $modelResource = 'ticket';
 
@@ -69,7 +71,9 @@ class TicketsController extends ApiController
      */
     public function index()
     {
-        $paginator = TicketService::collection()->getPaginator();
+        $paginator = TicketService::collection()
+                                  ->getPaginator();
+
         return (new TicketCollection($paginator))->additional(['message' => 'Ticket collection read']);
     }
 
@@ -124,10 +128,13 @@ class TicketsController extends ApiController
      */
     public function store(TicketRequest $request)
     {
-        $result = TicketService::create($request)->getResult();
-        return (new TicketResource($result))->additional(['message' => 'Ticket created'])->response()->setStatusCode(201);
-    }
+        $result = TicketService::create($request)
+                               ->getResult();
 
+        return (new TicketResource($result))->additional(['message' => 'Ticket created'])
+                                            ->response()
+                                            ->setStatusCode(201);
+    }
 
     /**
      * @OA\Get (
@@ -184,10 +191,11 @@ class TicketsController extends ApiController
      */
     public function show(Ticket $record)
     {
-        $result = TicketService::show($record)->getResult();
+        $result = TicketService::show($record)
+                               ->getResult();
+
         return (new TicketResource($result))->additional(['message' => 'Ticket read']);
     }
-
 
     /**
      * @OA\Put (
@@ -243,15 +251,16 @@ class TicketsController extends ApiController
      * Update the specified resource in storage.
      *
      * @param TicketRequest $request
-     * @param Ticket        $record
+     * @param Ticket $record
      * @return TicketResource
      */
     public function update(TicketRequest $request, Ticket $record)
     {
-        $result = TicketService::update($record, $request)->getResult();
+        $result = TicketService::update($record, $request)
+                               ->getResult();
+
         return (new TicketResource($result))->additional(['message' => 'Ticket updated']);
     }
-
 
     /**
      * @OA\Delete (
@@ -314,11 +323,13 @@ class TicketsController extends ApiController
      */
     public function destroy(Ticket $record)
     {
-        $result = TicketService::delete($record)->getResult();
+        $result = TicketService::delete($record)
+                               ->getResult();
 
         if ($result) {
             return response()->json(['message' => 'Ticket deleted']);
         }
+
         return response()->json(['message' => 'Problem deleting Ticket'], 404);
     }
 }

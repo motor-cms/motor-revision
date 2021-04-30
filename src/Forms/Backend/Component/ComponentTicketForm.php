@@ -11,7 +11,7 @@ class ComponentTicketForm extends Form
         $this->add('type', 'select', [
             'label'       => trans('motor-revision::backend/tickets.type'),
             'choices'     => trans('motor-revision::backend/tickets.types'),
-            'empty_value' => trans('motor-revision::backend/tickets.choose')
+            'empty_value' => trans('motor-revision::backend/tickets.choose'),
         ]);
     }
 }

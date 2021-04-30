@@ -14,7 +14,7 @@ class AtHomeForm extends Form
             ->add('zip', 'text', [ 'label' => trans('motor-revision::backend/tickets.zip'), 'rules' => 'required' ])
             ->add('city', 'text', [ 'label' => trans('motor-revision::backend/tickets.city'), 'rules' => 'required' ])
             ->add('country', 'text', [ 'label' => trans('motor-revision::backend/tickets.country'), 'rules' => 'required' ])
-            ->add('email', 'text', [ 'label' => trans('motor-revision::backend/tickets.email'), 'rules' => ['email'] ])
+            ->add('email', 'text', [ 'label' => trans('motor-revision::backend/tickets.email'), 'rules' => ['email', 'required'] ])
             ->add('comment', 'textarea', [ 'label' => trans('motor-revision::backend/tickets.comment') ])
             ->add('internal_comment', 'textarea',
                 [ 'label' => trans('motor-revision::backend/tickets.internal_comment') ])

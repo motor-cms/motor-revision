@@ -7,7 +7,6 @@ use Motor\CMS\Services\ComponentBaseService;
 
 class ComponentTicketService extends ComponentBaseService
 {
-
     protected $model = ComponentTicket::class;
 
     protected $name = 'tickets';

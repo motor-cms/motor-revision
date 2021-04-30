@@ -125,25 +125,61 @@ class TicketRequest extends Request
      */
     public function rules()
     {
-        return [
-            'type'             => 'required|in:'.implode(',', array_flip(trans('motor-revision::backend/tickets.types'))),
-            'handle'           => 'nullable',
-            'name'             => 'required',
-            'address'          => 'required',
-            'zip'              => 'required',
-            'city'             => 'required',
-            'country'          => 'required',
-            'company'          => 'nullable',
-            'vat_id'           => 'nullable',
-            'email'            => 'required',
-            'comment'          => 'nullable',
-            'internal_comment' => 'nullable',
-            'access_key'       => 'nullable',
-            'transportation'   => 'nullable',
-            'is_anonymous'     => 'nullable|boolean',
-            'amount'           => 'nullable|in:'.implode(',', array_flip(trans('motor-revision::backend/tickets.amounts'))),
-            'shirt_size'       => 'nullable|in:'.implode(',', array_flip(trans('motor-revision::backend/tickets.shirt_sizes'))),
-            'status'           => 'nullable|in:'.implode(',', array_flip(trans('motor-revision::backend/tickets.at_home_stati'))),
+        // FIXME: make separate class for ApiRequest
+        $baseRules = [
+            'type'   => 'required|in:'.implode(',', array_flip(trans('motor-revision::backend/tickets.types'))),
+            'status' => 'nullable|in:'.implode(',', array_flip(trans('motor-revision::backend/tickets.at_home_stati'))),
         ];
+        $type = $this->get('type');
+        switch ($this->get('type')) {
+            case 'at_home':
+                return $baseRules + [
+                        $type.'.handle'           => 'nullable',
+                        $type.'.name'             => 'required',
+                        $type.'.address'          => 'required',
+                        $type.'.zip'              => 'required',
+                        $type.'.city'             => 'required',
+                        $type.'.country'          => 'required',
+                        $type.'.email'            => 'required|email',
+                        $type.'.comment'          => 'nullable',
+                        $type.'.internal_comment' => 'nullable',
+                        $type.'.access_key'       => 'nullable',
+                        $type.'.shirt_size'       => 'nullable|in:'.implode(',', array_flip(trans('motor-revision::backend/tickets.shirt_sizes'))),
+                    ];
+                break;
+            case 'subsidized':
+                return $baseRules + [
+                        $type.'.handle'         => 'nullable',
+                        $type.'.name'           => 'required',
+                        $type.'.address'        => 'required',
+                        $type.'.zip'            => 'required',
+                        $type.'.city'           => 'required',
+                        $type.'.country'        => 'required',
+                        $type.'.email'          => 'required|email',
+                        $type.'.comment'        => 'nullable',
+                        $type.'.transportation' => 'nullable',
+                    ];
+                break;
+            case 'supporter':
+                return $baseRules + [
+                        $type.'.handle'           => 'nullable',
+                        $type.'.name'             => 'required',
+                        $type.'.address'          => 'required',
+                        $type.'.zip'              => 'required',
+                        $type.'.city'             => 'required',
+                        $type.'.country'          => 'required',
+                        $type.'.email'            => 'required|email',
+                        $type.'.comment'          => 'nullable',
+                        $type.'.internal_comment' => 'nullable',
+                        $type.'.company'          => 'nullable',
+                        $type.'.vat_id'           => 'nullable',
+                        $type.'.is_anonymous'     => 'nullable|boolean',
+                        $type.'.amount'           => 'nullable|in:'.implode(',', array_flip(trans('motor-revision::backend/tickets.amounts'))),
+                        $type.'.shirt_size'       => 'nullable|in:'.implode(',', array_flip(trans('motor-revision::backend/tickets.shirt_sizes'))),
+                    ];
+                break;
+        }
+
+        return [];
     }
 }

@@ -6,11 +6,11 @@ use Motor\Backend\Grid\Grid;
 
 /**
  * Class RideGrid
+ *
  * @package Motor\Revision\Grids
  */
 class RideGrid extends Grid
 {
-
     protected function setup()
     {
         $this->addColumn('id', 'ID', true);

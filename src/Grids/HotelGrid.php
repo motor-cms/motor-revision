@@ -6,11 +6,11 @@ use Motor\Backend\Grid\Grid;
 
 /**
  * Class HotelGrid
+ *
  * @package Motor\Revision\Grids
  */
 class HotelGrid extends Grid
 {
-
     protected function setup()
     {
         $this->addColumn('id', 'ID', true);

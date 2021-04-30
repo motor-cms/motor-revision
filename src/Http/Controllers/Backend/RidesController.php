@@ -2,23 +2,22 @@
 
 namespace Motor\Revision\Http\Controllers\Backend;
 
-use Motor\Backend\Http\Controllers\Controller;
-
-use Motor\Revision\Models\Ride;
-use Motor\Revision\Http\Requests\Backend\RideRequest;
-use Motor\Revision\Services\RideService;
-use Motor\Revision\Grids\RideGrid;
-use Motor\Revision\Forms\Backend\RideForm;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
+use Motor\Backend\Http\Controllers\Controller;
+use Motor\Revision\Forms\Backend\RideForm;
+use Motor\Revision\Grids\RideGrid;
+use Motor\Revision\Http\Requests\Backend\RideRequest;
+use Motor\Revision\Models\Ride;
+use Motor\Revision\Services\RideService;
 
 /**
  * Class RidesController
+ *
  * @package Motor\Revision\Http\Controllers\Backend
  */
 class RidesController extends Controller
 {
     use FormBuilderTrait;
-
 
     /**
      * Display a listing of the resource.
@@ -37,23 +36,21 @@ class RidesController extends Controller
         return view('motor-revision::backend.rides.index', compact('paginator', 'grid'));
     }
 
-
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function create()
     {
         $form = $this->form(RideForm::class, [
             'method'  => 'POST',
             'route'   => 'backend.rides.store',
-            'enctype' => 'multipart/form-data'
+            'enctype' => 'multipart/form-data',
         ]);
 
         return view('motor-revision::backend.rides.create', compact('form'));
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -66,8 +63,11 @@ class RidesController extends Controller
         $form = $this->form(RideForm::class);
 
         // It will automatically use current request, get the rules, and do the validation
-        if ( ! $form->isValid()) {
-            return redirect()->back()->withErrors($form->getErrors())->withInput();
+        if (! $form->isValid()) {
+            return redirect()
+                ->back()
+                ->withErrors($form->getErrors())
+                ->withInput();
         }
 
         RideService::createWithForm($request, $form);
@@ -76,7 +76,6 @@ class RidesController extends Controller
 
         return redirect('backend/rides');
     }
-
 
     /**
      * Display the specified resource.
@@ -88,7 +87,6 @@ class RidesController extends Controller
         //
     }
 
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -99,20 +97,19 @@ class RidesController extends Controller
     {
         $form = $this->form(RideForm::class, [
             'method'  => 'PATCH',
-            'url'     => route('backend.rides.update', [ $record->id ]),
+            'url'     => route('backend.rides.update', [$record->id]),
             'enctype' => 'multipart/form-data',
-            'model'   => $record
+            'model'   => $record,
         ]);
 
         return view('motor-revision::backend.rides.edit', compact('form'));
     }
 
-
     /**
      * Update the specified resource in storage.
      *
      * @param RideRequest $request
-     * @param Ride   $record
+     * @param Ride $record
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(RideRequest $request, Ride $record)
@@ -120,8 +117,11 @@ class RidesController extends Controller
         $form = $this->form(RideForm::class);
 
         // It will automatically use current request, get the rules, and do the validation
-        if ( ! $form->isValid()) {
-            return redirect()->back()->withErrors($form->getErrors())->withInput();
+        if (! $form->isValid()) {
+            return redirect()
+                ->back()
+                ->withErrors($form->getErrors())
+                ->withInput();
         }
 
         RideService::updateWithForm($record, $request, $form);
@@ -130,7 +130,6 @@ class RidesController extends Controller
 
         return redirect('backend/rides');
     }
-
 
     /**
      * Remove the specified resource from storage.

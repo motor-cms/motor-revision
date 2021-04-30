@@ -15,10 +15,10 @@ use Motor\Revision\Services\TicketService;
 
 class ComponentTickets
 {
-
     use FormBuilderTrait;
 
     protected $component;
+
     protected $pageVersionComponent;
 
     /**
@@ -67,7 +67,6 @@ class ComponentTickets
                 break;
         }
 
-
         if ($request->method() === 'POST') {
             $result = $this->post();
             if ($result instanceof RedirectResponse) {
@@ -84,14 +83,21 @@ class ComponentTickets
     protected function post()
     {
         if (! $this->ticketForm->isValid()) {
-            return redirect()->back()->withErrors($this->ticketForm->getErrors())->withInput();
+            return redirect()
+                ->back()
+                ->withErrors($this->ticketForm->getErrors())
+                ->withInput();
         }
 
-        $record = TicketService::createWithForm($this->request, $this->ticketForm)->getResult();
+        $record = TicketService::createWithForm($this->request, $this->ticketForm)
+                               ->getResult();
 
         // Send emails
         EmailHelper::sendEmail($record->type.'_ticket_info', [], ['ticket' => $record]);
-        EmailHelper::sendEmail($record->type.'_ticket_registration', ['to_email' => $record->email, 'to_name' => $record->name], ['ticket' => $record]);
+        EmailHelper::sendEmail($record->type.'_ticket_registration', [
+            'to_email' => $record->email,
+            'to_name'  => $record->name,
+        ], ['ticket' => $record]);
 
         // Create flash alert and hide form
         flash()->success(trans('motor-revision::component/tickets.'.$record->type.'_successful'));
@@ -101,14 +107,10 @@ class ComponentTickets
 
     public function render()
     {
-        return view(
-            config('motor-cms-page-components.components.'.$this->pageVersionComponent->component_name.'.view'),
-            [
+        return view(config('motor-cms-page-components.components.'.$this->pageVersionComponent->component_name.'.view'), [
                 'ticketForm' => $this->ticketForm,
                 'record'     => $this->record,
-                'component'  => $this->component
-            ]
-        );
+                'component'  => $this->component,
+            ]);
     }
-
 }

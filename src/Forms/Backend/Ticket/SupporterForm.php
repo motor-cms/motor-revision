@@ -19,7 +19,7 @@ class SupporterForm extends Form
             ->add('country', 'text',
                 [ 'label' => trans('motor-revision::backend/tickets.country'), 'rules' => 'required' ])
             ->add('email', 'text',
-                [ 'label' => trans('motor-revision::backend/tickets.email'), 'rules' => [ 'email' ] ])
+                [ 'label' => trans('motor-revision::backend/tickets.email'), 'rules' => [ 'email', 'required' ] ])
             ->add('comment', 'textarea', [ 'label' => trans('motor-revision::backend/tickets.comment') ])
             ->add('internal_comment', 'textarea',
                 [ 'label' => trans('motor-revision::backend/tickets.internal_comment') ])

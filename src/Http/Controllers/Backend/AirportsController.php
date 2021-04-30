@@ -2,23 +2,22 @@
 
 namespace Motor\Revision\Http\Controllers\Backend;
 
-use Motor\Backend\Http\Controllers\Controller;
-
-use Motor\Revision\Models\Airport;
-use Motor\Revision\Http\Requests\Backend\AirportRequest;
-use Motor\Revision\Services\AirportService;
-use Motor\Revision\Grids\AirportGrid;
-use Motor\Revision\Forms\Backend\AirportForm;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
+use Motor\Backend\Http\Controllers\Controller;
+use Motor\Revision\Forms\Backend\AirportForm;
+use Motor\Revision\Grids\AirportGrid;
+use Motor\Revision\Http\Requests\Backend\AirportRequest;
+use Motor\Revision\Models\Airport;
+use Motor\Revision\Services\AirportService;
 
 /**
  * Class AirportsController
+ *
  * @package Motor\Revision\Http\Controllers\Backend
  */
 class AirportsController extends Controller
 {
     use FormBuilderTrait;
-
 
     /**
      * Display a listing of the resource.
@@ -37,23 +36,21 @@ class AirportsController extends Controller
         return view('motor-revision::backend.airports.index', compact('paginator', 'grid'));
     }
 
-
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function create()
     {
         $form = $this->form(AirportForm::class, [
             'method'  => 'POST',
             'route'   => 'backend.airports.store',
-            'enctype' => 'multipart/form-data'
+            'enctype' => 'multipart/form-data',
         ]);
 
         return view('motor-revision::backend.airports.create', compact('form'));
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -66,8 +63,11 @@ class AirportsController extends Controller
         $form = $this->form(AirportForm::class);
 
         // It will automatically use current request, get the rules, and do the validation
-        if ( ! $form->isValid()) {
-            return redirect()->back()->withErrors($form->getErrors())->withInput();
+        if (! $form->isValid()) {
+            return redirect()
+                ->back()
+                ->withErrors($form->getErrors())
+                ->withInput();
         }
 
         AirportService::createWithForm($request, $form);
@@ -76,7 +76,6 @@ class AirportsController extends Controller
 
         return redirect('backend/airports');
     }
-
 
     /**
      * Display the specified resource.
@@ -88,7 +87,6 @@ class AirportsController extends Controller
         //
     }
 
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -99,20 +97,19 @@ class AirportsController extends Controller
     {
         $form = $this->form(AirportForm::class, [
             'method'  => 'PATCH',
-            'url'     => route('backend.airports.update', [ $record->id ]),
+            'url'     => route('backend.airports.update', [$record->id]),
             'enctype' => 'multipart/form-data',
-            'model'   => $record
+            'model'   => $record,
         ]);
 
         return view('motor-revision::backend.airports.edit', compact('form'));
     }
 
-
     /**
      * Update the specified resource in storage.
      *
      * @param AirportRequest $request
-     * @param Airport   $record
+     * @param Airport $record
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(AirportRequest $request, Airport $record)
@@ -120,8 +117,11 @@ class AirportsController extends Controller
         $form = $this->form(AirportForm::class);
 
         // It will automatically use current request, get the rules, and do the validation
-        if ( ! $form->isValid()) {
-            return redirect()->back()->withErrors($form->getErrors())->withInput();
+        if (! $form->isValid()) {
+            return redirect()
+                ->back()
+                ->withErrors($form->getErrors())
+                ->withInput();
         }
 
         AirportService::updateWithForm($record, $request, $form);
@@ -130,7 +130,6 @@ class AirportsController extends Controller
 
         return redirect('backend/airports');
     }
-
 
     /**
      * Remove the specified resource from storage.

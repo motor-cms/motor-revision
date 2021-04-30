@@ -18,7 +18,7 @@ class ComponentTicketsController extends ComponentController
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function create()
     {
@@ -27,19 +27,17 @@ class ComponentTicketsController extends ComponentController
         return response()->json($this->getFormData('component.tickets.store', ['mediapool' => false]));
     }
 
-
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
         $this->form = $this->form(ComponentTicketForm::class);
 
-        if ( ! $this->isValid()) {
+        if (! $this->isValid()) {
             return $this->respondWithValidationError();
         }
 
@@ -51,33 +49,30 @@ class ComponentTicketsController extends ComponentController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
+     * @param \Motor\Revision\Models\Component\ComponentTicket $record
+     * @return \Illuminate\Http\JsonResponse
      */
     public function edit(ComponentTicket $record)
     {
         $this->form = $this->form(ComponentTicketForm::class, [
-            'model' => $record
+            'model' => $record,
         ]);
 
         return response()->json($this->getFormData('component.tickets.update', ['mediapool' => false]));
     }
 
-
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int                      $id
-     *
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param \Motor\Revision\Models\Component\ComponentTicket $record
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, ComponentTicket $record)
     {
         $form = $this->form(ComponentTicketForm::class);
 
-        if ( ! $this->isValid()) {
+        if (! $this->isValid()) {
             return $this->respondWithValidationError();
         }
 

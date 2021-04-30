@@ -17,7 +17,7 @@ class SubsidizedForm extends Form
             ->add('country', 'text',
                 [ 'label' => trans('motor-revision::backend/tickets.country'), 'rules' => 'required' ])
             ->add('email', 'text',
-                [ 'label' => trans('motor-revision::backend/tickets.email'), 'rules' => [ 'email' ] ])
+                [ 'label' => trans('motor-revision::backend/tickets.email'), 'rules' => [ 'email', 'required' ] ])
             ->add('comment', 'textarea', [ 'label' => trans('motor-revision::backend/tickets.reason'), 'rules' => 'required' ])
             ->add('transportation', 'textarea',
                 [ 'label' => trans('motor-revision::backend/tickets.means_of_transportation'), 'rules' => 'required']);

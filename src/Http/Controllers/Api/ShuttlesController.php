@@ -12,10 +12,12 @@ use Motor\Revision\Http\Resources\ShuttleCollection;
 
 /**
  * Class ShuttlesController
+ *
  * @package Motor\Revision\Http\Controllers\Api
  */
 class ShuttlesController extends ApiController
 {
+    protected string $model = 'Motor\Revision\Models\Shuttle';
 
     protected string $modelResource = 'shuttle';
 
@@ -69,7 +71,9 @@ class ShuttlesController extends ApiController
      */
     public function index()
     {
-        $paginator = ShuttleService::collection()->getPaginator();
+        $paginator = ShuttleService::collection()
+                                   ->getPaginator();
+
         return (new ShuttleCollection($paginator))->additional(['message' => 'Shuttle collection read']);
     }
 
@@ -124,10 +128,13 @@ class ShuttlesController extends ApiController
      */
     public function store(ShuttleRequest $request)
     {
-        $result = ShuttleService::create($request)->getResult();
-        return (new ShuttleResource($result))->additional(['message' => 'Shuttle created'])->response()->setStatusCode(201);
-    }
+        $result = ShuttleService::create($request)
+                                ->getResult();
 
+        return (new ShuttleResource($result))->additional(['message' => 'Shuttle created'])
+                                             ->response()
+                                             ->setStatusCode(201);
+    }
 
     /**
      * @OA\Get (
@@ -184,10 +191,11 @@ class ShuttlesController extends ApiController
      */
     public function show(Shuttle $record)
     {
-        $result = ShuttleService::show($record)->getResult();
+        $result = ShuttleService::show($record)
+                                ->getResult();
+
         return (new ShuttleResource($result))->additional(['message' => 'Shuttle read']);
     }
-
 
     /**
      * @OA\Put (
@@ -243,15 +251,16 @@ class ShuttlesController extends ApiController
      * Update the specified resource in storage.
      *
      * @param ShuttleRequest $request
-     * @param Shuttle        $record
+     * @param Shuttle $record
      * @return ShuttleResource
      */
     public function update(ShuttleRequest $request, Shuttle $record)
     {
-        $result = ShuttleService::update($record, $request)->getResult();
+        $result = ShuttleService::update($record, $request)
+                                ->getResult();
+
         return (new ShuttleResource($result))->additional(['message' => 'Shuttle updated']);
     }
-
 
     /**
      * @OA\Delete (
@@ -314,11 +323,13 @@ class ShuttlesController extends ApiController
      */
     public function destroy(Shuttle $record)
     {
-        $result = ShuttleService::delete($record)->getResult();
+        $result = ShuttleService::delete($record)
+                                ->getResult();
 
         if ($result) {
             return response()->json(['message' => 'Shuttle deleted']);
         }
+
         return response()->json(['message' => 'Problem deleting Shuttle'], 404);
     }
 }

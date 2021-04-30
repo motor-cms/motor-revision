@@ -12,10 +12,12 @@ use Motor\Revision\Http\Resources\HotelCollection;
 
 /**
  * Class HotelsController
+ *
  * @package Motor\Revision\Http\Controllers\Api
  */
 class HotelsController extends ApiController
 {
+    protected string $model = 'Motor\Revision\Models\Hotel';
 
     protected string $modelResource = 'hotel';
 
@@ -69,7 +71,9 @@ class HotelsController extends ApiController
      */
     public function index()
     {
-        $paginator = HotelService::collection()->getPaginator();
+        $paginator = HotelService::collection()
+                                 ->getPaginator();
+
         return (new HotelCollection($paginator))->additional(['message' => 'Hotel collection read']);
     }
 
@@ -124,10 +128,13 @@ class HotelsController extends ApiController
      */
     public function store(HotelRequest $request)
     {
-        $result = HotelService::create($request)->getResult();
-        return (new HotelResource($result))->additional(['message' => 'Hotel created'])->response()->setStatusCode(201);
-    }
+        $result = HotelService::create($request)
+                              ->getResult();
 
+        return (new HotelResource($result))->additional(['message' => 'Hotel created'])
+                                           ->response()
+                                           ->setStatusCode(201);
+    }
 
     /**
      * @OA\Get (
@@ -184,10 +191,11 @@ class HotelsController extends ApiController
      */
     public function show(Hotel $record)
     {
-        $result = HotelService::show($record)->getResult();
+        $result = HotelService::show($record)
+                              ->getResult();
+
         return (new HotelResource($result))->additional(['message' => 'Hotel read']);
     }
-
 
     /**
      * @OA\Put (
@@ -243,15 +251,16 @@ class HotelsController extends ApiController
      * Update the specified resource in storage.
      *
      * @param HotelRequest $request
-     * @param Hotel        $record
+     * @param Hotel $record
      * @return HotelResource
      */
     public function update(HotelRequest $request, Hotel $record)
     {
-        $result = HotelService::update($record, $request)->getResult();
+        $result = HotelService::update($record, $request)
+                              ->getResult();
+
         return (new HotelResource($result))->additional(['message' => 'Hotel updated']);
     }
-
 
     /**
      * @OA\Delete (
@@ -314,11 +323,13 @@ class HotelsController extends ApiController
      */
     public function destroy(Hotel $record)
     {
-        $result = HotelService::delete($record)->getResult();
+        $result = HotelService::delete($record)
+                              ->getResult();
 
         if ($result) {
             return response()->json(['message' => 'Hotel deleted']);
         }
+
         return response()->json(['message' => 'Problem deleting Hotel'], 404);
     }
 }

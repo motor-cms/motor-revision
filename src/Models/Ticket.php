@@ -30,8 +30,7 @@ class Ticket extends Model
      *
      * @var array
      */
-    protected $searchableColumns = [
-    ];
+    protected $searchableColumns = [];
 
     /**
      * The attributes that are mass assignable.

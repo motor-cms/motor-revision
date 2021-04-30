@@ -30,8 +30,7 @@ class Shuttle extends Model
      *
      * @var array
      */
-    protected $searchableColumns = [
-    ];
+    protected $searchableColumns = [];
 
     /**
      * The attributes that are mass assignable.
@@ -47,17 +46,21 @@ class Shuttle extends Model
         'seats',
         'travel_time',
         'price',
-        'is_active'
+        'is_active',
     ];
 
     public function scopeConfirmedToParty($query)
     {
-        return $query->where('direction', 'party')->where('is_active', true)->orderBy('departs_at', 'ASC');
+        return $query->where('direction', 'party')
+                     ->where('is_active', true)
+                     ->orderBy('departs_at', 'ASC');
     }
 
     public function scopeConfirmedToAirport($query)
     {
-        return $query->where('direction', 'airport')->where('is_active', true)->orderBy('departs_at', 'ASC');
+        return $query->where('direction', 'airport')
+                     ->where('is_active', true)
+                     ->orderBy('departs_at', 'ASC');
     }
 
     public function airport()
@@ -72,6 +75,7 @@ class Shuttle extends Model
 
     public function getSeatsTakenAttribute()
     {
-        return $this->travelers()->sum('number_of_people');
+        return $this->travelers()
+                    ->sum('number_of_people');
     }
 }

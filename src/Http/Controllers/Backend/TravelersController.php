@@ -2,23 +2,22 @@
 
 namespace Motor\Revision\Http\Controllers\Backend;
 
-use Motor\Backend\Http\Controllers\Controller;
-
-use Motor\Revision\Models\Traveler;
-use Motor\Revision\Http\Requests\Backend\TravelerRequest;
-use Motor\Revision\Services\TravelerService;
-use Motor\Revision\Grids\TravelerGrid;
-use Motor\Revision\Forms\Backend\TravelerForm;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
+use Motor\Backend\Http\Controllers\Controller;
+use Motor\Revision\Forms\Backend\TravelerForm;
+use Motor\Revision\Grids\TravelerGrid;
+use Motor\Revision\Http\Requests\Backend\TravelerRequest;
+use Motor\Revision\Models\Traveler;
+use Motor\Revision\Services\TravelerService;
 
 /**
  * Class TravelersController
+ *
  * @package Motor\Revision\Http\Controllers\Backend
  */
 class TravelersController extends Controller
 {
     use FormBuilderTrait;
-
 
     /**
      * Display a listing of the resource.
@@ -37,23 +36,21 @@ class TravelersController extends Controller
         return view('motor-revision::backend.travelers.index', compact('paginator', 'grid'));
     }
 
-
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function create()
     {
         $form = $this->form(TravelerForm::class, [
             'method'  => 'POST',
             'route'   => 'backend.travelers.store',
-            'enctype' => 'multipart/form-data'
+            'enctype' => 'multipart/form-data',
         ]);
 
         return view('motor-revision::backend.travelers.create', compact('form'));
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -66,8 +63,11 @@ class TravelersController extends Controller
         $form = $this->form(TravelerForm::class);
 
         // It will automatically use current request, get the rules, and do the validation
-        if ( ! $form->isValid()) {
-            return redirect()->back()->withErrors($form->getErrors())->withInput();
+        if (! $form->isValid()) {
+            return redirect()
+                ->back()
+                ->withErrors($form->getErrors())
+                ->withInput();
         }
 
         TravelerService::createWithForm($request, $form);
@@ -76,7 +76,6 @@ class TravelersController extends Controller
 
         return redirect('backend/travelers');
     }
-
 
     /**
      * Display the specified resource.
@@ -88,7 +87,6 @@ class TravelersController extends Controller
         //
     }
 
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -99,20 +97,19 @@ class TravelersController extends Controller
     {
         $form = $this->form(TravelerForm::class, [
             'method'  => 'PATCH',
-            'url'     => route('backend.travelers.update', [ $record->id ]),
+            'url'     => route('backend.travelers.update', [$record->id]),
             'enctype' => 'multipart/form-data',
-            'model'   => $record
+            'model'   => $record,
         ]);
 
         return view('motor-revision::backend.travelers.edit', compact('form'));
     }
 
-
     /**
      * Update the specified resource in storage.
      *
      * @param TravelerRequest $request
-     * @param Traveler   $record
+     * @param Traveler $record
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(TravelerRequest $request, Traveler $record)
@@ -120,8 +117,11 @@ class TravelersController extends Controller
         $form = $this->form(TravelerForm::class);
 
         // It will automatically use current request, get the rules, and do the validation
-        if ( ! $form->isValid()) {
-            return redirect()->back()->withErrors($form->getErrors())->withInput();
+        if (! $form->isValid()) {
+            return redirect()
+                ->back()
+                ->withErrors($form->getErrors())
+                ->withInput();
         }
 
         TravelerService::updateWithForm($record, $request, $form);
@@ -130,7 +130,6 @@ class TravelersController extends Controller
 
         return redirect('backend/travelers');
     }
-
 
     /**
      * Remove the specified resource from storage.

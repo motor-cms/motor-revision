@@ -5,6 +5,7 @@ namespace Motor\Revision\Models;
 use Illuminate\Database\Eloquent\Model;
 use Motor\Core\Traits\Filterable;
 use Motor\Core\Traits\Searchable;
+
 //use Culpa\Traits\Blameable;
 //use Culpa\Traits\CreatedBy;
 //use Culpa\Traits\DeletedBy;
@@ -13,7 +14,8 @@ use Motor\Core\Traits\Searchable;
 class Hotel extends Model
 {
     use Searchable;
-	use Filterable;
+    use Filterable;
+
     //use Blameable, CreatedBy, UpdatedBy, DeletedBy;
 
     /**
@@ -21,15 +23,14 @@ class Hotel extends Model
      *
      * @var array
      */
-    protected $blameable = array('created', 'updated', 'deleted');
+    protected $blameable = ['created', 'updated', 'deleted'];
 
     /**
      * Searchable columns for the searchable trait
      *
      * @var array
      */
-    protected $searchableColumns = [
-    ];
+    protected $searchableColumns = [];
 
     /**
      * The attributes that are mass assignable.
@@ -46,6 +47,6 @@ class Hotel extends Model
         'latitude',
         'longitude',
         'rating',
-        'is_active'
+        'is_active',
     ];
 }

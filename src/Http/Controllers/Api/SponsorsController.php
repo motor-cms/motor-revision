@@ -12,10 +12,12 @@ use Motor\Revision\Http\Resources\SponsorCollection;
 
 /**
  * Class SponsorsController
+ *
  * @package Motor\Revision\Http\Controllers\Api
  */
 class SponsorsController extends ApiController
 {
+    protected string $model = 'Motor\Revision\Models\Sponsor';
 
     protected string $modelResource = 'sponsor';
 
@@ -69,7 +71,9 @@ class SponsorsController extends ApiController
      */
     public function index()
     {
-        $paginator = SponsorService::collection()->getPaginator();
+        $paginator = SponsorService::collection()
+                                   ->getPaginator();
+
         return (new SponsorCollection($paginator))->additional(['message' => 'Sponsor collection read']);
     }
 
@@ -124,10 +128,13 @@ class SponsorsController extends ApiController
      */
     public function store(SponsorRequest $request)
     {
-        $result = SponsorService::create($request)->getResult();
-        return (new SponsorResource($result))->additional(['message' => 'Sponsor created'])->response()->setStatusCode(201);
-    }
+        $result = SponsorService::create($request)
+                                ->getResult();
 
+        return (new SponsorResource($result))->additional(['message' => 'Sponsor created'])
+                                             ->response()
+                                             ->setStatusCode(201);
+    }
 
     /**
      * @OA\Get (
@@ -184,10 +191,11 @@ class SponsorsController extends ApiController
      */
     public function show(Sponsor $record)
     {
-        $result = SponsorService::show($record)->getResult();
+        $result = SponsorService::show($record)
+                                ->getResult();
+
         return (new SponsorResource($result))->additional(['message' => 'Sponsor read']);
     }
-
 
     /**
      * @OA\Put (
@@ -243,15 +251,16 @@ class SponsorsController extends ApiController
      * Update the specified resource in storage.
      *
      * @param SponsorRequest $request
-     * @param Sponsor        $record
+     * @param Sponsor $record
      * @return SponsorResource
      */
     public function update(SponsorRequest $request, Sponsor $record)
     {
-        $result = SponsorService::update($record, $request)->getResult();
+        $result = SponsorService::update($record, $request)
+                                ->getResult();
+
         return (new SponsorResource($result))->additional(['message' => 'Sponsor updated']);
     }
-
 
     /**
      * @OA\Delete (
@@ -314,11 +323,13 @@ class SponsorsController extends ApiController
      */
     public function destroy(Sponsor $record)
     {
-        $result = SponsorService::delete($record)->getResult();
+        $result = SponsorService::delete($record)
+                                ->getResult();
 
         if ($result) {
             return response()->json(['message' => 'Sponsor deleted']);
         }
+
         return response()->json(['message' => 'Problem deleting Sponsor'], 404);
     }
 }

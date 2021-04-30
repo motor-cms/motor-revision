@@ -12,10 +12,12 @@ use Motor\Revision\Http\Resources\TravelerCollection;
 
 /**
  * Class TravelersController
+ *
  * @package Motor\Revision\Http\Controllers\Api
  */
 class TravelersController extends ApiController
 {
+    protected string $model = 'Motor\Revision\Models\Traveler';
 
     protected string $modelResource = 'traveler';
 
@@ -69,7 +71,9 @@ class TravelersController extends ApiController
      */
     public function index()
     {
-        $paginator = TravelerService::collection()->getPaginator();
+        $paginator = TravelerService::collection()
+                                    ->getPaginator();
+
         return (new TravelerCollection($paginator))->additional(['message' => 'Traveler collection read']);
     }
 
@@ -124,10 +128,13 @@ class TravelersController extends ApiController
      */
     public function store(TravelerRequest $request)
     {
-        $result = TravelerService::create($request)->getResult();
-        return (new TravelerResource($result))->additional(['message' => 'Traveler created'])->response()->setStatusCode(201);
-    }
+        $result = TravelerService::create($request)
+                                 ->getResult();
 
+        return (new TravelerResource($result))->additional(['message' => 'Traveler created'])
+                                              ->response()
+                                              ->setStatusCode(201);
+    }
 
     /**
      * @OA\Get (
@@ -184,10 +191,11 @@ class TravelersController extends ApiController
      */
     public function show(Traveler $record)
     {
-        $result = TravelerService::show($record)->getResult();
+        $result = TravelerService::show($record)
+                                 ->getResult();
+
         return (new TravelerResource($result))->additional(['message' => 'Traveler read']);
     }
-
 
     /**
      * @OA\Put (
@@ -243,15 +251,16 @@ class TravelersController extends ApiController
      * Update the specified resource in storage.
      *
      * @param TravelerRequest $request
-     * @param Traveler        $record
+     * @param Traveler $record
      * @return TravelerResource
      */
     public function update(TravelerRequest $request, Traveler $record)
     {
-        $result = TravelerService::update($record, $request)->getResult();
+        $result = TravelerService::update($record, $request)
+                                 ->getResult();
+
         return (new TravelerResource($result))->additional(['message' => 'Traveler updated']);
     }
-
 
     /**
      * @OA\Delete (
@@ -314,11 +323,13 @@ class TravelersController extends ApiController
      */
     public function destroy(Traveler $record)
     {
-        $result = TravelerService::delete($record)->getResult();
+        $result = TravelerService::delete($record)
+                                 ->getResult();
 
         if ($result) {
             return response()->json(['message' => 'Traveler deleted']);
         }
+
         return response()->json(['message' => 'Problem deleting Traveler'], 404);
     }
 }

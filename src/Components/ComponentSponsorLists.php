@@ -6,9 +6,10 @@ use Illuminate\Http\Request;
 use Motor\CMS\Models\PageVersionComponent;
 use Motor\Revision\Models\Sponsor;
 
-class ComponentSponsorLists {
-
+class ComponentSponsorLists
+{
     protected $pageVersionComponent;
+
     protected $sponsors;
 
     public function __construct(PageVersionComponent $pageVersionComponent)
@@ -18,7 +19,11 @@ class ComponentSponsorLists {
 
     public function index(Request $request)
     {
-        $this->sponsors = Sponsor::where('is_active', true)->orderBy('level', 'ASC')->orderBy('sort_position', 'ASC')->get();
+        $this->sponsors = Sponsor::where('is_active', true)
+                                 ->orderBy('level', 'ASC')
+                                 ->orderBy('sort_position', 'ASC')
+                                 ->get();
+
         return $this->render();
     }
 
@@ -26,5 +31,4 @@ class ComponentSponsorLists {
     {
         return view(config('motor-cms-page-components.components.'.$this->pageVersionComponent->component_name.'.view'), ['sponsors' => $this->sponsors]);
     }
-
 }

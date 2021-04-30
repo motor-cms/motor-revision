@@ -10,6 +10,6 @@
 @endsection
 
 @section('main-content')
-	@include('motor-backend::errors.list')
+{{--	@include('motor-backend::errors.list')--}}
 	@include('motor-revision::backend.tickets.form')
 @endsection

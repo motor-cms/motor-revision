@@ -87,7 +87,7 @@ class TravelerRequest extends Request
             'mobile_phone'     => 'required',
             'number_of_people' => 'required|integer',
             'flight_number'    => 'required',
-            'flight_time'      => 'required|datetime',
+            'flight_time'      => 'required|date_format:Y-m-d H:i:s',
             'direction'        => 'required|in:'.implode(',', array_flip(trans('motor-revision::backend/shuttles.directions'))),
             'shuttle_id'       => 'nullable|integer',
             'airport_id'       => 'required|integer',

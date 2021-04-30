@@ -13,7 +13,6 @@ use Motor\Revision\Models\Traveler;
 
 class ComponentShuttleRegistrations
 {
-
     use FormBuilderTrait;
 
     protected $pageVersionComponent;
@@ -43,7 +42,6 @@ class ComponentShuttleRegistrations
         $this->request = $request;
 
         $formOptions = [
-//            'name'    => '',
             'url'     => $this->request->url(),
             'method'  => 'POST',
             'enctype' => 'multipart/form-data',
@@ -67,7 +65,10 @@ class ComponentShuttleRegistrations
     protected function post()
     {
         if (! $this->shuttleForm->isValid()) {
-            return redirect()->back()->withErrors($this->shuttleForm->getErrors())->withInput();
+            return redirect()
+                ->back()
+                ->withErrors($this->shuttleForm->getErrors())
+                ->withInput();
         }
 
         $arrivalTraveler = false;
@@ -99,7 +100,10 @@ class ComponentShuttleRegistrations
         }
 
         // Send emails
-        EmailHelper::sendEmail('shuttle_registration', ['to_email' => $this->request->get('email'), 'to_name' => $this->request->get('name')], [ 'name' => $this->request->get('name'), 'arrival' => $arrivalTraveler, 'departure' => $departureTraveler ]);
+        EmailHelper::sendEmail('shuttle_registration', [
+            'to_email' => $this->request->get('email'),
+            'to_name'  => $this->request->get('name'),
+        ], ['name' => $this->request->get('name'), 'arrival' => $arrivalTraveler, 'departure' => $departureTraveler]);
 
         // Create flash alert and hide form
         flash()->success(trans('motor-revision::component/shuttle-registrations.registration_successful'));
@@ -109,12 +113,8 @@ class ComponentShuttleRegistrations
 
     public function render()
     {
-        return view(
-            config('motor-cms-page-components.components.'.$this->pageVersionComponent->component_name.'.view'),
-            [
-                'shuttleForm' => $this->shuttleForm,
-            ]
-        );
+        return view(config('motor-cms-page-components.components.'.$this->pageVersionComponent->component_name.'.view'), [
+            'shuttleForm' => $this->shuttleForm,
+        ]);
     }
-
 }

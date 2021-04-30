@@ -47,7 +47,7 @@ class Sponsor extends Model
         'level',
         'sort_position',
         'is_active',
-        'text'
+        'text',
     ];
 
     /**

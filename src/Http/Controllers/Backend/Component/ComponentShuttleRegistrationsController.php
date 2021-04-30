@@ -5,8 +5,6 @@ namespace Motor\Revision\Http\Controllers\Backend\Component;
 use Illuminate\Http\Request;
 use Motor\CMS\Http\Controllers\Component\ComponentController;
 
-use Motor\Revision\Models\Component\ComponentShuttleRegistration;
-use Motor\Revision\Services\Component\ComponentShuttleRegistrationService;
 use Motor\Revision\Forms\Backend\Component\ComponentShuttleRegistrationForm;
 
 use Kris\LaravelFormBuilder\FormBuilderTrait;
@@ -18,7 +16,7 @@ class ComponentShuttleRegistrationsController extends ComponentController
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function create()
     {
@@ -27,19 +25,17 @@ class ComponentShuttleRegistrationsController extends ComponentController
         return response()->json($this->getFormData('component.shuttle-registrations.store', ['mediapool' => false]));
     }
 
-
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
         $this->form = $this->form(ComponentShuttleRegistrationForm::class);
 
-        if ( ! $this->isValid()) {
+        if (! $this->isValid()) {
             return $this->respondWithValidationError();
         }
 
@@ -51,33 +47,30 @@ class ComponentShuttleRegistrationsController extends ComponentController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
+     * @param \Motor\Revision\Models\Component\ComponentShuttleRegistration $record
+     * @return \Illuminate\Http\JsonResponse
      */
     public function edit(ComponentShuttleRegistration $record)
     {
         $this->form = $this->form(ComponentShuttleRegistrationForm::class, [
-            'model' => $record
+            'model' => $record,
         ]);
 
         return response()->json($this->getFormData('component.shuttle-registrations.update', ['mediapool' => false]));
     }
 
-
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int                      $id
-     *
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param \Motor\Revision\Models\Component\ComponentShuttleRegistration $record
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, ComponentShuttleRegistration $record)
     {
         $form = $this->form(ComponentShuttleRegistrationForm::class);
 
-        if ( ! $this->isValid()) {
+        if (! $this->isValid()) {
             return $this->respondWithValidationError();
         }
 

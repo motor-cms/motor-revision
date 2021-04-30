@@ -16,8 +16,8 @@ class ShuttleGrid extends Grid
 
     protected function setup()
     {
-        $this->addColumn('is_active',
-            trans('motor-revision::backend/shuttles.is_active'))->renderer(BooleanRenderer::class);
+        $this->addColumn('is_active', trans('motor-revision::backend/shuttles.is_active'))
+             ->renderer(BooleanRenderer::class);
         $this->setDefaultSorting('departs_at', 'ASC');
         $this->addColumn('name', trans('motor-revision::backend/shuttles.name'));
         $this->addColumn('airport.code', trans('motor-revision::backend/airports.code'));

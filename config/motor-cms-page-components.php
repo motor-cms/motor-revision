@@ -20,7 +20,7 @@ return [
             'permissions'     => [
 
             ],
-            'group'           => 'revision'
+            'group'           => 'revision',
         ],
         'shuttle-registrations' => [
             'name'            => 'ShuttleRegistration',
@@ -33,7 +33,7 @@ return [
             'permissions'     => [
 
             ],
-            'group'           => 'revision'
+            'group'           => 'revision',
         ],
         'shuttle-lists'         => [
             'name'            => 'ShuttleList',
@@ -46,7 +46,7 @@ return [
             'permissions'     => [
 
             ],
-            'group'           => 'revision'
+            'group'           => 'revision',
         ],
         'sponsor-lists'         => [
             'name'            => 'SponsorList',
@@ -59,7 +59,7 @@ return [
             'permissions'     => [
 
             ],
-            'group'           => 'basic'
+            'group'           => 'basic',
         ],
         'sponsor-footers'       => [
             'name'            => 'SponsorFooter',
@@ -72,7 +72,7 @@ return [
             'permissions'     => [
 
             ],
-            'group'           => 'basic'
+            'group'           => 'basic',
         ],
     ],
 ];

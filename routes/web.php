@@ -6,8 +6,8 @@ Route::group([
     'middleware' => [
         'web',
         'web_auth',
-        'navigation'
-    ]
+        'navigation',
+    ],
 ], static function () {
     Route::resource('tickets', 'TicketsController');
     Route::resource('airports', 'AirportsController');
@@ -25,11 +25,15 @@ Route::group([
     'namespace'  => 'Motor\Revision\Http\Controllers\Backend\Component',
     'middleware' => [
         'web',
-    ]
+    ],
 ], function () {
     // You only need this part if you already have a component group for the given namespace
-    Route::get('tickets', 'ComponentTicketsController@create')->name('tickets.create');
-    Route::post('tickets', 'ComponentTicketsController@store')->name('tickets.store');
-    Route::get('tickets/{component_ticket}', 'ComponentTicketsController@edit')->name('tickets.edit');
-    Route::patch('tickets/{component_ticket}', 'ComponentTicketsController@update')->name('tickets.update');
+    Route::get('tickets', 'ComponentTicketsController@create')
+         ->name('tickets.create');
+    Route::post('tickets', 'ComponentTicketsController@store')
+         ->name('tickets.store');
+    Route::get('tickets/{component_ticket}', 'ComponentTicketsController@edit')
+         ->name('tickets.edit');
+    Route::patch('tickets/{component_ticket}', 'ComponentTicketsController@update')
+         ->name('tickets.update');
 });

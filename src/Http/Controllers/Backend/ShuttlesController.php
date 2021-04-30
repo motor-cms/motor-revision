@@ -2,23 +2,22 @@
 
 namespace Motor\Revision\Http\Controllers\Backend;
 
-use Motor\Backend\Http\Controllers\Controller;
-
-use Motor\Revision\Models\Shuttle;
-use Motor\Revision\Http\Requests\Backend\ShuttleRequest;
-use Motor\Revision\Services\ShuttleService;
-use Motor\Revision\Grids\ShuttleGrid;
-use Motor\Revision\Forms\Backend\ShuttleForm;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
+use Motor\Backend\Http\Controllers\Controller;
+use Motor\Revision\Forms\Backend\ShuttleForm;
+use Motor\Revision\Grids\ShuttleGrid;
+use Motor\Revision\Http\Requests\Backend\ShuttleRequest;
+use Motor\Revision\Models\Shuttle;
+use Motor\Revision\Services\ShuttleService;
 
 /**
  * Class ShuttlesController
+ *
  * @package Motor\Revision\Http\Controllers\Backend
  */
 class ShuttlesController extends Controller
 {
     use FormBuilderTrait;
-
 
     /**
      * Display a listing of the resource.
@@ -37,23 +36,21 @@ class ShuttlesController extends Controller
         return view('motor-revision::backend.shuttles.index', compact('paginator', 'grid'));
     }
 
-
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function create()
     {
         $form = $this->form(ShuttleForm::class, [
             'method'  => 'POST',
             'route'   => 'backend.shuttles.store',
-            'enctype' => 'multipart/form-data'
+            'enctype' => 'multipart/form-data',
         ]);
 
         return view('motor-revision::backend.shuttles.create', compact('form'));
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -66,8 +63,11 @@ class ShuttlesController extends Controller
         $form = $this->form(ShuttleForm::class);
 
         // It will automatically use current request, get the rules, and do the validation
-        if ( ! $form->isValid()) {
-            return redirect()->back()->withErrors($form->getErrors())->withInput();
+        if (! $form->isValid()) {
+            return redirect()
+                ->back()
+                ->withErrors($form->getErrors())
+                ->withInput();
         }
 
         ShuttleService::createWithForm($request, $form);
@@ -76,7 +76,6 @@ class ShuttlesController extends Controller
 
         return redirect('backend/shuttles');
     }
-
 
     /**
      * Display the specified resource.
@@ -88,7 +87,6 @@ class ShuttlesController extends Controller
         //
     }
 
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -99,20 +97,19 @@ class ShuttlesController extends Controller
     {
         $form = $this->form(ShuttleForm::class, [
             'method'  => 'PATCH',
-            'url'     => route('backend.shuttles.update', [ $record->id ]),
+            'url'     => route('backend.shuttles.update', [$record->id]),
             'enctype' => 'multipart/form-data',
-            'model'   => $record
+            'model'   => $record,
         ]);
 
         return view('motor-revision::backend.shuttles.edit', compact('form'));
     }
 
-
     /**
      * Update the specified resource in storage.
      *
      * @param ShuttleRequest $request
-     * @param Shuttle   $record
+     * @param Shuttle $record
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(ShuttleRequest $request, Shuttle $record)
@@ -120,8 +117,11 @@ class ShuttlesController extends Controller
         $form = $this->form(ShuttleForm::class);
 
         // It will automatically use current request, get the rules, and do the validation
-        if ( ! $form->isValid()) {
-            return redirect()->back()->withErrors($form->getErrors())->withInput();
+        if (! $form->isValid()) {
+            return redirect()
+                ->back()
+                ->withErrors($form->getErrors())
+                ->withInput();
         }
 
         ShuttleService::updateWithForm($record, $request, $form);
@@ -130,7 +130,6 @@ class ShuttlesController extends Controller
 
         return redirect('backend/shuttles');
     }
-
 
     /**
      * Remove the specified resource from storage.

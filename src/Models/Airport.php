@@ -5,6 +5,7 @@ namespace Motor\Revision\Models;
 use Illuminate\Database\Eloquent\Model;
 use Motor\Core\Traits\Filterable;
 use Motor\Core\Traits\Searchable;
+
 //use Culpa\Traits\Blameable;
 //use Culpa\Traits\CreatedBy;
 //use Culpa\Traits\DeletedBy;
@@ -13,7 +14,8 @@ use Motor\Core\Traits\Searchable;
 class Airport extends Model
 {
     use Searchable;
-	use Filterable;
+    use Filterable;
+
 //    use Blameable, CreatedBy, UpdatedBy, DeletedBy;
 
     /**
@@ -28,8 +30,7 @@ class Airport extends Model
      *
      * @var array
      */
-    protected $searchableColumns = [
-    ];
+    protected $searchableColumns = [];
 
     /**
      * The attributes that are mass assignable.
@@ -40,6 +41,6 @@ class Airport extends Model
         'name',
         'code',
         'sort_position',
-        'is_active'
+        'is_active',
     ];
 }

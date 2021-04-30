@@ -8,11 +8,11 @@ use Motor\Revision\Models\Sponsor;
 
 /**
  * Class SponsorService
+ *
  * @package Motor\Revision\Services
  */
 class SponsorService extends BaseService
 {
-
     protected $model = Sponsor::class;
 
     public function afterCreate()
@@ -21,10 +21,10 @@ class SponsorService extends BaseService
         $this->addFileAssociation('logo_small');
     }
 
-
     public function afterUpdate()
     {
-        foreach ($this->record->file_associations()->get() as $fileAssociation) {
+        foreach ($this->record->file_associations()
+                              ->get() as $fileAssociation) {
             if ($this->request->get($fileAssociation->identifier) != '' || $this->request->get($fileAssociation->identifier) == 'deleted') {
                 $fileAssociation->delete();
             }
@@ -44,10 +44,10 @@ class SponsorService extends BaseService
         $file = json_decode($this->request->get($field));
 
         // Create file association
-        $fa             = new FileAssociation();
-        $fa->file_id    = $file->id;
+        $fa = new FileAssociation();
+        $fa->file_id = $file->id;
         $fa->model_type = get_class($this->record);
-        $fa->model_id   = $this->record->id;
+        $fa->model_id = $this->record->id;
         $fa->identifier = $field;
         $fa->save();
     }

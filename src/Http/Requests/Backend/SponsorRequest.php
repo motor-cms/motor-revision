@@ -69,7 +69,7 @@ class SponsorRequest extends Request
         return [
             'name'          => 'required',
             'url'           => 'nullable',
-            'level'         => 'required|in:'.implode(',', array_flip(trans('motor-revision::backend/shuttles.directions'))),
+            'level'         => 'required|in:'.implode(',', array_flip(trans('motor-revision::backend/sponsors.levels'))),
             'sort_position' => 'nullable|integer',
             'is_active'     => 'nullable|boolean',
             'text'          => 'nullable',
