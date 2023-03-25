@@ -2,7 +2,7 @@
 
 namespace Motor\Revision\Models;
 
-use Kra8\Snowflake\HasShortFlakePrimary;
+use Kra8\Snowflake\HasShortflakePrimary;
 use Illuminate\Database\Eloquent\Model;
 use Motor\Core\Traits\Filterable;
 use Motor\Core\Traits\Searchable;
@@ -11,7 +11,7 @@ class Hotel extends Model
 {
     use Searchable;
     use Filterable;
-    use HasShortFlakePrimary;
+    use HasShortflakePrimary;
 
     /**
      * Searchable columns for the searchable trait
