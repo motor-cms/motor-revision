@@ -15,7 +15,7 @@ class CreateShuttlesTable extends Migration
         Schema::create('shuttles', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->integer('airport_id')->unsigned()->index()->nullable();
+            $table->bigInteger('airport_id')->unsigned()->index()->nullable();
             $table->dateTime('departs_at')->nullable();
             $table->dateTime('arrives_at')->nullable();
             $table->integer('price');

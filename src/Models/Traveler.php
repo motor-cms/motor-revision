@@ -2,7 +2,7 @@
 
 namespace Motor\Revision\Models;
 
-use Kra8\Snowflake\HasSnowflakePrimary;
+use Kra8\Snowflake\HasShortFlakePrimary;
 use Illuminate\Database\Eloquent\Model;
 use Motor\Core\Traits\Filterable;
 use Motor\Core\Traits\Searchable;
@@ -12,7 +12,7 @@ class Traveler extends Model
 {
     use Searchable;
     use Filterable;
-    use HasSnowflakePrimary;
+    use HasShortFlakePrimary;
 
     /**
      * Searchable columns for the searchable trait
