@@ -13,7 +13,7 @@ class CreateShuttlesTable extends Migration
     public function up()
     {
         Schema::create('shuttles', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('name')->unique();
             $table->integer('airport_id')->unsigned()->index()->nullable();
             $table->dateTime('departs_at')->nullable();

@@ -13,7 +13,7 @@ class CreateComponentTicketsTable extends Migration
     public function up()
     {
         Schema::create('component_tickets', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('type');
             $table->timestamps();
         });

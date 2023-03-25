@@ -13,7 +13,7 @@ class CreateRidesTable extends Migration
     public function up()
     {
         Schema::create('rides', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('direction');
             $table->string('type');
             $table->string('means_of_transportation');

@@ -13,7 +13,7 @@ class CreateAirportsTable extends Migration
     public function up()
     {
         Schema::create('airports', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('name');
             $table->string('code');
             $table->integer('sort_position')->index()->unsigned();
