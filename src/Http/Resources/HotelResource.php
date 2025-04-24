@@ -7,6 +7,7 @@ use Motor\Backend\Http\Resources\BaseResource;
 /**
  * @OA\Schema(
  *   schema="HotelResource",
+ *
  *   @OA\Property(
  *     property="id",
  *     type="integer",
@@ -69,23 +70,23 @@ class HotelResource extends BaseResource
     /**
      * Transform the resource into an array.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function toArray($request)
     {
         return [
-            'id'          => (int) $this->id,
-            'name'        => $this->name,
-            'short'       => $this->short,
+            'id' => (int) $this->id,
+            'name' => $this->name,
+            'short' => $this->short,
             'description' => $this->description,
-            'address'     => $this->address,
-            'email'       => $this->email,
-            'website'     => $this->website,
-            'latitude'    => $this->latitude,
-            'longitude'   => $this->longitude,
-            'rating'      => (int) $this->rating,
-            'is_active'   => (boolean) $this->is_active,
+            'address' => $this->address,
+            'email' => $this->email,
+            'website' => $this->website,
+            'latitude' => $this->latitude,
+            'longitude' => $this->longitude,
+            'rating' => (int) $this->rating,
+            'is_active' => (bool) $this->is_active,
         ];
     }
 }

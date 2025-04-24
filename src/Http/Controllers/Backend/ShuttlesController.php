@@ -12,8 +12,6 @@ use Motor\Revision\Services\ShuttleService;
 
 /**
  * Class ShuttlesController
- *
- * @package Motor\Revision\Http\Controllers\Backend
  */
 class ShuttlesController extends Controller
 {
@@ -23,6 +21,7 @@ class ShuttlesController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     *
      * @throws \ReflectionException
      */
     public function index()
@@ -44,8 +43,8 @@ class ShuttlesController extends Controller
     public function create()
     {
         $form = $this->form(ShuttleForm::class, [
-            'method'  => 'POST',
-            'route'   => 'backend.shuttles.store',
+            'method' => 'POST',
+            'route' => 'backend.shuttles.store',
             'enctype' => 'multipart/form-data',
         ]);
 
@@ -55,7 +54,6 @@ class ShuttlesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param ShuttleRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(ShuttleRequest $request)
@@ -79,8 +77,6 @@ class ShuttlesController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param Shuttle $record
      */
     public function show(Shuttle $record)
     {
@@ -90,16 +86,15 @@ class ShuttlesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Shuttle $record
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Shuttle $record)
     {
         $form = $this->form(ShuttleForm::class, [
-            'method'  => 'PATCH',
-            'url'     => route('backend.shuttles.update', [$record->id]),
+            'method' => 'PATCH',
+            'url' => route('backend.shuttles.update', [$record->id]),
             'enctype' => 'multipart/form-data',
-            'model'   => $record,
+            'model' => $record,
         ]);
 
         return view('motor-revision::backend.shuttles.edit', compact('form'));
@@ -108,8 +103,6 @@ class ShuttlesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param ShuttleRequest $request
-     * @param Shuttle $record
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(ShuttleRequest $request, Shuttle $record)
@@ -134,7 +127,6 @@ class ShuttlesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Shuttle $record
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy(Shuttle $record)

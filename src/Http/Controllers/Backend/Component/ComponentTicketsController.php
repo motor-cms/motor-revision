@@ -3,13 +3,11 @@
 namespace Motor\Revision\Http\Controllers\Backend\Component;
 
 use Illuminate\Http\Request;
+use Kris\LaravelFormBuilder\FormBuilderTrait;
 use Motor\CMS\Http\Controllers\Component\ComponentController;
-
+use Motor\Revision\Forms\Backend\Component\ComponentTicketForm;
 use Motor\Revision\Models\Component\ComponentTicket;
 use Motor\Revision\Services\Component\ComponentTicketService;
-use Motor\Revision\Forms\Backend\Component\ComponentTicketForm;
-
-use Kris\LaravelFormBuilder\FormBuilderTrait;
 
 class ComponentTicketsController extends ComponentController
 {
@@ -30,7 +28,6 @@ class ComponentTicketsController extends ComponentController
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
@@ -49,7 +46,6 @@ class ComponentTicketsController extends ComponentController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \Motor\Revision\Models\Component\ComponentTicket $record
      * @return \Illuminate\Http\JsonResponse
      */
     public function edit(ComponentTicket $record)
@@ -64,8 +60,6 @@ class ComponentTicketsController extends ComponentController
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \Motor\Revision\Models\Component\ComponentTicket $record
      * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, ComponentTicket $record)

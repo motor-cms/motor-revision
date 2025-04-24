@@ -6,14 +6,13 @@ use Motor\Backend\Http\Requests\Request;
 
 /**
  * Class TicketRequest
- *
- * @package Motor\Revision\Http\Requests\Backend
  */
 class TicketRequest extends Request
 {
     /**
      * @OA\Schema(
      *   schema="TicketRequest",
+     *
      *   @OA\Property(
      *     property="type",
      *     type="string",
@@ -127,56 +126,56 @@ class TicketRequest extends Request
     {
         // FIXME: make separate class for ApiRequest
         $baseRules = [
-            'type'   => 'required|in:'.implode(',', array_flip(trans('motor-revision::backend/tickets.types'))),
+            'type' => 'required|in:'.implode(',', array_flip(trans('motor-revision::backend/tickets.types'))),
             'status' => 'nullable|in:'.implode(',', array_flip(trans('motor-revision::backend/tickets.at_home_stati'))),
         ];
         $type = $this->get('type');
         switch ($this->get('type')) {
             case 'at_home':
                 return $baseRules + [
-                        $type.'.handle'           => 'nullable',
-                        $type.'.name'             => 'required',
-                        $type.'.address'          => 'required',
-                        $type.'.zip'              => 'required',
-                        $type.'.city'             => 'required',
-                        $type.'.country'          => 'required',
-                        $type.'.email'            => 'required|email',
-                        $type.'.comment'          => 'nullable',
-                        $type.'.internal_comment' => 'nullable',
-                        $type.'.access_key'       => 'nullable',
-                        $type.'.shirt_size'       => 'nullable|in:'.implode(',', array_flip(trans('motor-revision::backend/tickets.shirt_sizes'))),
-                    ];
+                    $type.'.handle' => 'nullable',
+                    $type.'.name' => 'required',
+                    $type.'.address' => 'required',
+                    $type.'.zip' => 'required',
+                    $type.'.city' => 'required',
+                    $type.'.country' => 'required',
+                    $type.'.email' => 'required|email',
+                    $type.'.comment' => 'nullable',
+                    $type.'.internal_comment' => 'nullable',
+                    $type.'.access_key' => 'nullable',
+                    $type.'.shirt_size' => 'nullable|in:'.implode(',', array_flip(trans('motor-revision::backend/tickets.shirt_sizes'))),
+                ];
                 break;
             case 'subsidized':
                 return $baseRules + [
-                        $type.'.handle'         => 'nullable',
-                        $type.'.name'           => 'required',
-                        $type.'.address'        => 'required',
-                        $type.'.zip'            => 'required',
-                        $type.'.city'           => 'required',
-                        $type.'.country'        => 'required',
-                        $type.'.email'          => 'required|email',
-                        $type.'.comment'        => 'nullable',
-                        $type.'.transportation' => 'nullable',
-                    ];
+                    $type.'.handle' => 'nullable',
+                    $type.'.name' => 'required',
+                    $type.'.address' => 'required',
+                    $type.'.zip' => 'required',
+                    $type.'.city' => 'required',
+                    $type.'.country' => 'required',
+                    $type.'.email' => 'required|email',
+                    $type.'.comment' => 'nullable',
+                    $type.'.transportation' => 'nullable',
+                ];
                 break;
             case 'supporter':
                 return $baseRules + [
-                        $type.'.handle'           => 'nullable',
-                        $type.'.name'             => 'required',
-                        $type.'.address'          => 'required',
-                        $type.'.zip'              => 'required',
-                        $type.'.city'             => 'required',
-                        $type.'.country'          => 'required',
-                        $type.'.email'            => 'required|email',
-                        $type.'.comment'          => 'nullable',
-                        $type.'.internal_comment' => 'nullable',
-                        $type.'.company'          => 'nullable',
-                        $type.'.vat_id'           => 'nullable',
-                        $type.'.is_anonymous'     => 'nullable|boolean',
-                        $type.'.amount'           => 'nullable|in:'.implode(',', array_flip(trans('motor-revision::backend/tickets.amounts'))),
-                        $type.'.shirt_size'       => 'nullable|in:'.implode(',', array_flip(trans('motor-revision::backend/tickets.shirt_sizes'))),
-                    ];
+                    $type.'.handle' => 'nullable',
+                    $type.'.name' => 'required',
+                    $type.'.address' => 'required',
+                    $type.'.zip' => 'required',
+                    $type.'.city' => 'required',
+                    $type.'.country' => 'required',
+                    $type.'.email' => 'required|email',
+                    $type.'.comment' => 'nullable',
+                    $type.'.internal_comment' => 'nullable',
+                    $type.'.company' => 'nullable',
+                    $type.'.vat_id' => 'nullable',
+                    $type.'.is_anonymous' => 'nullable|boolean',
+                    $type.'.amount' => 'nullable|in:'.implode(',', array_flip(trans('motor-revision::backend/tickets.amounts'))),
+                    $type.'.shirt_size' => 'nullable|in:'.implode(',', array_flip(trans('motor-revision::backend/tickets.shirt_sizes'))),
+                ];
                 break;
         }
 

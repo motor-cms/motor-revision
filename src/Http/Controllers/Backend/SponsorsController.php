@@ -12,8 +12,6 @@ use Motor\Revision\Services\SponsorService;
 
 /**
  * Class SponsorsController
- *
- * @package Motor\Revision\Http\Controllers\Backend
  */
 class SponsorsController extends Controller
 {
@@ -23,6 +21,7 @@ class SponsorsController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     *
      * @throws \ReflectionException
      */
     public function index()
@@ -44,8 +43,8 @@ class SponsorsController extends Controller
     public function create()
     {
         $form = $this->form(SponsorForm::class, [
-            'method'  => 'POST',
-            'route'   => 'backend.sponsors.store',
+            'method' => 'POST',
+            'route' => 'backend.sponsors.store',
             'enctype' => 'multipart/form-data',
         ]);
 
@@ -57,7 +56,6 @@ class SponsorsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param SponsorRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(SponsorRequest $request)
@@ -81,8 +79,6 @@ class SponsorsController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param Sponsor $record
      */
     public function show(Sponsor $record)
     {
@@ -92,16 +88,15 @@ class SponsorsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Sponsor $record
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Sponsor $record)
     {
         $form = $this->form(SponsorForm::class, [
-            'method'  => 'PATCH',
-            'url'     => route('backend.sponsors.update', [$record->id]),
+            'method' => 'PATCH',
+            'url' => route('backend.sponsors.update', [$record->id]),
             'enctype' => 'multipart/form-data',
-            'model'   => $record,
+            'model' => $record,
         ]);
 
         $motorShowRightSidebar = true;
@@ -112,8 +107,6 @@ class SponsorsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param SponsorRequest $request
-     * @param Sponsor $record
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(SponsorRequest $request, Sponsor $record)
@@ -138,7 +131,6 @@ class SponsorsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Sponsor $record
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy(Sponsor $record)

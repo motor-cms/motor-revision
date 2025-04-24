@@ -6,14 +6,13 @@ use Motor\Backend\Http\Requests\Request;
 
 /**
  * Class AirportRequest
- *
- * @package Motor\Revision\Http\Requests\Backend
  */
 class AirportRequest extends Request
 {
     /**
      * @OA\Schema(
      *   schema="AirportRequest",
+     *
      *   @OA\Property(
      *     property="name",
      *     type="string",
@@ -56,10 +55,10 @@ class AirportRequest extends Request
     public function rules()
     {
         return [
-            'name'          => 'required',
-            'code'          => 'required',
+            'name' => 'required',
+            'code' => 'required',
             'sort_position' => 'nullable|integer',
-            'is_active'     => 'nullable|boolean',
+            'is_active' => 'nullable|boolean',
         ];
     }
 }

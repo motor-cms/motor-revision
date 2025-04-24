@@ -12,8 +12,6 @@ use Motor\Revision\Services\AirportService;
 
 /**
  * Class AirportsController
- *
- * @package Motor\Revision\Http\Controllers\Backend
  */
 class AirportsController extends Controller
 {
@@ -23,6 +21,7 @@ class AirportsController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     *
      * @throws \ReflectionException
      */
     public function index()
@@ -44,8 +43,8 @@ class AirportsController extends Controller
     public function create()
     {
         $form = $this->form(AirportForm::class, [
-            'method'  => 'POST',
-            'route'   => 'backend.airports.store',
+            'method' => 'POST',
+            'route' => 'backend.airports.store',
             'enctype' => 'multipart/form-data',
         ]);
 
@@ -55,7 +54,6 @@ class AirportsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param AirportRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(AirportRequest $request)
@@ -79,8 +77,6 @@ class AirportsController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param Airport $record
      */
     public function show(Airport $record)
     {
@@ -90,16 +86,15 @@ class AirportsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Airport $record
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Airport $record)
     {
         $form = $this->form(AirportForm::class, [
-            'method'  => 'PATCH',
-            'url'     => route('backend.airports.update', [$record->id]),
+            'method' => 'PATCH',
+            'url' => route('backend.airports.update', [$record->id]),
             'enctype' => 'multipart/form-data',
-            'model'   => $record,
+            'model' => $record,
         ]);
 
         return view('motor-revision::backend.airports.edit', compact('form'));
@@ -108,8 +103,6 @@ class AirportsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param AirportRequest $request
-     * @param Airport $record
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(AirportRequest $request, Airport $record)
@@ -134,7 +127,6 @@ class AirportsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Airport $record
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy(Airport $record)

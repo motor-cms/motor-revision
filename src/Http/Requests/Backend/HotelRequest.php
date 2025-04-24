@@ -6,14 +6,13 @@ use Motor\Backend\Http\Requests\Request;
 
 /**
  * Class HotelRequest
- *
- * @package Motor\Revision\Http\Requests\Backend
  */
 class HotelRequest extends Request
 {
     /**
      * @OA\Schema(
      *   schema="HotelRequest",
+     *
      *   @OA\Property(
      *     property="name",
      *     type="string",
@@ -86,16 +85,16 @@ class HotelRequest extends Request
     public function rules()
     {
         return [
-            'short'       => 'required',
-            'name'        => 'required',
+            'short' => 'required',
+            'name' => 'required',
             'description' => 'nullable',
-            'address'     => 'required',
-            'email'       => 'nullable|email',
-            'website'     => 'nullable',
-            'latitude'    => 'nullable',
-            'longitude'   => 'nullable',
-            'rating'      => 'nullable|integer',
-            'is_active'   => 'nullable|boolean',
+            'address' => 'required',
+            'email' => 'nullable|email',
+            'website' => 'nullable',
+            'latitude' => 'nullable',
+            'longitude' => 'nullable',
+            'rating' => 'nullable|integer',
+            'is_active' => 'nullable|boolean',
         ];
     }
 }

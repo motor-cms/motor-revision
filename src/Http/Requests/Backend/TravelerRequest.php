@@ -6,14 +6,13 @@ use Motor\Backend\Http\Requests\Request;
 
 /**
  * Class TravelerRequest
- *
- * @package Motor\Revision\Http\Requests\Backend
  */
 class TravelerRequest extends Request
 {
     /**
      * @OA\Schema(
      *   schema="TravelerRequest",
+     *
      *   @OA\Property(
      *     property="name",
      *     type="string",
@@ -82,15 +81,15 @@ class TravelerRequest extends Request
     public function rules()
     {
         return [
-            'name'             => 'required',
-            'email'            => 'required|email',
-            'mobile_phone'     => 'required',
+            'name' => 'required',
+            'email' => 'required|email',
+            'mobile_phone' => 'required',
             'number_of_people' => 'required|integer',
-            'flight_number'    => 'required',
-            'flight_time'      => 'required|date_format:Y-m-d H:i:s',
-            'direction'        => 'required|in:'.implode(',', array_flip(trans('motor-revision::backend/shuttles.directions'))),
-            'shuttle_id'       => 'nullable|integer|exists:shuttles,id',
-            'airport_id'       => 'required|integer|exists:airports,id',
+            'flight_number' => 'required',
+            'flight_time' => 'required|date_format:Y-m-d H:i:s',
+            'direction' => 'required|in:'.implode(',', array_flip(trans('motor-revision::backend/shuttles.directions'))),
+            'shuttle_id' => 'nullable|integer|exists:shuttles,id',
+            'airport_id' => 'required|integer|exists:airports,id',
         ];
     }
 }

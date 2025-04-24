@@ -2,17 +2,16 @@
 
 namespace Motor\Revision\Models;
 
-use Kra8\Snowflake\HasShortflakePrimary;
 use Illuminate\Database\Eloquent\Model;
+use Kra8\Snowflake\HasShortflakePrimary;
 use Motor\Core\Traits\Filterable;
 use Motor\Core\Traits\Searchable;
 
-
 class Traveler extends Model
 {
-    use Searchable;
     use Filterable;
     use HasShortflakePrimary;
+    use Searchable;
 
     /**
      * Searchable columns for the searchable trait
@@ -45,29 +44,29 @@ class Traveler extends Model
     public function scopeToPartyWithoutShuttle($query)
     {
         return $query->where('direction', 'party')
-                     ->whereNull('shuttle_id')
-                     ->orderBy('flight_time', 'ASC');
+            ->whereNull('shuttle_id')
+            ->orderBy('flight_time', 'ASC');
     }
 
     public function scopeToAirportWithoutShuttle($query)
     {
         return $query->where('direction', 'airport')
-                     ->whereNull('shuttle_id')
-                     ->orderBy('flight_time', 'ASC');
+            ->whereNull('shuttle_id')
+            ->orderBy('flight_time', 'ASC');
     }
 
     public function scopeToPartyWithShuttle($query)
     {
         return $query->where('direction', 'party')
-                     ->whereNotNull('shuttle_id')
-                     ->orderBy('shuttle_id', 'ASC');
+            ->whereNotNull('shuttle_id')
+            ->orderBy('shuttle_id', 'ASC');
     }
 
     public function scopeToAirportWithShuttle($query)
     {
         return $query->where('direction', 'airport')
-                     ->whereNotNull('shuttle_id')
-                     ->orderBy('shuttle_id', 'ASC');
+            ->whereNotNull('shuttle_id')
+            ->orderBy('shuttle_id', 'ASC');
     }
 
     public function airport()

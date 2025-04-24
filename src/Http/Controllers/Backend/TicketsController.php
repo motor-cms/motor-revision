@@ -12,8 +12,6 @@ use Motor\Revision\Services\TicketService;
 
 /**
  * Class TicketsController
- *
- * @package Motor\Revision\Http\Controllers\Backend
  */
 class TicketsController extends Controller
 {
@@ -23,6 +21,7 @@ class TicketsController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     *
      * @throws \ReflectionException
      */
     public function index()
@@ -44,8 +43,8 @@ class TicketsController extends Controller
     public function create()
     {
         $form = $this->form(TicketForm::class, [
-            'method'  => 'POST',
-            'route'   => 'backend.tickets.store',
+            'method' => 'POST',
+            'route' => 'backend.tickets.store',
             'enctype' => 'multipart/form-data',
         ]);
 
@@ -55,7 +54,6 @@ class TicketsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param TicketRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(TicketRequest $request)
@@ -84,8 +82,6 @@ class TicketsController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param Ticket $record
      */
     public function show(Ticket $record)
     {
@@ -95,16 +91,15 @@ class TicketsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Ticket $record
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Ticket $record)
     {
         $form = $this->form(TicketForm::class, [
-            'method'  => 'PATCH',
-            'url'     => route('backend.tickets.update', [$record->id]),
+            'method' => 'PATCH',
+            'url' => route('backend.tickets.update', [$record->id]),
             'enctype' => 'multipart/form-data',
-            'model'   => $record,
+            'model' => $record,
         ]);
 
         return view('motor-revision::backend.tickets.edit', compact('form'));
@@ -113,8 +108,6 @@ class TicketsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param TicketRequest $request
-     * @param Ticket $record
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(TicketRequest $request, Ticket $record)
@@ -139,7 +132,6 @@ class TicketsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Ticket $record
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy(Ticket $record)

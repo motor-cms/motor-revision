@@ -7,6 +7,7 @@ use Motor\Backend\Http\Resources\BaseResource;
 /**
  * @OA\Schema(
  *   schema="TicketResource",
+ *
  *   @OA\Property(
  *     property="id",
  *     type="integer",
@@ -109,31 +110,31 @@ class TicketResource extends BaseResource
     /**
      * Transform the resource into an array.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function toArray($request)
     {
         return [
-            'id'               => (int) $this->id,
-            'type'             => $this->type,
-            'handle'           => $this->handle,
-            'name'             => $this->name,
-            'address'          => $this->address,
-            'zip'              => $this->zip,
-            'city'             => $this->city,
-            'country'          => $this->country,
-            'company'          => $this->company,
-            'vat_id'           => $this->vat_id,
-            'email'            => $this->email,
-            'comment'          => $this->comment,
+            'id' => (int) $this->id,
+            'type' => $this->type,
+            'handle' => $this->handle,
+            'name' => $this->name,
+            'address' => $this->address,
+            'zip' => $this->zip,
+            'city' => $this->city,
+            'country' => $this->country,
+            'company' => $this->company,
+            'vat_id' => $this->vat_id,
+            'email' => $this->email,
+            'comment' => $this->comment,
             'internal_comment' => $this->internal_comment,
-            'access_key'       => $this->access_key,
-            'transportation'   => $this->transportation,
-            'is_anonymous'     => (boolean) $this->is_anonymous,
-            'amount'           => $this->amount,
-            'shirt_size'       => $this->shirt_size,
-            'status'           => (int) $this->status,
+            'access_key' => $this->access_key,
+            'transportation' => $this->transportation,
+            'is_anonymous' => (bool) $this->is_anonymous,
+            'amount' => $this->amount,
+            'shirt_size' => $this->shirt_size,
+            'status' => (int) $this->status,
         ];
     }
 }

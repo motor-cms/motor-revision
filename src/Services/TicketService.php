@@ -2,16 +2,12 @@
 
 namespace Motor\Revision\Services;
 
-use Illuminate\Support\Arr;
 use Motor\Backend\Services\BaseService;
 use Motor\Core\Filter\Renderers\SelectRenderer;
-use \Motor\Revision\Models\Ticket;
-use Partymeister\Competitions\Models\Competition;
+use Motor\Revision\Models\Ticket;
 
 /**
  * Class TicketService
- *
- * @package \Motor\Revision\Services
  */
 class TicketService extends BaseService
 {
@@ -20,9 +16,9 @@ class TicketService extends BaseService
     public function filters()
     {
         $this->filter->add(new SelectRenderer('type'))
-                     ->setOptionPrefix(trans('motor-revision::backend/tickets.type'))
-                     ->setEmptyOption('-- '.trans('motor-revision::backend/tickets.type').' --')
-                     ->setOptions(trans('motor-revision::backend/tickets.types'));
+            ->setOptionPrefix(trans('motor-revision::backend/tickets.type'))
+            ->setEmptyOption('-- '.trans('motor-revision::backend/tickets.type').' --')
+            ->setOptions(trans('motor-revision::backend/tickets.types'));
     }
 
     public function beforeCreate()

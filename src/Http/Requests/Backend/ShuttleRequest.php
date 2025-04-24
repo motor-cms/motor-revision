@@ -6,14 +6,13 @@ use Motor\Backend\Http\Requests\Request;
 
 /**
  * Class ShuttleRequest
- *
- * @package Motor\Revision\Http\Requests\Backend
  */
 class ShuttleRequest extends Request
 {
     /**
      * @OA\Schema(
      *   schema="ShuttleRequest",
+     *
      *   @OA\Property(
      *     property="airport_id",
      *     type="integer",
@@ -82,15 +81,15 @@ class ShuttleRequest extends Request
     public function rules()
     {
         return [
-            'airport_id'  => 'required|exists:airports,id',
-            'name'        => 'required',
-            'direction'   => 'required|in:'.implode(',', array_flip(trans('motor-revision::backend/shuttles.directions'))),
-            'departs_at'  => 'required',
-            'arrives_at'  => 'required',
+            'airport_id' => 'required|exists:airports,id',
+            'name' => 'required',
+            'direction' => 'required|in:'.implode(',', array_flip(trans('motor-revision::backend/shuttles.directions'))),
+            'departs_at' => 'required',
+            'arrives_at' => 'required',
             'travel_time' => 'required',
-            'seats'       => 'required',
-            'price'       => 'required',
-            'is_active'   => 'nullable|boolean',
+            'seats' => 'required',
+            'price' => 'required',
+            'is_active' => 'nullable|boolean',
         ];
     }
 }

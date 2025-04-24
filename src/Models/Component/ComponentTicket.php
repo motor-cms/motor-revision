@@ -23,7 +23,7 @@ class ComponentTicket extends ComponentBaseModel
     public function preview()
     {
         return [
-            'name'    => trans('motor-revision::component/tickets.component'),
+            'name' => trans('motor-revision::component/tickets.component'),
             'preview' => trans('motor-revision::backend/tickets.types.'.$this->type),
         ];
     }

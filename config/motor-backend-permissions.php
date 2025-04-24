@@ -1,22 +1,22 @@
 <?php
 
 return [
-    'revision'  => [
-        'name'   => 'motor-revision::backend/global.revision',
+    'revision' => [
+        'name' => 'motor-revision::backend/global.revision',
         'values' => [
             'read',
         ],
     ],
-    'tickets'   => [
-        'name'   => 'motor-revision::backend/tickets.tickets',
+    'tickets' => [
+        'name' => 'motor-revision::backend/tickets.tickets',
         'values' => [
             'read',
             'write',
             'delete',
         ],
     ],
-    'airports'  => [
-        'name'   => 'motor-revision::backend/airports.airports',
+    'airports' => [
+        'name' => 'motor-revision::backend/airports.airports',
         'values' => [
             'read',
             'write',
@@ -24,39 +24,39 @@ return [
         ],
     ],
     'travelers' => [
-        'name'   => 'motor-revision::backend/travelers.travelers',
+        'name' => 'motor-revision::backend/travelers.travelers',
         'values' => [
             'read',
             'write',
             'delete',
         ],
     ],
-    'shuttles'  => [
-        'name'   => 'motor-revision::backend/shuttles.shuttles',
+    'shuttles' => [
+        'name' => 'motor-revision::backend/shuttles.shuttles',
         'values' => [
             'read',
             'write',
             'delete',
         ],
     ],
-    'rides'     => [
-        'name'   => 'motor-revision::backend/rides.rides',
+    'rides' => [
+        'name' => 'motor-revision::backend/rides.rides',
         'values' => [
             'read',
             'write',
             'delete',
         ],
     ],
-    'sponsors'  => [
-        'name'   => 'motor-revision::backend/sponsors.sponsors',
+    'sponsors' => [
+        'name' => 'motor-revision::backend/sponsors.sponsors',
         'values' => [
             'read',
             'write',
             'delete',
         ],
     ],
-    'hotels'    => [
-        'name'   => 'motor-revision::backend/hotels.hotels',
+    'hotels' => [
+        'name' => 'motor-revision::backend/hotels.hotels',
         'values' => [
             'read',
             'write',

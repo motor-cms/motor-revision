@@ -6,14 +6,13 @@ use Motor\Backend\Http\Requests\Request;
 
 /**
  * Class RideRequest
- *
- * @package Motor\Revision\Http\Requests\Backend
  */
 class RideRequest extends Request
 {
     /**
      * @OA\Schema(
      *   schema="RideRequest",
+     *
      *   @OA\Property(
      *     property="direction",
      *     type="string",
@@ -73,13 +72,13 @@ class RideRequest extends Request
     public function rules()
     {
         return [
-            'direction'               => 'required|in:'.implode(',', array_flip(trans('motor-revision::backend/rides.directions'))),
-            'type'                    => 'required|in:'.implode(',', array_flip(trans('motor-revision::backend/rides.types'))),
+            'direction' => 'required|in:'.implode(',', array_flip(trans('motor-revision::backend/rides.directions'))),
+            'type' => 'required|in:'.implode(',', array_flip(trans('motor-revision::backend/rides.types'))),
             'means_of_transportation' => 'required',
-            'name'                    => 'required',
-            'email'                   => 'required|email',
-            'country'                 => 'required',
-            'route'                   => 'nullable',
+            'name' => 'required',
+            'email' => 'required|email',
+            'country' => 'required',
+            'route' => 'nullable',
         ];
     }
 }

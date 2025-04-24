@@ -7,6 +7,7 @@ use Motor\Backend\Http\Resources\BaseResource;
 /**
  * @OA\Schema(
  *   schema="TravelerResource",
+ *
  *   @OA\Property(
  *     property="id",
  *     type="integer",
@@ -65,22 +66,22 @@ class TravelerResource extends BaseResource
     /**
      * Transform the resource into an array.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function toArray($request)
     {
         return [
-            'id'               => (int) $this->id,
-            'name'             => $this->name,
-            'email'            => $this->email,
-            'mobile_phone'     => $this->mobile_phone,
+            'id' => (int) $this->id,
+            'name' => $this->name,
+            'email' => $this->email,
+            'mobile_phone' => $this->mobile_phone,
             'number_of_people' => $this->number_of_people,
-            'flight_number'    => $this->flight_number,
-            'flight_time'      => $this->flight_time,
-            'direction'        => $this->direction,
-            'airport'          => new AirportResource($this->airport),
-            'shuttle'          => new ShuttleResource($this->shuttle),
+            'flight_number' => $this->flight_number,
+            'flight_time' => $this->flight_time,
+            'direction' => $this->direction,
+            'airport' => new AirportResource($this->airport),
+            'shuttle' => new ShuttleResource($this->shuttle),
         ];
     }
 }

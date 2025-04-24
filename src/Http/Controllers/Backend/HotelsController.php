@@ -12,8 +12,6 @@ use Motor\Revision\Services\HotelService;
 
 /**
  * Class HotelsController
- *
- * @package Motor\Revision\Http\Controllers\Backend
  */
 class HotelsController extends Controller
 {
@@ -23,6 +21,7 @@ class HotelsController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     *
      * @throws \ReflectionException
      */
     public function index()
@@ -44,8 +43,8 @@ class HotelsController extends Controller
     public function create()
     {
         $form = $this->form(HotelForm::class, [
-            'method'  => 'POST',
-            'route'   => 'backend.hotels.store',
+            'method' => 'POST',
+            'route' => 'backend.hotels.store',
             'enctype' => 'multipart/form-data',
         ]);
 
@@ -55,7 +54,6 @@ class HotelsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param HotelRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(HotelRequest $request)
@@ -79,8 +77,6 @@ class HotelsController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param Hotel $record
      */
     public function show(Hotel $record)
     {
@@ -90,16 +86,15 @@ class HotelsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Hotel $record
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Hotel $record)
     {
         $form = $this->form(HotelForm::class, [
-            'method'  => 'PATCH',
-            'url'     => route('backend.hotels.update', [$record->id]),
+            'method' => 'PATCH',
+            'url' => route('backend.hotels.update', [$record->id]),
             'enctype' => 'multipart/form-data',
-            'model'   => $record,
+            'model' => $record,
         ]);
 
         return view('motor-revision::backend.hotels.edit', compact('form'));
@@ -108,8 +103,6 @@ class HotelsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param HotelRequest $request
-     * @param Hotel $record
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(HotelRequest $request, Hotel $record)
@@ -134,7 +127,6 @@ class HotelsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Hotel $record
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy(Hotel $record)

@@ -6,8 +6,6 @@ use Motor\Backend\Grid\Grid;
 
 /**
  * Class RideGrid
- *
- * @package Motor\Revision\Grids
  */
 class RideGrid extends Grid
 {

@@ -2,16 +2,16 @@
 
 namespace Motor\Revision\Models;
 
-use Kra8\Snowflake\HasShortflakePrimary;
 use Illuminate\Database\Eloquent\Model;
+use Kra8\Snowflake\HasShortflakePrimary;
 use Motor\Core\Traits\Filterable;
 use Motor\Core\Traits\Searchable;
 
 class Shuttle extends Model
 {
-    use Searchable;
     use Filterable;
     use HasShortflakePrimary;
+    use Searchable;
 
     /**
      * Searchable columns for the searchable trait
@@ -40,15 +40,15 @@ class Shuttle extends Model
     public function scopeConfirmedToParty($query)
     {
         return $query->where('direction', 'party')
-                     ->where('is_active', true)
-                     ->orderBy('departs_at', 'ASC');
+            ->where('is_active', true)
+            ->orderBy('departs_at', 'ASC');
     }
 
     public function scopeConfirmedToAirport($query)
     {
         return $query->where('direction', 'airport')
-                     ->where('is_active', true)
-                     ->orderBy('departs_at', 'ASC');
+            ->where('is_active', true)
+            ->orderBy('departs_at', 'ASC');
     }
 
     public function airport()
@@ -64,6 +64,6 @@ class Shuttle extends Model
     public function getSeatsTakenAttribute()
     {
         return $this->travelers()
-                    ->sum('number_of_people');
+            ->sum('number_of_people');
     }
 }

@@ -17,19 +17,10 @@ class ComponentShuttleRegistrations
 
     protected $pageVersionComponent;
 
-    /**
-     * @var
-     */
     protected $shuttleForm;
 
-    /**
-     * @var
-     */
     protected $record;
 
-    /**
-     * @var
-     */
     protected $request;
 
     public function __construct(PageVersionComponent $pageVersionComponent)
@@ -42,8 +33,8 @@ class ComponentShuttleRegistrations
         $this->request = $request;
 
         $formOptions = [
-            'url'     => $this->request->url(),
-            'method'  => 'POST',
+            'url' => $this->request->url(),
+            'method' => 'POST',
             'enctype' => 'multipart/form-data',
         ];
 
@@ -73,7 +64,7 @@ class ComponentShuttleRegistrations
 
         $arrivalTraveler = false;
         if ($this->request->get('arrival_flight_number') !== '') {
-            $arrivalTraveler = new Traveler();
+            $arrivalTraveler = new Traveler;
             $arrivalTraveler->name = $this->request->get('name');
             $arrivalTraveler->mobile_phone = $this->request->get('mobile_phone');
             $arrivalTraveler->email = $this->request->get('email');
@@ -87,7 +78,7 @@ class ComponentShuttleRegistrations
 
         $departureTraveler = false;
         if ($this->request->get('departure_flight_number') !== '') {
-            $departureTraveler = new Traveler();
+            $departureTraveler = new Traveler;
             $departureTraveler->name = $this->request->get('name');
             $departureTraveler->mobile_phone = $this->request->get('mobile_phone');
             $departureTraveler->email = $this->request->get('email');
@@ -102,7 +93,7 @@ class ComponentShuttleRegistrations
         // Send emails
         EmailHelper::sendEmail('shuttle_registration', [
             'to_email' => $this->request->get('email'),
-            'to_name'  => $this->request->get('name'),
+            'to_name' => $this->request->get('name'),
         ], ['name' => $this->request->get('name'), 'arrival' => $arrivalTraveler, 'departure' => $departureTraveler]);
 
         // Create flash alert and hide form

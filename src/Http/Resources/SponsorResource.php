@@ -7,6 +7,7 @@ use Motor\Backend\Http\Resources\BaseResource;
 /**
  * @OA\Schema(
  *   schema="SponsorResource",
+ *
  *   @OA\Property(
  *     property="id",
  *     type="integer",
@@ -50,19 +51,19 @@ class SponsorResource extends BaseResource
     /**
      * Transform the resource into an array.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function toArray($request)
     {
         return [
-            'id'            => (int) $this->id,
-            'name'          => $this->name,
-            'level'         => $this->level,
-            'url'           => $this->url,
+            'id' => (int) $this->id,
+            'name' => $this->name,
+            'level' => $this->level,
+            'url' => $this->url,
             'sort_position' => (int) $this->sort_position,
-            'is_active'     => (boolean) $this->is_active,
-            'text'          => $this->text,
+            'is_active' => (bool) $this->is_active,
+            'text' => $this->text,
         ];
     }
 }

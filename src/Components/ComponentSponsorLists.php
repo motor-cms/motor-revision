@@ -20,9 +20,9 @@ class ComponentSponsorLists
     public function index(Request $request)
     {
         $this->sponsors = Sponsor::where('is_active', true)
-                                 ->orderBy('level', 'ASC')
-                                 ->orderBy('sort_position', 'ASC')
-                                 ->get();
+            ->orderBy('level', 'ASC')
+            ->orderBy('sort_position', 'ASC')
+            ->get();
 
         return $this->render();
     }

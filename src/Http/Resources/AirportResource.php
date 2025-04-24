@@ -7,6 +7,7 @@ use Motor\Backend\Http\Resources\BaseResource;
 /**
  * @OA\Schema(
  *   schema="AirportResource",
+ *
  *   @OA\Property(
  *     property="id",
  *     type="integer",
@@ -39,18 +40,18 @@ class AirportResource extends BaseResource
     /**
      * Transform the resource into an array.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function toArray($request)
     {
         return [
-            'id'            => (int) $this->id,
-            'name'          => $this->name,
-            'code'          => $this->code,
+            'id' => (int) $this->id,
+            'name' => $this->name,
+            'code' => $this->code,
             'sort_position' => (int) $this->sort_position,
-            'is_active'     => (boolean) $this->is_active,
-            'shuttles'      => ShuttleResource::collection($this->whenLoaded('shuttles')),
+            'is_active' => (bool) $this->is_active,
+            'shuttles' => ShuttleResource::collection($this->whenLoaded('shuttles')),
         ];
     }
 }

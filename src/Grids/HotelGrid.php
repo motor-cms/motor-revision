@@ -6,8 +6,6 @@ use Motor\Backend\Grid\Grid;
 
 /**
  * Class HotelGrid
- *
- * @package Motor\Revision\Grids
  */
 class HotelGrid extends Grid
 {

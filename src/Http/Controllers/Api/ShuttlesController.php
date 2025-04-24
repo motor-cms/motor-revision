@@ -3,17 +3,14 @@
 namespace Motor\Revision\Http\Controllers\Api;
 
 use Motor\Backend\Http\Controllers\ApiController;
-
-use Motor\Revision\Models\Shuttle;
 use Motor\Revision\Http\Requests\Backend\ShuttleRequest;
-use Motor\Revision\Services\ShuttleService;
-use Motor\Revision\Http\Resources\ShuttleResource;
 use Motor\Revision\Http\Resources\ShuttleCollection;
+use Motor\Revision\Http\Resources\ShuttleResource;
+use Motor\Revision\Models\Shuttle;
+use Motor\Revision\Services\ShuttleService;
 
 /**
  * Class ShuttlesController
- *
- * @package Motor\Revision\Http\Controllers\Api
  */
 class ShuttlesController extends ApiController
 {
@@ -26,7 +23,9 @@ class ShuttlesController extends ApiController
      *   tags={"ShuttlesController"},
      *   path="/api/shuttles",
      *   summary="Get shuttle collection",
+     *
      *   @OA\Parameter(
+     *
      *     @OA\Schema(type="string"),
      *     in="query",
      *     allowReserved=true,
@@ -34,15 +33,20 @@ class ShuttlesController extends ApiController
      *     parameter="api_token",
      *     description="Personal api_token of the user"
      *   ),
+     *
      *   @OA\Response(
      *     response=200,
      *     description="Success",
+     *
      *     @OA\JsonContent(
+     *
      *       @OA\Property(
      *         property="data",
      *         type="array",
+     *
      *         @OA\Items(ref="#/components/schemas/ShuttleResource")
      *       ),
+     *
      *       @OA\Property(
      *         property="meta",
      *         ref="#/components/schemas/PaginationMeta"
@@ -58,9 +62,11 @@ class ShuttlesController extends ApiController
      *       )
      *     )
      *   ),
+     *
      *   @OA\Response(
      *     response="403",
      *     description="Access denied",
+     *
      *     @OA\JsonContent(ref="#/components/schemas/AccessDenied"),
      *   )
      * )
@@ -72,7 +78,7 @@ class ShuttlesController extends ApiController
     public function index()
     {
         $paginator = ShuttleService::collection()
-                                   ->getPaginator();
+            ->getPaginator();
 
         return (new ShuttleCollection($paginator))->additional(['message' => 'Shuttle collection read']);
     }
@@ -82,10 +88,14 @@ class ShuttlesController extends ApiController
      *   tags={"ShuttlesController"},
      *   path="/api/shuttles",
      *   summary="Create new shuttle",
+     *
      *   @OA\RequestBody(
+     *
      *     @OA\JsonContent(ref="#/components/schemas/ShuttleRequest")
      *   ),
+     *
      *   @OA\Parameter(
+     *
      *     @OA\Schema(type="string"),
      *     in="query",
      *     allowReserved=true,
@@ -93,10 +103,13 @@ class ShuttlesController extends ApiController
      *     parameter="api_token",
      *     description="Personal api_token of the user"
      *   ),
+     *
      *   @OA\Response(
      *     response=200,
      *     description="Success",
+     *
      *     @OA\JsonContent(
+     *
      *       @OA\Property(
      *         property="data",
      *         type="object",
@@ -109,31 +122,34 @@ class ShuttlesController extends ApiController
      *       )
      *     )
      *   ),
+     *
      *   @OA\Response(
      *     response="403",
      *     description="Access denied",
+     *
      *     @OA\JsonContent(ref="#/components/schemas/AccessDenied"),
      *   ),
+     *
      *   @OA\Response(
      *     response="404",
      *     description="Not found",
+     *
      *     @OA\JsonContent(ref="#/components/schemas/NotFound"),
      *   )
      * )
      *
      * Store a newly created resource in storage.
      *
-     * @param ShuttleRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(ShuttleRequest $request)
     {
         $result = ShuttleService::create($request)
-                                ->getResult();
+            ->getResult();
 
         return (new ShuttleResource($result))->additional(['message' => 'Shuttle created'])
-                                             ->response()
-                                             ->setStatusCode(201);
+            ->response()
+            ->setStatusCode(201);
     }
 
     /**
@@ -141,7 +157,9 @@ class ShuttlesController extends ApiController
      *   tags={"ShuttlesController"},
      *   path="/api/shuttles/{shuttle}",
      *   summary="Get single shuttle",
+     *
      *   @OA\Parameter(
+     *
      *     @OA\Schema(type="string"),
      *     in="query",
      *     allowReserved=true,
@@ -149,17 +167,22 @@ class ShuttlesController extends ApiController
      *     parameter="api_token",
      *     description="Personal api_token of the user"
      *   ),
+     *
      *   @OA\Parameter(
+     *
      *     @OA\Schema(type="integer"),
      *     in="path",
      *     name="shuttle",
      *     parameter="shuttle",
      *     description="Shuttle id"
      *   ),
+     *
      *   @OA\Response(
      *     response=200,
      *     description="Success",
+     *
      *     @OA\JsonContent(
+     *
      *       @OA\Property(
      *         property="data",
      *         type="object",
@@ -172,27 +195,30 @@ class ShuttlesController extends ApiController
      *       )
      *     )
      *   ),
+     *
      *   @OA\Response(
      *     response="403",
      *     description="Access denied",
+     *
      *     @OA\JsonContent(ref="#/components/schemas/AccessDenied"),
      *   ),
+     *
      *   @OA\Response(
      *     response="404",
      *     description="Not found",
+     *
      *     @OA\JsonContent(ref="#/components/schemas/NotFound"),
      *   )
      * )
      *
      * Display the specified resource.
      *
-     * @param Shuttle $record
      * @return ShuttleResource
      */
     public function show(Shuttle $record)
     {
         $result = ShuttleService::show($record)
-                                ->getResult();
+            ->getResult();
 
         return (new ShuttleResource($result))->additional(['message' => 'Shuttle read']);
     }
@@ -202,10 +228,14 @@ class ShuttlesController extends ApiController
      *   tags={"ShuttlesController"},
      *   path="/api/shuttles/{shuttle}",
      *   summary="Update an existing shuttle",
+     *
      *   @OA\RequestBody(
+     *
      *     @OA\JsonContent(ref="#/components/schemas/ShuttleRequest")
      *   ),
+     *
      *   @OA\Parameter(
+     *
      *     @OA\Schema(type="string"),
      *     in="query",
      *     allowReserved=true,
@@ -213,17 +243,22 @@ class ShuttlesController extends ApiController
      *     parameter="api_token",
      *     description="Personal api_token of the user"
      *   ),
+     *
      *   @OA\Parameter(
+     *
      *     @OA\Schema(type="integer"),
      *     in="path",
      *     name="shuttle",
      *     parameter="shuttle",
      *     description="Shuttle id"
      *   ),
+     *
      *   @OA\Response(
      *     response=200,
      *     description="Success",
+     *
      *     @OA\JsonContent(
+     *
      *       @OA\Property(
      *         property="data",
      *         type="object",
@@ -236,28 +271,30 @@ class ShuttlesController extends ApiController
      *       )
      *     )
      *   ),
+     *
      *   @OA\Response(
      *     response="403",
      *     description="Access denied",
+     *
      *     @OA\JsonContent(ref="#/components/schemas/AccessDenied"),
      *   ),
+     *
      *   @OA\Response(
      *     response="404",
      *     description="Not found",
+     *
      *     @OA\JsonContent(ref="#/components/schemas/NotFound"),
      *   )
      * )
      *
      * Update the specified resource in storage.
      *
-     * @param ShuttleRequest $request
-     * @param Shuttle $record
      * @return ShuttleResource
      */
     public function update(ShuttleRequest $request, Shuttle $record)
     {
         $result = ShuttleService::update($record, $request)
-                                ->getResult();
+            ->getResult();
 
         return (new ShuttleResource($result))->additional(['message' => 'Shuttle updated']);
     }
@@ -267,7 +304,9 @@ class ShuttlesController extends ApiController
      *   tags={"ShuttlesController"},
      *   path="/api/shuttles/{shuttle}",
      *   summary="Delete a shuttle",
+     *
      *   @OA\Parameter(
+     *
      *     @OA\Schema(type="string"),
      *     in="query",
      *     allowReserved=true,
@@ -275,17 +314,22 @@ class ShuttlesController extends ApiController
      *     parameter="api_token",
      *     description="Personal api_token of the user"
      *   ),
+     *
      *   @OA\Parameter(
+     *
      *     @OA\Schema(type="integer"),
      *     in="path",
      *     name="shuttle",
      *     parameter="shuttle",
      *     description="Shuttle id"
      *   ),
+     *
      *   @OA\Response(
      *     response=200,
      *     description="Success",
+     *
      *     @OA\JsonContent(
+     *
      *       @OA\Property(
      *         property="message",
      *         type="string",
@@ -293,20 +337,27 @@ class ShuttlesController extends ApiController
      *       )
      *     )
      *   ),
+     *
      *   @OA\Response(
      *     response="403",
      *     description="Access denied",
+     *
      *     @OA\JsonContent(ref="#/components/schemas/AccessDenied"),
      *   ),
+     *
      *   @OA\Response(
      *     response="404",
      *     description="Not found",
+     *
      *     @OA\JsonContent(ref="#/components/schemas/NotFound"),
      *   ),
+     *
      *   @OA\Response(
      *     response="400",
      *     description="Bad request",
+     *
      *     @OA\JsonContent(
+     *
      *       @OA\Property(
      *         property="message",
      *         type="string",
@@ -318,13 +369,12 @@ class ShuttlesController extends ApiController
      *
      * Remove the specified resource from storage.
      *
-     * @param Shuttle $record
      * @return \Illuminate\Http\JsonResponse
      */
     public function destroy(Shuttle $record)
     {
         $result = ShuttleService::delete($record)
-                                ->getResult();
+            ->getResult();
 
         if ($result) {
             return response()->json(['message' => 'Shuttle deleted']);

@@ -2,13 +2,11 @@
 
 namespace Motor\Revision\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\ServiceProvider;
 
 /**
  * Class MotorServiceProvider
- *
- * @package Motor\Revision\Providers
  */
 class MotorServiceProvider extends ServiceProvider
 {
@@ -39,7 +37,7 @@ class MotorServiceProvider extends ServiceProvider
      */
     public function register()
     {
-//        $this->mergeConfigFrom(__DIR__ . '/../../config/motor-media.php', 'motor-media');
+        //        $this->mergeConfigFrom(__DIR__ . '/../../config/motor-media.php', 'motor-media');
     }
 
     /**
@@ -47,11 +45,11 @@ class MotorServiceProvider extends ServiceProvider
      */
     public function publishResourceAssets()
     {
-//        $assets = [
-//            __DIR__ . '/../../public/plugins/jstree' => public_path('plugins/jstree'),
-//        ];
-//
-//        $this->publishes($assets, 'motor-media-install');
+        //        $assets = [
+        //            __DIR__ . '/../../public/plugins/jstree' => public_path('plugins/jstree'),
+        //        ];
+        //
+        //        $this->publishes($assets, 'motor-media-install');
     }
 
     /**
@@ -87,9 +85,9 @@ class MotorServiceProvider extends ServiceProvider
      */
     public function config()
     {
-        //$this->publishes([
+        // $this->publishes([
         //    __DIR__ . '/../../config/motor-backend-project.php'          => config_path('motor-backend-project.php'),
-        //], 'motor-backend-install');
+        // ], 'motor-backend-install');
     }
 
     /**

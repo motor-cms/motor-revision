@@ -6,14 +6,13 @@ use Motor\Backend\Http\Requests\Request;
 
 /**
  * Class SponsorRequest
- *
- * @package Motor\Revision\Http\Requests\Backend
  */
 class SponsorRequest extends Request
 {
     /**
      * @OA\Schema(
      *   schema="SponsorRequest",
+     *
      *   @OA\Property(
      *     property="name",
      *     type="string",
@@ -67,12 +66,12 @@ class SponsorRequest extends Request
     public function rules()
     {
         return [
-            'name'          => 'required',
-            'url'           => 'nullable',
-            'level'         => 'required|in:'.implode(',', array_flip(trans('motor-revision::backend/sponsors.levels'))),
+            'name' => 'required',
+            'url' => 'nullable',
+            'level' => 'required|in:'.implode(',', array_flip(trans('motor-revision::backend/sponsors.levels'))),
             'sort_position' => 'nullable|integer',
-            'is_active'     => 'nullable|boolean',
-            'text'          => 'nullable',
+            'is_active' => 'nullable|boolean',
+            'text' => 'nullable',
         ];
     }
 }

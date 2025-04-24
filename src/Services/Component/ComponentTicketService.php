@@ -2,8 +2,8 @@
 
 namespace Motor\Revision\Services\Component;
 
-use Motor\Revision\Models\Component\ComponentTicket;
 use Motor\CMS\Services\ComponentBaseService;
+use Motor\Revision\Models\Component\ComponentTicket;
 
 class ComponentTicketService extends ComponentBaseService
 {

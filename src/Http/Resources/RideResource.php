@@ -7,6 +7,7 @@ use Motor\Backend\Http\Resources\BaseResource;
 /**
  * @OA\Schema(
  *   schema="RideResource",
+ *
  *   @OA\Property(
  *     property="id",
  *     type="integer",
@@ -56,20 +57,20 @@ class RideResource extends BaseResource
     /**
      * Transform the resource into an array.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function toArray($request)
     {
         return [
-            'id'                      => (int) $this->id,
-            'direction'               => $this->direction,
-            'type'                    => $this->type,
+            'id' => (int) $this->id,
+            'direction' => $this->direction,
+            'type' => $this->type,
             'means_of_transportation' => $this->means_of_transportation,
-            'name'                    => $this->name,
-            'email'                   => $this->email,
-            'country'                 => $this->country,
-            'route'                   => $this->route,
+            'name' => $this->name,
+            'email' => $this->email,
+            'country' => $this->country,
+            'route' => $this->route,
         ];
     }
 }

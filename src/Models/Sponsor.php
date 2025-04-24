@@ -2,18 +2,18 @@
 
 namespace Motor\Revision\Models;
 
-use Kra8\Snowflake\HasShortflakePrimary;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Kra8\Snowflake\HasShortflakePrimary;
 use Motor\Core\Traits\Filterable;
 use Motor\Core\Traits\Searchable;
 use Motor\Media\Models\FileAssociation;
 
 class Sponsor extends Model
 {
-    use Searchable;
     use Filterable;
     use HasShortflakePrimary;
+    use Searchable;
 
     /**
      * Searchable columns for the searchable trait

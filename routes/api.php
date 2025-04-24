@@ -1,9 +1,10 @@
 <?php
+
 Route::group([
     'middleware' => ['auth:api', 'bindings', 'permission'],
-    'namespace'  => 'Motor\Revision\Http\Controllers\Api',
-    'prefix'     => 'api',
-    'as'         => 'api.',
+    'namespace' => 'Motor\Revision\Http\Controllers\Api',
+    'prefix' => 'api',
+    'as' => 'api.',
 ], static function () {
     Route::apiResource('tickets', 'TicketsController');
     Route::apiResource('airports', 'AirportsController');

@@ -3,17 +3,14 @@
 namespace Motor\Revision\Http\Controllers\Api;
 
 use Motor\Backend\Http\Controllers\ApiController;
-
-use Motor\Revision\Models\Traveler;
 use Motor\Revision\Http\Requests\Backend\TravelerRequest;
-use Motor\Revision\Services\TravelerService;
-use Motor\Revision\Http\Resources\TravelerResource;
 use Motor\Revision\Http\Resources\TravelerCollection;
+use Motor\Revision\Http\Resources\TravelerResource;
+use Motor\Revision\Models\Traveler;
+use Motor\Revision\Services\TravelerService;
 
 /**
  * Class TravelersController
- *
- * @package Motor\Revision\Http\Controllers\Api
  */
 class TravelersController extends ApiController
 {
@@ -26,7 +23,9 @@ class TravelersController extends ApiController
      *   tags={"TravelersController"},
      *   path="/api/travelers",
      *   summary="Get traveler collection",
+     *
      *   @OA\Parameter(
+     *
      *     @OA\Schema(type="string"),
      *     in="query",
      *     allowReserved=true,
@@ -34,15 +33,20 @@ class TravelersController extends ApiController
      *     parameter="api_token",
      *     description="Personal api_token of the user"
      *   ),
+     *
      *   @OA\Response(
      *     response=200,
      *     description="Success",
+     *
      *     @OA\JsonContent(
+     *
      *       @OA\Property(
      *         property="data",
      *         type="array",
+     *
      *         @OA\Items(ref="#/components/schemas/TravelerResource")
      *       ),
+     *
      *       @OA\Property(
      *         property="meta",
      *         ref="#/components/schemas/PaginationMeta"
@@ -58,9 +62,11 @@ class TravelersController extends ApiController
      *       )
      *     )
      *   ),
+     *
      *   @OA\Response(
      *     response="403",
      *     description="Access denied",
+     *
      *     @OA\JsonContent(ref="#/components/schemas/AccessDenied"),
      *   )
      * )
@@ -72,7 +78,7 @@ class TravelersController extends ApiController
     public function index()
     {
         $paginator = TravelerService::collection()
-                                    ->getPaginator();
+            ->getPaginator();
 
         return (new TravelerCollection($paginator))->additional(['message' => 'Traveler collection read']);
     }
@@ -82,10 +88,14 @@ class TravelersController extends ApiController
      *   tags={"TravelersController"},
      *   path="/api/travelers",
      *   summary="Create new traveler",
+     *
      *   @OA\RequestBody(
+     *
      *     @OA\JsonContent(ref="#/components/schemas/TravelerRequest")
      *   ),
+     *
      *   @OA\Parameter(
+     *
      *     @OA\Schema(type="string"),
      *     in="query",
      *     allowReserved=true,
@@ -93,10 +103,13 @@ class TravelersController extends ApiController
      *     parameter="api_token",
      *     description="Personal api_token of the user"
      *   ),
+     *
      *   @OA\Response(
      *     response=200,
      *     description="Success",
+     *
      *     @OA\JsonContent(
+     *
      *       @OA\Property(
      *         property="data",
      *         type="object",
@@ -109,31 +122,34 @@ class TravelersController extends ApiController
      *       )
      *     )
      *   ),
+     *
      *   @OA\Response(
      *     response="403",
      *     description="Access denied",
+     *
      *     @OA\JsonContent(ref="#/components/schemas/AccessDenied"),
      *   ),
+     *
      *   @OA\Response(
      *     response="404",
      *     description="Not found",
+     *
      *     @OA\JsonContent(ref="#/components/schemas/NotFound"),
      *   )
      * )
      *
      * Store a newly created resource in storage.
      *
-     * @param TravelerRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(TravelerRequest $request)
     {
         $result = TravelerService::create($request)
-                                 ->getResult();
+            ->getResult();
 
         return (new TravelerResource($result))->additional(['message' => 'Traveler created'])
-                                              ->response()
-                                              ->setStatusCode(201);
+            ->response()
+            ->setStatusCode(201);
     }
 
     /**
@@ -141,7 +157,9 @@ class TravelersController extends ApiController
      *   tags={"TravelersController"},
      *   path="/api/travelers/{traveler}",
      *   summary="Get single traveler",
+     *
      *   @OA\Parameter(
+     *
      *     @OA\Schema(type="string"),
      *     in="query",
      *     allowReserved=true,
@@ -149,17 +167,22 @@ class TravelersController extends ApiController
      *     parameter="api_token",
      *     description="Personal api_token of the user"
      *   ),
+     *
      *   @OA\Parameter(
+     *
      *     @OA\Schema(type="integer"),
      *     in="path",
      *     name="traveler",
      *     parameter="traveler",
      *     description="Traveler id"
      *   ),
+     *
      *   @OA\Response(
      *     response=200,
      *     description="Success",
+     *
      *     @OA\JsonContent(
+     *
      *       @OA\Property(
      *         property="data",
      *         type="object",
@@ -172,27 +195,30 @@ class TravelersController extends ApiController
      *       )
      *     )
      *   ),
+     *
      *   @OA\Response(
      *     response="403",
      *     description="Access denied",
+     *
      *     @OA\JsonContent(ref="#/components/schemas/AccessDenied"),
      *   ),
+     *
      *   @OA\Response(
      *     response="404",
      *     description="Not found",
+     *
      *     @OA\JsonContent(ref="#/components/schemas/NotFound"),
      *   )
      * )
      *
      * Display the specified resource.
      *
-     * @param Traveler $record
      * @return TravelerResource
      */
     public function show(Traveler $record)
     {
         $result = TravelerService::show($record)
-                                 ->getResult();
+            ->getResult();
 
         return (new TravelerResource($result))->additional(['message' => 'Traveler read']);
     }
@@ -202,10 +228,14 @@ class TravelersController extends ApiController
      *   tags={"TravelersController"},
      *   path="/api/travelers/{traveler}",
      *   summary="Update an existing traveler",
+     *
      *   @OA\RequestBody(
+     *
      *     @OA\JsonContent(ref="#/components/schemas/TravelerRequest")
      *   ),
+     *
      *   @OA\Parameter(
+     *
      *     @OA\Schema(type="string"),
      *     in="query",
      *     allowReserved=true,
@@ -213,17 +243,22 @@ class TravelersController extends ApiController
      *     parameter="api_token",
      *     description="Personal api_token of the user"
      *   ),
+     *
      *   @OA\Parameter(
+     *
      *     @OA\Schema(type="integer"),
      *     in="path",
      *     name="traveler",
      *     parameter="traveler",
      *     description="Traveler id"
      *   ),
+     *
      *   @OA\Response(
      *     response=200,
      *     description="Success",
+     *
      *     @OA\JsonContent(
+     *
      *       @OA\Property(
      *         property="data",
      *         type="object",
@@ -236,28 +271,30 @@ class TravelersController extends ApiController
      *       )
      *     )
      *   ),
+     *
      *   @OA\Response(
      *     response="403",
      *     description="Access denied",
+     *
      *     @OA\JsonContent(ref="#/components/schemas/AccessDenied"),
      *   ),
+     *
      *   @OA\Response(
      *     response="404",
      *     description="Not found",
+     *
      *     @OA\JsonContent(ref="#/components/schemas/NotFound"),
      *   )
      * )
      *
      * Update the specified resource in storage.
      *
-     * @param TravelerRequest $request
-     * @param Traveler $record
      * @return TravelerResource
      */
     public function update(TravelerRequest $request, Traveler $record)
     {
         $result = TravelerService::update($record, $request)
-                                 ->getResult();
+            ->getResult();
 
         return (new TravelerResource($result))->additional(['message' => 'Traveler updated']);
     }
@@ -267,7 +304,9 @@ class TravelersController extends ApiController
      *   tags={"TravelersController"},
      *   path="/api/travelers/{traveler}",
      *   summary="Delete a traveler",
+     *
      *   @OA\Parameter(
+     *
      *     @OA\Schema(type="string"),
      *     in="query",
      *     allowReserved=true,
@@ -275,17 +314,22 @@ class TravelersController extends ApiController
      *     parameter="api_token",
      *     description="Personal api_token of the user"
      *   ),
+     *
      *   @OA\Parameter(
+     *
      *     @OA\Schema(type="integer"),
      *     in="path",
      *     name="traveler",
      *     parameter="traveler",
      *     description="Traveler id"
      *   ),
+     *
      *   @OA\Response(
      *     response=200,
      *     description="Success",
+     *
      *     @OA\JsonContent(
+     *
      *       @OA\Property(
      *         property="message",
      *         type="string",
@@ -293,20 +337,27 @@ class TravelersController extends ApiController
      *       )
      *     )
      *   ),
+     *
      *   @OA\Response(
      *     response="403",
      *     description="Access denied",
+     *
      *     @OA\JsonContent(ref="#/components/schemas/AccessDenied"),
      *   ),
+     *
      *   @OA\Response(
      *     response="404",
      *     description="Not found",
+     *
      *     @OA\JsonContent(ref="#/components/schemas/NotFound"),
      *   ),
+     *
      *   @OA\Response(
      *     response="400",
      *     description="Bad request",
+     *
      *     @OA\JsonContent(
+     *
      *       @OA\Property(
      *         property="message",
      *         type="string",
@@ -318,13 +369,12 @@ class TravelersController extends ApiController
      *
      * Remove the specified resource from storage.
      *
-     * @param Traveler $record
      * @return \Illuminate\Http\JsonResponse
      */
     public function destroy(Traveler $record)
     {
         $result = TravelerService::delete($record)
-                                 ->getResult();
+            ->getResult();
 
         if ($result) {
             return response()->json(['message' => 'Traveler deleted']);

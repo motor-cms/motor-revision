@@ -3,11 +3,9 @@
 namespace Motor\Revision\Http\Controllers\Backend\Component;
 
 use Illuminate\Http\Request;
-use Motor\CMS\Http\Controllers\Component\ComponentController;
-
-use Motor\Revision\Forms\Backend\Component\ComponentShuttleRegistrationForm;
-
 use Kris\LaravelFormBuilder\FormBuilderTrait;
+use Motor\CMS\Http\Controllers\Component\ComponentController;
+use Motor\Revision\Forms\Backend\Component\ComponentShuttleRegistrationForm;
 
 class ComponentShuttleRegistrationsController extends ComponentController
 {
@@ -28,7 +26,6 @@ class ComponentShuttleRegistrationsController extends ComponentController
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
@@ -47,7 +44,7 @@ class ComponentShuttleRegistrationsController extends ComponentController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \Motor\Revision\Models\Component\ComponentShuttleRegistration $record
+     * @param  \Motor\Revision\Models\Component\ComponentShuttleRegistration  $record
      * @return \Illuminate\Http\JsonResponse
      */
     public function edit(ComponentShuttleRegistration $record)
@@ -62,8 +59,7 @@ class ComponentShuttleRegistrationsController extends ComponentController
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \Motor\Revision\Models\Component\ComponentShuttleRegistration $record
+     * @param  \Motor\Revision\Models\Component\ComponentShuttleRegistration  $record
      * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, ComponentShuttleRegistration $record)

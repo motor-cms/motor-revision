@@ -12,8 +12,6 @@ use Motor\Revision\Services\RideService;
 
 /**
  * Class RidesController
- *
- * @package Motor\Revision\Http\Controllers\Backend
  */
 class RidesController extends Controller
 {
@@ -23,6 +21,7 @@ class RidesController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     *
      * @throws \ReflectionException
      */
     public function index()
@@ -44,8 +43,8 @@ class RidesController extends Controller
     public function create()
     {
         $form = $this->form(RideForm::class, [
-            'method'  => 'POST',
-            'route'   => 'backend.rides.store',
+            'method' => 'POST',
+            'route' => 'backend.rides.store',
             'enctype' => 'multipart/form-data',
         ]);
 
@@ -55,7 +54,6 @@ class RidesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param RideRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(RideRequest $request)
@@ -79,8 +77,6 @@ class RidesController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param Ride $record
      */
     public function show(Ride $record)
     {
@@ -90,16 +86,15 @@ class RidesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Ride $record
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Ride $record)
     {
         $form = $this->form(RideForm::class, [
-            'method'  => 'PATCH',
-            'url'     => route('backend.rides.update', [$record->id]),
+            'method' => 'PATCH',
+            'url' => route('backend.rides.update', [$record->id]),
             'enctype' => 'multipart/form-data',
-            'model'   => $record,
+            'model' => $record,
         ]);
 
         return view('motor-revision::backend.rides.edit', compact('form'));
@@ -108,8 +103,6 @@ class RidesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param RideRequest $request
-     * @param Ride $record
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(RideRequest $request, Ride $record)
@@ -134,7 +127,6 @@ class RidesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Ride $record
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy(Ride $record)

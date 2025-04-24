@@ -7,8 +7,6 @@ use Motor\Revision\Models\Hotel;
 
 /**
  * Class HotelService
- *
- * @package Motor\Revision\Services
  */
 class HotelService extends BaseService
 {

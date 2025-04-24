@@ -21,19 +21,10 @@ class ComponentTickets
 
     protected $pageVersionComponent;
 
-    /**
-     * @var
-     */
     protected $ticketForm;
 
-    /**
-     * @var
-     */
     protected $record;
 
-    /**
-     * @var
-     */
     protected $request;
 
     public function __construct(
@@ -49,9 +40,9 @@ class ComponentTickets
         $this->request = $request;
 
         $formOptions = [
-            'name'    => 'ticket-'.$this->component->type,
-            'url'     => $this->request->url(),
-            'method'  => 'POST',
+            'name' => 'ticket-'.$this->component->type,
+            'url' => $this->request->url(),
+            'method' => 'POST',
             'enctype' => 'multipart/form-data',
         ];
 
@@ -90,13 +81,13 @@ class ComponentTickets
         }
 
         $record = TicketService::createWithForm($this->request, $this->ticketForm)
-                               ->getResult();
+            ->getResult();
 
         // Send emails
         EmailHelper::sendEmail($record->type.'_ticket_info', [], ['ticket' => $record]);
         EmailHelper::sendEmail($record->type.'_ticket_registration', [
             'to_email' => $record->email,
-            'to_name'  => $record->name,
+            'to_name' => $record->name,
         ], ['ticket' => $record]);
 
         // Create flash alert and hide form
@@ -108,9 +99,9 @@ class ComponentTickets
     public function render()
     {
         return view(config('motor-cms-page-components.components.'.$this->pageVersionComponent->component_name.'.view'), [
-                'ticketForm' => $this->ticketForm,
-                'record'     => $this->record,
-                'component'  => $this->component,
-            ]);
+            'ticketForm' => $this->ticketForm,
+            'record' => $this->record,
+            'component' => $this->component,
+        ]);
     }
 }

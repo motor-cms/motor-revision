@@ -12,8 +12,6 @@ use Motor\Revision\Services\TravelerService;
 
 /**
  * Class TravelersController
- *
- * @package Motor\Revision\Http\Controllers\Backend
  */
 class TravelersController extends Controller
 {
@@ -23,6 +21,7 @@ class TravelersController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     *
      * @throws \ReflectionException
      */
     public function index()
@@ -44,8 +43,8 @@ class TravelersController extends Controller
     public function create()
     {
         $form = $this->form(TravelerForm::class, [
-            'method'  => 'POST',
-            'route'   => 'backend.travelers.store',
+            'method' => 'POST',
+            'route' => 'backend.travelers.store',
             'enctype' => 'multipart/form-data',
         ]);
 
@@ -55,7 +54,6 @@ class TravelersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param TravelerRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(TravelerRequest $request)
@@ -79,8 +77,6 @@ class TravelersController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param Traveler $record
      */
     public function show(Traveler $record)
     {
@@ -90,16 +86,15 @@ class TravelersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Traveler $record
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Traveler $record)
     {
         $form = $this->form(TravelerForm::class, [
-            'method'  => 'PATCH',
-            'url'     => route('backend.travelers.update', [$record->id]),
+            'method' => 'PATCH',
+            'url' => route('backend.travelers.update', [$record->id]),
             'enctype' => 'multipart/form-data',
-            'model'   => $record,
+            'model' => $record,
         ]);
 
         return view('motor-revision::backend.travelers.edit', compact('form'));
@@ -108,8 +103,6 @@ class TravelersController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param TravelerRequest $request
-     * @param Traveler $record
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(TravelerRequest $request, Traveler $record)
@@ -134,7 +127,6 @@ class TravelersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Traveler $record
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy(Traveler $record)
