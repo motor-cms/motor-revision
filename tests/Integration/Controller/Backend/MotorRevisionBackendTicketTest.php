@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use \Motor\Revision\Models\Ticket;
 
-class Motor\RevisionBackendTicketTest extends TestCase
+class MotorRevisionBackendTicketTest extends TestCase
 {
 
     use DatabaseTransactions;

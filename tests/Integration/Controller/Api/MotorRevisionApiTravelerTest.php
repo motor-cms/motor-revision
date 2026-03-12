@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class Motor\RevisionApiTravelerTest extends TestCase
+class MotorRevisionApiTravelerTest extends TestCase
 {
 
     use DatabaseTransactions;

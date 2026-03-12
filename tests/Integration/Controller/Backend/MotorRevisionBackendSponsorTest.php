@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Motor\Revision\Models\Sponsor;
 
-class Motor\RevisionBackendSponsorTest extends TestCase
+class MotorRevisionBackendSponsorTest extends TestCase
 {
 
     use DatabaseTransactions;

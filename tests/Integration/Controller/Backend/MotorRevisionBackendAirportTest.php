@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Motor\Revision\Models\Airport;
 
-class Motor\RevisionBackendAirportTest extends TestCase
+class MotorRevisionBackendAirportTest extends TestCase
 {
 
     use DatabaseTransactions;

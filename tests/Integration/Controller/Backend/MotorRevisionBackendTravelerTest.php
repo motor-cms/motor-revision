@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Motor\Revision\Models\Traveler;
 
-class Motor\RevisionBackendTravelerTest extends TestCase
+class MotorRevisionBackendTravelerTest extends TestCase
 {
 
     use DatabaseTransactions;

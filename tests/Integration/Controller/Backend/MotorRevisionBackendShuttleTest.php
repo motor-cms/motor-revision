@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Motor\Revision\Models\Shuttle;
 
-class Motor\RevisionBackendShuttleTest extends TestCase
+class MotorRevisionBackendShuttleTest extends TestCase
 {
 
     use DatabaseTransactions;
