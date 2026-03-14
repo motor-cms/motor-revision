@@ -1,8 +1,8 @@
 @foreach ($sponsors as $sponsor)
-    <div class="flex items-start gap-4 mb-6">
-        <div class="w-[200px] shrink-0">
+    <div class="flex flex-col md:flex-row items-start gap-4 mb-6">
+        <div class="w-full md:w-[200px] md:shrink-0">
             <a href="{{$sponsor->url}}">
-                <img src="{{$sponsor->file_associations()->where('identifier', 'logo_big')->first()->file->getFirstMedia('file')->getUrl('thumb')}}" class="w-full rounded-lg shadow">
+                <img src="{{$sponsor->file_associations()->where('identifier', 'logo_big')->first()->file->getFirstMedia('file')->getUrl('thumb')}}" alt="{{ $sponsor->name }} logo" class="w-full rounded-lg shadow">
             </a>
         </div>
         <div class="flex-1">
