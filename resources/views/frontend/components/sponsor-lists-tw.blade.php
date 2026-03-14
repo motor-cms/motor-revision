@@ -8,7 +8,7 @@
         <div class="flex-1">
             <h4 class="flex justify-between items-center text-left">
                 <span>{{$sponsor->name}}</span>
-                <span>{{trans('motor-revision::backend/sponsors.levels.'.$sponsor->level)}}</span>
+                <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-accent/20 text-accent">{{trans('motor-revision::backend/sponsors.levels.'.$sponsor->level)}}</span>
             </h4>
             {!! $sponsor->text !!}
         </div>
