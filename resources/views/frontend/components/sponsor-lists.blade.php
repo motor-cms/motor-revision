@@ -3,7 +3,7 @@
         <div class="media-object-section">
             <div class="thumbnail" style="width: 200px; border: none !important;">
                 <a href="{{$sponsor->url}}">
-                <img src="{{$sponsor->file_associations()->where('identifier', 'logo_big')->first()->file->getFirstMedia('file')->getUrl('thumb')}}" style="width: 100%;">
+                <img src="{{$sponsor->file_associations->where('identifier', 'logo_big')->first()->file->getFirstMedia('file')->getUrl('thumb')}}" style="width: 100%;">
                 </a>
             </div>
         </div>

@@ -20,6 +20,7 @@ class ComponentSponsorLists
     public function index(Request $request)
     {
         $this->sponsors = Sponsor::where('is_active', true)
+                                 ->with(['file_associations.file'])
                                  ->orderBy('level', 'ASC')
                                  ->orderBy('sort_position', 'ASC')
                                  ->get();

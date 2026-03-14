@@ -25,16 +25,22 @@ class ComponentShuttleLists
     {
         $data = [
             'toPartyWithoutShuttle'      => Traveler::toPartyWithoutShuttle()
+                                                    ->with('airport')
                                                     ->get(),
             'toAirportWithoutShuttle'    => Traveler::toAirportWithoutShuttle()
+                                                    ->with('airport')
                                                     ->get(),
             'toPartyWithShuttle'         => Traveler::toPartyWithShuttle()
+                                                    ->with(['airport', 'shuttle'])
                                                     ->get(),
             'toAirportWithShuttle'       => Traveler::toAirportWithShuttle()
+                                                    ->with(['airport', 'shuttle'])
                                                     ->get(),
             'confirmedShuttlesToParty'   => Shuttle::confirmedToParty()
+                                                   ->with('airport')
                                                    ->get(),
             'confirmedShuttlesToAirport' => Shuttle::confirmedToAirport()
+                                                   ->with('airport')
                                                    ->get(),
         ];
 
