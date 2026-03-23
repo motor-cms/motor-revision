@@ -13,7 +13,7 @@ use Motor\Revision\Models\Sponsor;
  */
 class SponsorService extends BaseService
 {
-    protected $model = Sponsor::class;
+    protected string $model = Sponsor::class;
 
     public function afterCreate()
     {

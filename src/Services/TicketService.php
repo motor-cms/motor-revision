@@ -15,7 +15,7 @@ use Partymeister\Competitions\Models\Competition;
  */
 class TicketService extends BaseService
 {
-    protected $model = Ticket::class;
+    protected string $model = Ticket::class;
 
     public function filters()
     {

@@ -12,5 +12,5 @@ use Motor\Revision\Models\Traveler;
  */
 class TravelerService extends BaseService
 {
-    protected $model = Traveler::class;
+    protected string $model = Traveler::class;
 }

@@ -12,5 +12,5 @@ use Motor\Revision\Models\Airport;
  */
 class AirportService extends BaseService
 {
-    protected $model = Airport::class;
+    protected string $model = Airport::class;
 }

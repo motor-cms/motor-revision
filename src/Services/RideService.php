@@ -12,5 +12,5 @@ use Motor\Revision\Models\Ride;
  */
 class RideService extends BaseService
 {
-    protected $model = Ride::class;
+    protected string $model = Ride::class;
 }

@@ -12,5 +12,5 @@ use Motor\Revision\Models\Shuttle;
  */
 class ShuttleService extends BaseService
 {
-    protected $model = Shuttle::class;
+    protected string $model = Shuttle::class;
 }

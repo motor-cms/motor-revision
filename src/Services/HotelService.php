@@ -12,5 +12,5 @@ use Motor\Revision\Models\Hotel;
  */
 class HotelService extends BaseService
 {
-    protected $model = Hotel::class;
+    protected string $model = Hotel::class;
 }
