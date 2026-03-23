@@ -61,7 +61,7 @@ class MotorRevisionBackendHotelTest extends TestCase
     {
         $this->visit('/backend/hotels')
             ->see(trans('motor-revision::backend/hotels.hotels'))
-            ->see(trans('motor-backend::backend/global.no_records'));
+            ->see(trans('motor-admin::backend/global.no_records'));
     }
 
     /** @test */
@@ -79,10 +79,10 @@ class MotorRevisionBackendHotelTest extends TestCase
         $record = create_test_hotel();
         $this->visit('/backend/hotels')
             ->within('table', function(){
-                $this->click(trans('motor-backend::backend/global.edit'));
+                $this->click(trans('motor-admin::backend/global.edit'));
             })
             ->seePageIs('/backend/hotels/'.$record->id.'/edit')
-            ->click(trans('motor-backend::backend/global.back'))
+            ->click(trans('motor-admin::backend/global.back'))
             ->seePageIs('/backend/hotels');
     }
 
@@ -163,7 +163,7 @@ class MotorRevisionBackendHotelTest extends TestCase
 
         $this->visit('/backend/hotels')
             ->within('table', function(){
-                $this->press(trans('motor-backend::backend/global.delete'));
+                $this->press(trans('motor-admin::backend/global.delete'));
             })
             ->seePageIs('/backend/hotels')
             ->see(trans('motor-revision::backend/hotels.deleted'));

@@ -2,9 +2,9 @@
 
 namespace Motor\Revision\Grids;
 
-use Motor\Backend\Grid\Grid;
-use Motor\Backend\Grid\Renderers\BooleanRenderer;
-use Motor\Backend\Grid\Renderers\TranslateRenderer;
+use Motor\Admin\Grid\Grid;
+use Motor\Admin\Grid\Renderers\BooleanRenderer;
+use Motor\Admin\Grid\Renderers\TranslateRenderer;
 
 /**
  * Class SponsorGrid
@@ -22,7 +22,7 @@ class SponsorGrid extends Grid
         $this->addColumn('sort_position', trans('motor-revision::backend/sponsors.sort_position'));
         $this->addColumn('is_active', trans('motor-revision::backend/sponsors.is_active'))
              ->renderer(BooleanRenderer::class);
-        $this->addEditAction(trans('motor-backend::backend/global.edit'), 'backend.sponsors.edit');
-        $this->addDeleteAction(trans('motor-backend::backend/global.delete'), 'backend.sponsors.destroy');
+        $this->addEditAction(trans('motor-admin::backend/global.edit'), 'backend.sponsors.edit');
+        $this->addDeleteAction(trans('motor-admin::backend/global.delete'), 'backend.sponsors.destroy');
     }
 }

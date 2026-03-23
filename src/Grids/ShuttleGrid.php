@@ -2,10 +2,10 @@
 
 namespace Motor\Revision\Grids;
 
-use Motor\Backend\Grid\Grid;
-use Motor\Backend\Grid\Renderers\BladeRenderer;
-use Motor\Backend\Grid\Renderers\BooleanRenderer;
-use Motor\Backend\Grid\Renderers\TranslateRenderer;
+use Motor\Admin\Grid\Grid;
+use Motor\Admin\Grid\Renderers\BladeRenderer;
+use Motor\Admin\Grid\Renderers\BooleanRenderer;
+use Motor\Admin\Grid\Renderers\TranslateRenderer;
 
 /**
  * Class ShuttleGrid
@@ -36,7 +36,7 @@ class ShuttleGrid extends Grid
                 BladeRenderer::class,
                 [ 'template' => 'motor-revision::grid.shuttles.seats' ]
             );
-        $this->addEditAction(trans('motor-backend::backend/global.edit'), 'backend.shuttles.edit');
-        $this->addDeleteAction(trans('motor-backend::backend/global.delete'), 'backend.shuttles.destroy');
+        $this->addEditAction(trans('motor-admin::backend/global.edit'), 'backend.shuttles.edit');
+        $this->addDeleteAction(trans('motor-admin::backend/global.delete'), 'backend.shuttles.destroy');
     }
 }

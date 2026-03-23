@@ -2,7 +2,7 @@
 
 namespace Motor\Revision\Http\Requests\Backend;
 
-use Motor\Backend\Http\Requests\Request;
+use Motor\Admin\Http\Requests\Request;
 
 /**
  * Class RideRequest

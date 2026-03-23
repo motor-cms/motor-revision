@@ -61,7 +61,7 @@ class MotorRevisionBackendSponsorTest extends TestCase
     {
         $this->visit('/backend/sponsors')
             ->see(trans('motor-revision::backend/sponsors.sponsors'))
-            ->see(trans('motor-backend::backend/global.no_records'));
+            ->see(trans('motor-admin::backend/global.no_records'));
     }
 
     /** @test */
@@ -79,10 +79,10 @@ class MotorRevisionBackendSponsorTest extends TestCase
         $record = create_test_sponsor();
         $this->visit('/backend/sponsors')
             ->within('table', function(){
-                $this->click(trans('motor-backend::backend/global.edit'));
+                $this->click(trans('motor-admin::backend/global.edit'));
             })
             ->seePageIs('/backend/sponsors/'.$record->id.'/edit')
-            ->click(trans('motor-backend::backend/global.back'))
+            ->click(trans('motor-admin::backend/global.back'))
             ->seePageIs('/backend/sponsors');
     }
 
@@ -163,7 +163,7 @@ class MotorRevisionBackendSponsorTest extends TestCase
 
         $this->visit('/backend/sponsors')
             ->within('table', function(){
-                $this->press(trans('motor-backend::backend/global.delete'));
+                $this->press(trans('motor-admin::backend/global.delete'));
             })
             ->seePageIs('/backend/sponsors')
             ->see(trans('motor-revision::backend/sponsors.deleted'));

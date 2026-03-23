@@ -2,7 +2,7 @@
 
 namespace Motor\Revision\Http\Controllers\Api;
 
-use Motor\Backend\Http\Controllers\ApiController;
+use Motor\Admin\Http\Controllers\ApiController;
 
 use Motor\Revision\Models\Traveler;
 use Motor\Revision\Http\Requests\Backend\TravelerRequest;

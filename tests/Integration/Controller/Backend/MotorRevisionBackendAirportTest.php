@@ -61,7 +61,7 @@ class MotorRevisionBackendAirportTest extends TestCase
     {
         $this->visit('/backend/airports')
             ->see(trans('motor-revision::backend/airports.airports'))
-            ->see(trans('motor-backend::backend/global.no_records'));
+            ->see(trans('motor-admin::backend/global.no_records'));
     }
 
     /** @test */
@@ -79,10 +79,10 @@ class MotorRevisionBackendAirportTest extends TestCase
         $record = create_test_airport();
         $this->visit('/backend/airports')
             ->within('table', function(){
-                $this->click(trans('motor-backend::backend/global.edit'));
+                $this->click(trans('motor-admin::backend/global.edit'));
             })
             ->seePageIs('/backend/airports/'.$record->id.'/edit')
-            ->click(trans('motor-backend::backend/global.back'))
+            ->click(trans('motor-admin::backend/global.back'))
             ->seePageIs('/backend/airports');
     }
 
@@ -163,7 +163,7 @@ class MotorRevisionBackendAirportTest extends TestCase
 
         $this->visit('/backend/airports')
             ->within('table', function(){
-                $this->press(trans('motor-backend::backend/global.delete'));
+                $this->press(trans('motor-admin::backend/global.delete'));
             })
             ->seePageIs('/backend/airports')
             ->see(trans('motor-revision::backend/airports.deleted'));

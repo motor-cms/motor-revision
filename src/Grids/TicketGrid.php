@@ -2,9 +2,9 @@
 
 namespace Motor\Revision\Grids;
 
-use Motor\Backend\Grid\Grid;
-use Motor\Backend\Grid\Renderers\BladeRenderer;
-use Motor\Backend\Grid\Renderers\TranslateRenderer;
+use Motor\Admin\Grid\Grid;
+use Motor\Admin\Grid\Renderers\BladeRenderer;
+use Motor\Admin\Grid\Renderers\TranslateRenderer;
 
 /**
  * Class TicketGrid
@@ -28,7 +28,7 @@ class TicketGrid extends Grid
                      'field'    => 'status',
                  ]);
         $this->setDefaultSorting('id', 'ASC');
-        $this->addEditAction(trans('motor-backend::backend/global.edit'), 'backend.tickets.edit');
-        $this->addDeleteAction(trans('motor-backend::backend/global.delete'), 'backend.tickets.destroy');
+        $this->addEditAction(trans('motor-admin::backend/global.edit'), 'backend.tickets.edit');
+        $this->addDeleteAction(trans('motor-admin::backend/global.delete'), 'backend.tickets.destroy');
     }
 }

@@ -2,8 +2,8 @@
 
 namespace Motor\Revision\Grids;
 
-use Motor\Backend\Grid\Grid;
-use Motor\Backend\Grid\Renderers\BooleanRenderer;
+use Motor\Admin\Grid\Grid;
+use Motor\Admin\Grid\Renderers\BooleanRenderer;
 
 /**
  * Class AirportGrid
@@ -21,7 +21,7 @@ class AirportGrid extends Grid
         $this->addColumn('is_active', trans('motor-revision::backend/airports.is_active'))
              ->renderer(BooleanRenderer::class);
 
-        $this->addEditAction(trans('motor-backend::backend/global.edit'), 'backend.airports.edit');
-        $this->addDeleteAction(trans('motor-backend::backend/global.delete'), 'backend.airports.destroy');
+        $this->addEditAction(trans('motor-admin::backend/global.edit'), 'backend.airports.edit');
+        $this->addDeleteAction(trans('motor-admin::backend/global.delete'), 'backend.airports.destroy');
     }
 }

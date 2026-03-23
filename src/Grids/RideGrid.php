@@ -2,7 +2,7 @@
 
 namespace Motor\Revision\Grids;
 
-use Motor\Backend\Grid\Grid;
+use Motor\Admin\Grid\Grid;
 
 /**
  * Class RideGrid
@@ -15,7 +15,7 @@ class RideGrid extends Grid
     {
         $this->addColumn('id', 'ID', true);
         $this->setDefaultSorting('id', 'ASC');
-        $this->addEditAction(trans('motor-backend::backend/global.edit'), 'backend.rides.edit');
-        $this->addDeleteAction(trans('motor-backend::backend/global.delete'), 'backend.rides.destroy');
+        $this->addEditAction(trans('motor-admin::backend/global.edit'), 'backend.rides.edit');
+        $this->addDeleteAction(trans('motor-admin::backend/global.delete'), 'backend.rides.destroy');
     }
 }

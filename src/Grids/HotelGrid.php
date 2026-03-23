@@ -2,7 +2,7 @@
 
 namespace Motor\Revision\Grids;
 
-use Motor\Backend\Grid\Grid;
+use Motor\Admin\Grid\Grid;
 
 /**
  * Class HotelGrid
@@ -15,7 +15,7 @@ class HotelGrid extends Grid
     {
         $this->addColumn('id', 'ID', true);
         $this->setDefaultSorting('id', 'ASC');
-        $this->addEditAction(trans('motor-backend::backend/global.edit'), 'backend.hotels.edit');
-        $this->addDeleteAction(trans('motor-backend::backend/global.delete'), 'backend.hotels.destroy');
+        $this->addEditAction(trans('motor-admin::backend/global.edit'), 'backend.hotels.edit');
+        $this->addDeleteAction(trans('motor-admin::backend/global.delete'), 'backend.hotels.destroy');
     }
 }

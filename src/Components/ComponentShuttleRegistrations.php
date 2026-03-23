@@ -6,7 +6,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
-use Motor\Backend\Helpers\EmailHelper;
+use Motor\Admin\Helpers\EmailHelper;
 use Motor\CMS\Models\PageVersionComponent;
 use Motor\Revision\Forms\Component\ShuttleRegistrationForm;
 use Motor\Revision\Models\Traveler;

@@ -2,7 +2,7 @@
 
 namespace Motor\Revision\Services;
 
-use Motor\Backend\Services\BaseService;
+use Motor\Admin\Services\BaseService;
 use Motor\Media\Models\FileAssociation;
 use Motor\Revision\Models\Sponsor;
 

@@ -19,7 +19,7 @@ class TravelerForm extends Form
                  'label'       => trans('motor-revision::backend/shuttles.shuttle'),
                  'choices'     => Shuttle::pluck('name', 'id')
                                          ->toArray(),
-                 'empty_value' => trans('motor-backend::backend/global.please_choose'),
+                 'empty_value' => trans('motor-admin::backend/global.please_choose'),
              ])
              ->add('direction', 'select', [
                  'label'   => trans('motor-revision::backend/shuttles.direction'),

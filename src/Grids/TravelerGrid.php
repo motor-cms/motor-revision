@@ -2,9 +2,9 @@
 
 namespace Motor\Revision\Grids;
 
-use Motor\Backend\Grid\Grid;
-use Motor\Backend\Grid\Renderers\DateRenderer;
-use Motor\Backend\Grid\Renderers\TranslateRenderer;
+use Motor\Admin\Grid\Grid;
+use Motor\Admin\Grid\Renderers\DateRenderer;
+use Motor\Admin\Grid\Renderers\TranslateRenderer;
 
 /**
  * Class TravelerGrid
@@ -26,7 +26,7 @@ class TravelerGrid extends Grid
              ->renderer(TranslateRenderer::class, ['file' => 'motor-revision::backend/shuttles.directions']);
         $this->addColumn('shuttle.name', trans('motor-revision::backend/shuttles.shuttle'));
 
-        $this->addEditAction(trans('motor-backend::backend/global.edit'), 'backend.travelers.edit');
-        $this->addDeleteAction(trans('motor-backend::backend/global.delete'), 'backend.travelers.destroy');
+        $this->addEditAction(trans('motor-admin::backend/global.edit'), 'backend.travelers.edit');
+        $this->addDeleteAction(trans('motor-admin::backend/global.delete'), 'backend.travelers.destroy');
     }
 }

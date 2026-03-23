@@ -61,7 +61,7 @@ class MotorRevisionBackendShuttleTest extends TestCase
     {
         $this->visit('/backend/shuttles')
             ->see(trans('motor-revision::backend/shuttles.shuttles'))
-            ->see(trans('motor-backend::backend/global.no_records'));
+            ->see(trans('motor-admin::backend/global.no_records'));
     }
 
     /** @test */
@@ -79,10 +79,10 @@ class MotorRevisionBackendShuttleTest extends TestCase
         $record = create_test_shuttle();
         $this->visit('/backend/shuttles')
             ->within('table', function(){
-                $this->click(trans('motor-backend::backend/global.edit'));
+                $this->click(trans('motor-admin::backend/global.edit'));
             })
             ->seePageIs('/backend/shuttles/'.$record->id.'/edit')
-            ->click(trans('motor-backend::backend/global.back'))
+            ->click(trans('motor-admin::backend/global.back'))
             ->seePageIs('/backend/shuttles');
     }
 
@@ -163,7 +163,7 @@ class MotorRevisionBackendShuttleTest extends TestCase
 
         $this->visit('/backend/shuttles')
             ->within('table', function(){
-                $this->press(trans('motor-backend::backend/global.delete'));
+                $this->press(trans('motor-admin::backend/global.delete'));
             })
             ->seePageIs('/backend/shuttles')
             ->see(trans('motor-revision::backend/shuttles.deleted'));

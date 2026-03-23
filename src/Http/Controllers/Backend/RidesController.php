@@ -3,7 +3,7 @@
 namespace Motor\Revision\Http\Controllers\Backend;
 
 use Kris\LaravelFormBuilder\FormBuilderTrait;
-use Motor\Backend\Http\Controllers\Controller;
+use Motor\Admin\Http\Controllers\Controller;
 use Motor\Revision\Forms\Backend\RideForm;
 use Motor\Revision\Grids\RideGrid;
 use Motor\Revision\Http\Requests\Backend\RideRequest;

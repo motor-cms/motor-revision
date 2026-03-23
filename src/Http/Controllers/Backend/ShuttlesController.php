@@ -3,7 +3,7 @@
 namespace Motor\Revision\Http\Controllers\Backend;
 
 use Kris\LaravelFormBuilder\FormBuilderTrait;
-use Motor\Backend\Http\Controllers\Controller;
+use Motor\Admin\Http\Controllers\Controller;
 use Motor\Revision\Forms\Backend\ShuttleForm;
 use Motor\Revision\Grids\ShuttleGrid;
 use Motor\Revision\Http\Requests\Backend\ShuttleRequest;

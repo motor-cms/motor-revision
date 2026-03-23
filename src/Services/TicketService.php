@@ -3,7 +3,7 @@
 namespace Motor\Revision\Services;
 
 use Illuminate\Support\Arr;
-use Motor\Backend\Services\BaseService;
+use Motor\Admin\Services\BaseService;
 use Motor\Core\Filter\Renderers\SelectRenderer;
 use \Motor\Revision\Models\Ticket;
 use Partymeister\Competitions\Models\Competition;

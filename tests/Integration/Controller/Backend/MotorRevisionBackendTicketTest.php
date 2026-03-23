@@ -61,7 +61,7 @@ class MotorRevisionBackendTicketTest extends TestCase
     {
         $this->visit('/backend/tickets')
             ->see(trans('motor-revision::backend/tickets.tickets'))
-            ->see(trans('motor-backend::backend/global.no_records'));
+            ->see(trans('motor-admin::backend/global.no_records'));
     }
 
     /** @test */
@@ -79,10 +79,10 @@ class MotorRevisionBackendTicketTest extends TestCase
         $record = create_test_ticket();
         $this->visit('/backend/tickets')
             ->within('table', function(){
-                $this->click(trans('motor-backend::backend/global.edit'));
+                $this->click(trans('motor-admin::backend/global.edit'));
             })
             ->seePageIs('/backend/tickets/'.$record->id.'/edit')
-            ->click(trans('motor-backend::backend/global.back'))
+            ->click(trans('motor-admin::backend/global.back'))
             ->seePageIs('/backend/tickets');
     }
 
@@ -163,7 +163,7 @@ class MotorRevisionBackendTicketTest extends TestCase
 
         $this->visit('/backend/tickets')
             ->within('table', function(){
-                $this->press(trans('motor-backend::backend/global.delete'));
+                $this->press(trans('motor-admin::backend/global.delete'));
             })
             ->seePageIs('/backend/tickets')
             ->see(trans('motor-revision::backend/tickets.deleted'));
